@@ -1,0 +1,4 @@
+extern char _binary___Resources_Images_Learn_menu_next_button_png_start;
+extern char _binary___Resources_Images_Learn_menu_next_button_png_end;
+static const char* next_button_png = &_binary___Resources_Images_Learn_menu_next_button_png_start;
+static const size_t next_button_png_size = &_binary___Resources_Images_Learn_menu_next_button_png_end - &_binary___Resources_Images_Learn_menu_next_button_png_start;
