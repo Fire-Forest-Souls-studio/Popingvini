@@ -88,12 +88,8 @@ void Introduction::main_if_introduction ()
 				I_->texture_obj[0].getSize ().x,
 				I_->texture_obj[0].getSize ().y / I_->u_cout_frame_blackfire_studio));
 
-		names::LoadFromMemory (I_->texture_obj[1], gnome_studio_png, gnome_studio_png_size, "Images/Introduction/gnome_studio.png");
-
 		I_->rectsangle_shape_obj[1].setTexture (&I_->texture_obj[1]);
 		I_->rectsangle_shape_obj[1].setFillColor (Color (255, 255, 255, 0));
-
-		names::LoadFromMemory (I_->texture_obj[2], popingvini_studio_png, popingvini_studio_png_size, "Images/Introduction/popingvini_studio.png");
 
 		I_->rectsangle_shape_obj[2].setTexture (&I_->texture_obj[2]);
 		I_->rectsangle_shape_obj[2].setFillColor (Color (255, 255, 255, 0));
