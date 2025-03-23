@@ -1,3 +1,12 @@
+/*
+ * Copyright 2025 Fire-Forest-Souls
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ */
+
 #include "../../includes/Singletone/loading.h"
 #include "../../includes/Singletone/names.h"
 #include "../../includes/Singletone/main_menu.h"
@@ -47,7 +56,7 @@ Loading::Loading () :
 
 				b_load (false),
 
-				s_file_name (names::s_path + "saving.blackfire-popingvini")
+				s_file_name (names::s_path + "saving.FireForestSouls-Popingvini")
 {
 	rectangle_shape_obj.setSize (Vector2f (350, 150));
 
@@ -256,6 +265,7 @@ void Loading::main ()
 			{
 				size_t st_read_size (0);
 
+				cout << L_->s_file_name << endl;
 				L_->i_file.open (L_->s_file_name, ios::out | ios::binary);
 				L_->i_file.read ((char*) &st_read_size, sizeof(size_t));
 				for (size_t st (0); st < LanguageMenu::getPython ().work.size (); st++)
