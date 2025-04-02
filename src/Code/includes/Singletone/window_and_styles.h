@@ -1,3 +1,12 @@
+/*
+ * Copyright 2025 Fire-Forest-Souls-studio
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ */
+
 #ifndef CODE_WINDOW_AND_STYLES_H_
 #define CODE_WINDOW_AND_STYLES_H_
 
@@ -22,32 +31,32 @@ class WindowAndStyles
 {
 	private:
 
-		static WindowAndStyles* class_obj;
-
 		WindowAndStyles ();
 
-		Vector2f f_size_pix;
+		static WindowAndStyles* class_obj;
 
-		RectangleShape rectangle_shape_obj;
+		const Vector2f _f_SIZE_PIX;
 
-		RenderWindow window_obj;
+		RectangleShape _rectangle_shape;
 
-		RenderTexture render_texture_obj;
+		RenderWindow _render_window;
 
-		StyleWindow now;
+		RenderTexture _render_texture;
 
-		VideoMode videomode_obj;
+		StyleWindow _style_window;
 
-		View camera;
+		VideoMode _video_mode;
+
+		View _view;
 
 		float f_time_since_clicking;
 
-		wstring w_game_name;
+		wstring _w_game_name;
 
-		Color C_defolt_window;
-		Color C_clear_color;
+		const Color _C_DEFOLT_WINDOW;
+		Color _C_clear_color;
 
-		Image image_obj;
+		Image _image;
 
 		static void main_time_work ();
 		static void main_F11 ();

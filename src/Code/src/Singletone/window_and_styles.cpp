@@ -18,18 +18,18 @@
 WindowAndStyles* WindowAndStyles::class_obj = NULL;
 
 WindowAndStyles::WindowAndStyles () :
-		f_size_pix (300.0, 150.0),
+		_f_SIZE_PIX (300.0, 150.0),
 
-		rectangle_shape_obj (f_size_pix),
+		_rectangle_shape (_f_SIZE_PIX),
 
-		now (Default),
+		_style_window (Default),
 
 		f_time_since_clicking (0),
 
-		w_game_name (L"Попингвини"),
+		_w_game_name (L"Попингвини"),
 
-		C_defolt_window (22, 23, 26, 255),
-				C_clear_color (0, 0, 0, 255)
+		_C_DEFOLT_WINDOW (22, 23, 26, 255),
+				_C_clear_color (0, 0, 0, 255)
 {
 }
 
@@ -55,64 +55,64 @@ void WindowAndStyles::main_F11 ()
 
 	if (Keyboard::isKeyPressed (Keyboard::F11)
 			and WAS_->f_time_since_clicking > 1.0
-			and WAS_->window_obj.hasFocus ())
+			and WAS_->_render_window.hasFocus ())
 	{
-		if (WAS_->now == Default)
+		if (WAS_->_style_window == Default)
 		{
-			WAS_->videomode_obj = VideoMode::getFullscreenModes ()[0];
-			WAS_->render_texture_obj.create (
-					WAS_->videomode_obj.width / names::u_factor_of_resolution,
-					WAS_->videomode_obj.height / names::u_factor_of_resolution
+			WAS_->_video_mode = VideoMode::getFullscreenModes ()[0];
+			WAS_->_render_texture.create (
+					WAS_->_video_mode.width / names::u_factor_of_resolution,
+					WAS_->_video_mode.height / names::u_factor_of_resolution
 							);
-			WAS_->window_obj.create (
-					VideoMode (WAS_->videomode_obj.width, WAS_->videomode_obj.height),
-					WAS_->w_game_name,
+			WAS_->_render_window.create (
+					VideoMode (WAS_->_video_mode.width, WAS_->_video_mode.height),
+					WAS_->_w_game_name,
 					Style::Fullscreen
 					);
 
-			WAS_->camera.setCenter (Vector2f (
-					static_cast <float> (WAS_->videomode_obj.width) * 0.5,
-					static_cast <float> (WAS_->videomode_obj.height) * 0.5
+			WAS_->_view.setCenter (Vector2f (
+					static_cast <float> (WAS_->_video_mode.width) * 0.5,
+					static_cast <float> (WAS_->_video_mode.height) * 0.5
 							));
-			WAS_->camera.setSize (Vector2f (
-					static_cast <float> (WAS_->videomode_obj.width),
-					static_cast <float> (WAS_->videomode_obj.height)
+			WAS_->_view.setSize (Vector2f (
+					static_cast <float> (WAS_->_video_mode.width),
+					static_cast <float> (WAS_->_video_mode.height)
 					));
-			WAS_->render_texture_obj.setView (WAS_->camera);
-			WAS_->window_obj.setView (WAS_->camera);
+			WAS_->_render_texture.setView (WAS_->_view);
+			WAS_->_render_window.setView (WAS_->_view);
 
 			main_destroy ();
 
-			WAS_->now = Fullscreen;
+			WAS_->_style_window = Fullscreen;
 			WAS_->f_time_since_clicking = 0.0;
 		}
-		else if (WAS_->now == Fullscreen)
+		else if (WAS_->_style_window == Fullscreen)
 		{
-			WAS_->videomode_obj = VideoMode::getDesktopMode ();
-			WAS_->window_obj.create (
-					VideoMode (WAS_->videomode_obj.width, WAS_->videomode_obj.height),
-					WAS_->w_game_name,
+			WAS_->_video_mode = VideoMode::getDesktopMode ();
+			WAS_->_render_window.create (
+					VideoMode (WAS_->_video_mode.width, WAS_->_video_mode.height),
+					WAS_->_w_game_name,
 					Style::Default
 					);
-			WAS_->render_texture_obj.create (
-					static_cast <float> (WAS_->window_obj.getSize ().x) / names::u_factor_of_resolution,
-					static_cast <float> (WAS_->window_obj.getSize ().y) / names::u_factor_of_resolution
+			WAS_->_render_texture.create (
+					static_cast <float> (WAS_->_render_window.getSize ().x) / names::u_factor_of_resolution,
+					static_cast <float> (WAS_->_render_window.getSize ().y) / names::u_factor_of_resolution
 							);
 
-			WAS_->camera.setCenter (Vector2f (
-					static_cast <float> (WAS_->window_obj.getSize ().x) * 0.5,
-					static_cast <float> (WAS_->window_obj.getSize ().y) * 0.5
+			WAS_->_view.setCenter (Vector2f (
+					static_cast <float> (WAS_->_render_window.getSize ().x) * 0.5,
+					static_cast <float> (WAS_->_render_window.getSize ().y) * 0.5
 							));
-			WAS_->camera.setSize (Vector2f (
-					static_cast <float> (WAS_->window_obj.getSize ().x),
-					static_cast <float> (WAS_->window_obj.getSize ().y)
+			WAS_->_view.setSize (Vector2f (
+					static_cast <float> (WAS_->_render_window.getSize ().x),
+					static_cast <float> (WAS_->_render_window.getSize ().y)
 					));
-			WAS_->render_texture_obj.setView (WAS_->camera);
-			WAS_->window_obj.setView (WAS_->camera);
+			WAS_->_render_texture.setView (WAS_->_view);
+			WAS_->_render_window.setView (WAS_->_view);
 
 			main_destroy ();
 
-			WAS_->now = Default;
+			WAS_->_style_window = Default;
 			WAS_->f_time_since_clicking = 0;
 		}
 	}
@@ -122,7 +122,7 @@ void WindowAndStyles::main_event ()
 {
 	WindowAndStyles* WAS_ = getClass ();
 
-	while (WAS_->window_obj.pollEvent (names::E_event))
+	while (WAS_->_render_window.pollEvent (names::E_event))
 	{
 		if (names::E_event.type == Event::Closed or (WindowAndStyles::hasFocus () and Keyboard::isKeyPressed (Keyboard::Escape)))
 		{
@@ -140,21 +140,21 @@ void WindowAndStyles::main_event ()
 	{
 		WindowAndStyles* WAS_ = getClass ();
 
-		//camera
-		WAS_->camera.setCenter (Vector2f (
+		//_view
+		WAS_->_view.setCenter (Vector2f (
 				static_cast <float> (names::E_event.size.width) * 0.5,
 				static_cast <float> (names::E_event.size.height) * 0.5
 						));
-		WAS_->camera.setSize (Vector2f (
+		WAS_->_view.setSize (Vector2f (
 				static_cast <float> (names::E_event.size.width),
 				static_cast <float> (names::E_event.size.height)
 				));
-		WAS_->render_texture_obj.create (
-				WAS_->camera.getSize ().x / names::u_factor_of_resolution,
-				WAS_->camera.getSize ().y / names::u_factor_of_resolution
+		WAS_->_render_texture.create (
+				WAS_->_view.getSize ().x / names::u_factor_of_resolution,
+				WAS_->_view.getSize ().y / names::u_factor_of_resolution
 						);
-		WAS_->render_texture_obj.setView (WAS_->camera);
-		WAS_->window_obj.setView (WAS_->camera);
+		WAS_->_render_texture.setView (WAS_->_view);
+		WAS_->_render_window.setView (WAS_->_view);
 
 		main_destroy ();
 	}
@@ -162,23 +162,23 @@ void WindowAndStyles::main_event ()
 void WindowAndStyles::clear_clear ()
 {
 	WindowAndStyles* WAS_ = getClass ();
-	if (WAS_->C_clear_color.a > 250)
+	if (WAS_->_C_clear_color.a > 250)
 	{
-		WAS_->render_texture_obj.clear (WAS_->C_clear_color);
-		WAS_->window_obj.clear (WAS_->C_clear_color);
+		WAS_->_render_texture.clear (WAS_->_C_clear_color);
+		WAS_->_render_window.clear (WAS_->_C_clear_color);
 	}
 	else
 	{
-		WAS_->render_texture_obj.clear (WAS_->C_defolt_window);
-		WAS_->window_obj.clear (WAS_->C_defolt_window);
+		WAS_->_render_texture.clear (WAS_->_C_DEFOLT_WINDOW);
+		WAS_->_render_window.clear (WAS_->_C_DEFOLT_WINDOW);
 	}
 }
 void WindowAndStyles::clear_rectangle ()
 {
 	WindowAndStyles* WAS_ = getClass ();
-	WAS_->rectangle_shape_obj.setSize (Vector2f (WAS_->camera.getSize ()));
-	WAS_->rectangle_shape_obj.setPosition (WAS_->camera.getCenter ().x - WAS_->camera.getSize ().x * 0.5,
-			WAS_->camera.getCenter ().y - WAS_->camera.getSize ().y * 0.5);
+	WAS_->_rectangle_shape.setSize (Vector2f (WAS_->_view.getSize ()));
+	WAS_->_rectangle_shape.setPosition (WAS_->_view.getCenter ().x - WAS_->_view.getSize ().x * 0.5,
+			WAS_->_view.getCenter ().y - WAS_->_view.getSize ().y * 0.5);
 }
 void WindowAndStyles::clear_draw ()
 {
@@ -205,13 +205,13 @@ void WindowAndStyles::clear_draw ()
 	{
 		for (size_t st (0); st < Introduction::size_sprites; st++)
 		{
-			WAS_->render_texture_obj.draw (Introduction::getSprite ()[st]);
+			WAS_->_render_texture.draw (Introduction::getSprite ()[st]);
 		}
 		for (size_t st (0); st < P_.size (); st++)
 		{
-			if (P_[st].RS.getGlobalBounds ().intersects (WAS_->rectangle_shape_obj.getGlobalBounds ()))
+			if (P_[st].RS.getGlobalBounds ().intersects (WAS_->_rectangle_shape.getGlobalBounds ()))
 			{
-				WAS_->render_texture_obj.draw (P_[st].RS);
+				WAS_->_render_texture.draw (P_[st].RS);
 			}
 		}
 	}
@@ -219,36 +219,36 @@ void WindowAndStyles::clear_draw ()
 	{
 		for (size_t st (0); st < P_.size (); st++)
 		{
-			if (P_[st].RS.getGlobalBounds ().intersects (WAS_->rectangle_shape_obj.getGlobalBounds ()))
+			if (P_[st].RS.getGlobalBounds ().intersects (WAS_->_rectangle_shape.getGlobalBounds ()))
 			{
-				WAS_->render_texture_obj.draw (P_[st].RS);
+				WAS_->_render_texture.draw (P_[st].RS);
 			}
 		}
-		WAS_->render_texture_obj.draw (Loading::getSprite ());
-		WAS_->render_texture_obj.draw (Loading::getSpriteText ());
-		WAS_->render_texture_obj.draw (Loading::getLoadText ());
+		WAS_->_render_texture.draw (Loading::getSprite ());
+		WAS_->_render_texture.draw (Loading::getSpriteText ());
+		WAS_->_render_texture.draw (Loading::getLoadText ());
 	}
 
 	if (b_loading_to_main_menu or b_main_menu or b_main_menu_to_person_menu or b_works_menu_to_main_menu)
 	{
 		for (size_t st (0); st < RS_MM_.size (); st++)
 		{
-			if (RS_MM_[st].getGlobalBounds ().intersects (WAS_->rectangle_shape_obj.getGlobalBounds ()))
+			if (RS_MM_[st].getGlobalBounds ().intersects (WAS_->_rectangle_shape.getGlobalBounds ()))
 			{
-				WAS_->render_texture_obj.draw (RS_MM_[st]);
+				WAS_->_render_texture.draw (RS_MM_[st]);
 			}
 		}
 		draw (MainMenu::getPopingvinit ());
 		draw (MainMenu::getSdatca ());
-		if (MainMenu::getPopingvini ().getGlobalBounds ().intersects (WAS_->rectangle_shape_obj.getGlobalBounds ()))
+		if (MainMenu::getPopingvini ().getGlobalBounds ().intersects (WAS_->_rectangle_shape.getGlobalBounds ()))
 		{
-			WAS_->render_texture_obj.draw (MainMenu::getPopingvini ());
+			WAS_->_render_texture.draw (MainMenu::getPopingvini ());
 		}
 		draw (MainMenu::getWardrobe ());
-		WAS_->render_texture_obj.draw (MainMenu::getTitle ());
+		WAS_->_render_texture.draw (MainMenu::getTitle ());
 		for (size_t st (0); st < RS_MM_.size (); st++)
 		{
-			WAS_->render_texture_obj.draw (MainMenu::getIce ()[st]);
+			WAS_->_render_texture.draw (MainMenu::getIce ()[st]);
 		}
 	}
 
@@ -256,7 +256,7 @@ void WindowAndStyles::clear_draw ()
 	{
 		for (size_t st (0); st < PersonMenu::getBackground ().size (); st++)
 		{
-			WAS_->render_texture_obj.draw (PersonMenu::getBackground ()[st]);
+			WAS_->_render_texture.draw (PersonMenu::getBackground ()[st]);
 		}
 	}
 	if (b_main_menu_to_person_menu or b_person_menu or b_language_menu)
@@ -272,50 +272,50 @@ void WindowAndStyles::clear_draw ()
 
 	if (b_works_menu or b_works_menu_to_main_menu)
 	{
-		WAS_->render_texture_obj.draw (WorksMenu::getMiddleTextUpPanel ());
+		WAS_->_render_texture.draw (WorksMenu::getMiddleTextUpPanel ());
 	}
 
 	if (b_works_menu or b_test or b_learn or b_works_menu_to_main_menu)
 	{
 		draw (WorksMenu::getUpPanel ());
-		WAS_->render_texture_obj.draw (WorksMenu::getLeftTextUpPanel ());
-		WAS_->render_texture_obj.draw (WorksMenu::getRightTextUpPanel ());
-		WAS_->render_texture_obj.draw (WorksMenu::getDownPanel ());
+		WAS_->_render_texture.draw (WorksMenu::getLeftTextUpPanel ());
+		WAS_->_render_texture.draw (WorksMenu::getRightTextUpPanel ());
+		WAS_->_render_texture.draw (WorksMenu::getDownPanel ());
 		Sprite S (WorksMenu::getRender ().getTexture ());
 		S.setPosition (
 				RS_WM_.getPosition ().x,
 				RS_WM_.getPosition ().y
 				);
-		WAS_->render_texture_obj.draw (S);
+		WAS_->_render_texture.draw (S);
 	}
 
 //hitboxes
 
 	if (names::b_hitboxes_is_drawn)
 	{
-		if (PC_Mouse::getGlobalBounds ().intersects (WAS_->rectangle_shape_obj.getGlobalBounds ()))
+		if (PC_Mouse::getGlobalBounds ().intersects (WAS_->_rectangle_shape.getGlobalBounds ()))
 		{
-			WAS_->render_texture_obj.draw (PC_Mouse::getHitBox ());
-			WAS_->render_texture_obj.draw (PC_Mouse::getTextBox ());
+			WAS_->_render_texture.draw (PC_Mouse::getHitBox ());
+			WAS_->_render_texture.draw (PC_Mouse::getTextBox ());
 		}
 	}
 
 //errors
-	WAS_->render_texture_obj.draw (Error_class::getRectangleShape ());
+	WAS_->_render_texture.draw (Error_class::getRectangleShape ());
 	for (size_t st (0); st < T_.size (); st++)
 	{
-		WAS_->render_texture_obj.draw (T_[st]);
+		WAS_->_render_texture.draw (T_[st]);
 	}
 }
 void WindowAndStyles::clear_display ()
 {
 	WindowAndStyles* WAS_ = getClass ();
 
-	WAS_->render_texture_obj.display ();
-	Sprite S (WAS_->render_texture_obj.getTexture ());
+	WAS_->_render_texture.display ();
+	Sprite S (WAS_->_render_texture.getTexture ());
 	S.setScale (names::u_factor_of_resolution, names::u_factor_of_resolution);
-	WAS_->window_obj.draw (S);
-	WAS_->window_obj.display ();
+	WAS_->_render_window.draw (S);
+	WAS_->_render_window.display ();
 }
 
 //public
@@ -336,33 +336,33 @@ void WindowAndStyles::start ()
 {
 	WindowAndStyles* WAS_ = getClass ();
 
-	names::LoadFromMemory (WAS_->image_obj, icon_png, icon_png_size, "Images/icon.png");
+	names::LoadFromMemory (WAS_->_image, icon_png, icon_png_size, "Images/icon.png");
 
-	WAS_->videomode_obj = VideoMode::getDesktopMode ();
+	WAS_->_video_mode = VideoMode::getDesktopMode ();
 
-	WAS_->window_obj.create (
-			VideoMode (WAS_->videomode_obj.width, WAS_->videomode_obj.height),
-			WAS_->w_game_name
+	WAS_->_render_window.create (
+			VideoMode (WAS_->_video_mode.width, WAS_->_video_mode.height),
+			WAS_->_w_game_name
 			);
-	WAS_->render_texture_obj.create (
-			static_cast <float> (WAS_->window_obj.getSize ().x) / names::u_factor_of_resolution,
-			static_cast <float> (WAS_->window_obj.getSize ().y) / names::u_factor_of_resolution
+	WAS_->_render_texture.create (
+			static_cast <float> (WAS_->_render_window.getSize ().x) / names::u_factor_of_resolution,
+			static_cast <float> (WAS_->_render_window.getSize ().y) / names::u_factor_of_resolution
 					);
-	WAS_->now = Default;
-	WAS_->window_obj.setIcon (WAS_->image_obj.getSize ().x, WAS_->image_obj.getSize ().y,
-			WAS_->image_obj.getPixelsPtr ());
+	WAS_->_style_window = Default;
+	WAS_->_render_window.setIcon (WAS_->_image.getSize ().x, WAS_->_image.getSize ().y,
+			WAS_->_image.getPixelsPtr ());
 
-//camera
-	WAS_->camera.setCenter (Vector2f (
-			static_cast <float> (WAS_->window_obj.getSize ().x) * 0.5,
-			static_cast <float> (WAS_->window_obj.getSize ().y) * 0.5
+//_view
+	WAS_->_view.setCenter (Vector2f (
+			static_cast <float> (WAS_->_render_window.getSize ().x) * 0.5,
+			static_cast <float> (WAS_->_render_window.getSize ().y) * 0.5
 					));
-	WAS_->camera.setSize (Vector2f (
-			static_cast <float> (WAS_->window_obj.getSize ().x),
-			static_cast <float> (WAS_->window_obj.getSize ().y)
+	WAS_->_view.setSize (Vector2f (
+			static_cast <float> (WAS_->_render_window.getSize ().x),
+			static_cast <float> (WAS_->_render_window.getSize ().y)
 			));
-	WAS_->render_texture_obj.setView (WAS_->camera);
-	WAS_->window_obj.setView (WAS_->camera);
+	WAS_->_render_texture.setView (WAS_->_view);
+	WAS_->_render_window.setView (WAS_->_view);
 }
 void WindowAndStyles::main ()
 {
@@ -392,18 +392,18 @@ void WindowAndStyles::clear ()
 void WindowAndStyles::setColor (Color C)
 {
 	WindowAndStyles* WAS_ = getClass ();
-	WAS_->C_clear_color = C;
+	WAS_->_C_clear_color = C;
 }
 
 //bool
 
 bool WindowAndStyles::isOpen ()
 {
-	return getClass ()->window_obj.isOpen ();
+	return getClass ()->_render_window.isOpen ();
 }
 bool WindowAndStyles::hasFocus ()
 {
-	return getClass ()->window_obj.hasFocus ();
+	return getClass ()->_render_window.hasFocus ();
 }
 
 //float
@@ -411,41 +411,41 @@ bool WindowAndStyles::hasFocus ()
 float WindowAndStyles::getFactorX ()
 {
 	WindowAndStyles* WAS_ = getClass ();
-	return WAS_->rectangle_shape_obj.getGlobalBounds ().width / WAS_->f_size_pix.x;
+	return WAS_->_rectangle_shape.getGlobalBounds ().width / WAS_->_f_SIZE_PIX.x;
 }
 float WindowAndStyles::getFactorY ()
 {
-	WindowAndStyles* WAS_ = getClass ();
-	return WAS_->rectangle_shape_obj.getGlobalBounds ().height / WAS_->f_size_pix.y;
+	const WindowAndStyles* WAS_ = getClass ();
+	return WAS_->_rectangle_shape.getSize ().y / WAS_->_f_SIZE_PIX.y;
 }
 float WindowAndStyles::getPixelsSizeX ()
 {
-	return getClass ()->f_size_pix.x;
+	return getClass ()->_f_SIZE_PIX.x;
 }
 float WindowAndStyles::getPixelsSizeY ()
 {
-	return getClass ()->f_size_pix.y;
+	return getClass ()->_f_SIZE_PIX.y;
 }
 
 //Window&
 
 Window& WindowAndStyles::getWindow ()
 {
-	return getClass ()->window_obj;
+	return getClass ()->_render_window;
 }
 
 //FloatRect
 
 FloatRect WindowAndStyles::getGlobalBounds ()
 {
-	return getClass ()->rectangle_shape_obj.getGlobalBounds ();
+	return getClass ()->_rectangle_shape.getGlobalBounds ();
 }
 
 //Color
 
 Color WindowAndStyles::getDefoultColor ()
 {
-	return getClass ()->C_defolt_window;
+	return getClass ()->_C_DEFOLT_WINDOW;
 }
 
 void WindowAndStyles::main_destroy ()
@@ -461,15 +461,15 @@ void WindowAndStyles::draw (const Button& B)
 {
 	WindowAndStyles* WAS_ = getClass ();
 
-	WAS_->render_texture_obj.draw (B.getRectangleShape ());
+	WAS_->_render_texture.draw (B.getRectangleShape ());
 	if (names::b_hitboxes_is_drawn)
 	{
-		WAS_->render_texture_obj.draw (B.getText ());
+		WAS_->_render_texture.draw (B.getText ());
 	}
 }
 
 void WindowAndStyles::close ()
 {
 	Loading::write ();
-	getClass ()->window_obj.close ();
+	getClass ()->_render_window.close ();
 }
