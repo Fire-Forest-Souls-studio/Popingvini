@@ -1,3 +1,12 @@
+/*
+ * Copyright 2025 Fire-Forest-Souls-studio
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ */
+
 #ifndef CODE_WORKS_MENU_H_
 #define CODE_WORKS_MENU_H_
 
@@ -18,46 +27,46 @@ class WorksMenu
 
 		static WorksMenu* class_obj;
 
-		Text T_up_panel_left;
-		Text T_up_panel_middle;
-		Text T_up_panel_right;
+		Text _T_up_panel_left;
+		Text _T_up_panel_middle;
+		Text _T_up_panel_right;
 
-		Button B_up_panel;
+		Button _B_up_panel;
 
-		RectangleShape RS_down_panel;
+		RectangleShape _RS_down_panel;
 
-		float f_big_font_scale;
-		float f_middle_big_font_scale;
-		float f_middle_small_font_scale;
-		float f_small_font_scale;
-		float f_move_blocks;
-		float f_speed_move_blocks;
-		float f_width_simvol_big_font;
-		float f_width_simvol_middle_big_font;
-		float f_width_simvol_middle_small_font;
-		float f_width_simvol_small_font;
+		const float _f_BIG_FONT_SCALE;
+		const float _f_MIDDLE_BIG_FONT_SCALE;
+		const float _f_MIDDLE_SMALL_FONT_SCALE;
+		const float _f_SMALL_FONT_SCALE;
+		const float _f_SPEED_MOVE_BLOCKS;
+		const float _f_WIGHT_SIMVOL_BIG_FONT;
+		const float _f_WIGHT_SIMVOL_MIDDLE_BIG_FONT;
+		const float _f_WIGHT_SIMVOL_MIDDLE_SMALL_FONT;
+		const float _f_WIGHT_SIMVOL_SMALL_FONT;
+		float _f_move_blocks;
 
-		int i_out_up;
-		int i_out_left;
-		int i_out_between;
-		int i_in_up;
-		int i_in_left;
-		int i_in_between;
-		int i_block_up;
-		int i_block_left;
-		int i_block_between;
+		const int _i_OUT_UP;
+		const int _i_OUT_LEFT;
+		const int _i_OUT_BETWEEN;
+		const int _i_IN_UP;
+		const int _i_IN_LEFT;
+		const int _i_IN_BETWEEN;
+		const int _i_BLOCK_UP;
+		const int _i_BLOCK_LEFT;
+		const int _i_BLOCK_BETWEEN;
 
-		Texture texture;
+		Texture _texture;
 
-		RenderTexture render_texture;
+		RenderTexture _render_texture;
 
-		View view;
+		View _view;
 
-		Vector2f V2f_size_up_panel;
-		Vector2f V2f_size_down_panel;
-		Vector2f V2f_size_block_icon;
+		Vector2f _V2f_size_up_panel;
+		Vector2f _V2f_size_down_panel;
+		Vector2f _V2f_size_block_icon;
 
-		vector <WorkBlock> work_block;
+		vector <WorkBlock> _work_block;
 
 		WorksMenu ();
 
