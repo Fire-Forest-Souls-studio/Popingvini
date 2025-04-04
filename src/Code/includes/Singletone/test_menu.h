@@ -1,3 +1,12 @@
+/*
+ * Copyright 2025 Fire-Forest-Souls-studio
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ */
+
 #ifndef CODE_TEST_MENU_H_
 #define CODE_TEST_MENU_H_
 
@@ -16,35 +25,35 @@ class TestMenu
 
 		static TestMenu* class_obj;
 
-		Text T_question;
+		Text m_T_question;
 
-		vector <TextButton> _text_button;
+		vector <TextButton> m_text_button;
 
-		RectangleShape RS_image;
-		RectangleShape RS_image_long;
+		RectangleShape m_RS_image;
+		RectangleShape m_RS_image_long;
 
-		wstring w_add;
+		const wstring m_w_ADD;
 
-		int i_up;
-		int i_between;
-		int i_left;
+		const int m_i_UP;
+		const int m_i_BETWEEN;
+		const int m_i_LEFT;
 
-		float f_text_size;
-		float f_wight_simbol;
-		float f_time;
-		float f_score;
+		const float m_f_TEXT_SIZE;
+		const float m_f_WIGHT_SIMBOL;
+		float m_f_time;
+		float m_f_score;
 
-		Vector2f V2f_image_size;
+		const Vector2f m_V2f_IMAGE_SIZE;
 
-		Color C_background;
-		Color C_question;
-		Color C_answer_select;
-		Color C_answer_unselect;
+		const Color m_C_BACKGROUND;
+		const Color m_C_QUESTION;
+		const Color m_C_ANSWER_SELECT;
+		const Color m_C_ANSWER_UNSELECT;
 
-		size_t st_question;
+		size_t m_st_question;
 
-		unsigned u_true;
-		unsigned u_cout;
+		unsigned m_u_true;
+		unsigned m_u_cout;
 
 		TestMenu ();
 
