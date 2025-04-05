@@ -1,3 +1,12 @@
+/*
+ * Copyright 2025 Fire-Forest-Souls-studio
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ */
+
 #ifndef CODE_INTRODUCTION_H_
 #define CODE_INTRODUCTION_H_
 
@@ -37,29 +46,26 @@ class Introduction
 
 	protected:
 
-		vector <RectangleShape> rectsangle_shape_obj;
+		RectangleShape m_rectsangle_shape;
 
-		vector <Texture> texture_obj;
+		Texture m_texture;
 
-		vector <Pingvinon> pingvonon_obj;
+		vector <Pingvinon> m_pingvonon;
 
-		vector <AnimPingvinon> anim_pingvinon_obj;
+		vector <AnimPingvinon> m_anim_pingvinon;
 
-		float f_frame;
-		float f_time_to_swim_out;
-		float f_need_time_sinse_swim_out;
-		float f_time_since_clic;
-		float f_need_time_since_clic;
-		float f_pingvinon_defolt_y;
-		float f_speed_blackfire_studio_animation;
-		float f_frame_for_blackfire_studio;
+		const float m_f_PINGVINON_DEFOLT_Y;
+		const float m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION;
+		float m_f_frame_for_fire_forest_souls_studio;
 
-		Vector2f V2f_pingvinon_defolt_size;
+		const Vector2f m_V2f_PINGVINON_DEFOLT_SIZE;
 
-		unsigned u_new_pingvinon;
-		unsigned u_revers;
-		unsigned u_emotion;
-		unsigned u_cout_frame_blackfire_studio;
+		const unsigned m_u_NEW_PINGVINON;
+		const unsigned m_u_REVERS;
+		const unsigned m_u_EMOTION;
+		const unsigned m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO;
+		const unsigned m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL;
+		const unsigned m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL;
 
 		static void main_if_introduction ();
 		static void main_if_loading_or_introduction ();
@@ -70,7 +76,7 @@ class Introduction
 
 		static void main ();
 
-		static vector <RectangleShape>& getSprite ();
+		static RectangleShape& getSprite ();
 		static vector <Pingvinon>& getPingvinons ();
 
 		static FloatRect getGlobalBounds ();

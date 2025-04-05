@@ -203,10 +203,7 @@ void WindowAndStyles::clear_draw ()
 
 	if (b_introduction)
 	{
-		for (size_t st (0); st < Introduction::size_sprites; st++)
-		{
-			WAS_->_render_texture.draw (Introduction::getSprite ()[st]);
-		}
+		WAS_->_render_texture.draw (Introduction::getSprite ());
 		for (size_t st (0); st < P_.size (); st++)
 		{
 			if (P_[st].RS.getGlobalBounds ().intersects (WAS_->_rectangle_shape.getGlobalBounds ()))
