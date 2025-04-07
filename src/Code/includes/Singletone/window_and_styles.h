@@ -35,28 +35,28 @@ class WindowAndStyles
 
 		static WindowAndStyles* class_obj;
 
-		const Vector2f _f_SIZE_PIX;
+		const Vector2f m_f_SIZE_PIX;
 
-		RectangleShape _rectangle_shape;
+		RectangleShape m_rectangle_shape;
 
-		RenderWindow _render_window;
+		RenderWindow m_render_window;
 
-		RenderTexture _render_texture;
+		RenderTexture m_render_texture;
 
-		StyleWindow _style_window;
+		StyleWindow m_style_window;
 
-		VideoMode _video_mode;
+		VideoMode m_video_mode;
 
-		View _view;
+		View m_view;
 
-		float f_time_since_clicking;
+		float m_f_time_since_clicking;
 
-		wstring _w_game_name;
+		wstring m_w_game_name;
 
-		const Color _C_DEFOLT_WINDOW;
-		Color _C_clear_color;
+		const Color m_C_DEFOLT_WINDOW;
+		Color m_C_clear_color;
 
-		Image _image;
+		Image m_image;
 
 		static void main_time_work ();
 		static void main_F11 ();

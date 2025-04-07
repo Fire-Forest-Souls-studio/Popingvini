@@ -9,11 +9,12 @@
 Introduction* Introduction::class_obj = 0;
 
 Introduction::Introduction () :
-		m_rectsangle_shape (Vector2f (300, 150)),
+		m_RS_anim (Vector2f (300, 150)),
+				m_RS_light (Vector2f (900, 150)),
 
-		m_pingvonon (2),
+				m_pingvonon (2),
 
-		m_anim_pingvinon (5),
+				m_anim_pingvinon (5),
 
 				m_f_PINGVINON_DEFOLT_Y (61.0),
 				m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION (6.0),
@@ -71,16 +72,21 @@ void Introduction::main_if_introduction ()
 
 		//introduction
 
-		names::LoadFromMemory (I_->m_texture, studios_png, studios_png_size, "Images/Introduction/studios.png");
+		names::LoadFromMemory (I_->m_T_anim, studios_png, studios_png_size, "Images/Introduction/studios.png");
 
-		I_->m_rectsangle_shape.setTexture (&I_->m_texture);
-		I_->m_rectsangle_shape.setFillColor (Color (255, 255, 255, 0));
-		I_->m_rectsangle_shape.setTextureRect (IntRect (
+		I_->m_RS_anim.setTexture (&I_->m_T_anim);
+		I_->m_RS_anim.setFillColor (Color (255, 255, 255, 0));
+		I_->m_RS_anim.setTextureRect (IntRect (
 				0,
 				0,
-				I_->m_texture.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL,
-				I_->m_texture.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
+				I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL,
+				I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
 						));
+
+		names::LoadFromMemory (I_->m_T_light, studio_light_png, studio_light_png_size, "Images/Introduction/studio_light.png");
+
+		I_->m_RS_light.setTexture (&I_->m_T_light);
+		I_->m_RS_light.setFillColor (Color (255, 255, 255, 0));
 
 		//popingvinons
 
@@ -110,20 +116,22 @@ void Introduction::main_if_introduction ()
 	{
 		if (I_->m_f_frame_for_fire_forest_souls_studio / I_->m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION < 1)
 		{
-			I_->m_rectsangle_shape.setFillColor (Color (255, 255, 255, I_->m_f_frame_for_fire_forest_souls_studio / I_->m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION * 255));
+			I_->m_RS_anim.setFillColor (Color (255, 255, 255, I_->m_f_frame_for_fire_forest_souls_studio / I_->m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION * 255));
+			I_->m_RS_light.setFillColor (Color (255, 255, 255, I_->m_f_frame_for_fire_forest_souls_studio / I_->m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION * 255));
 		}
 		else
 		{
-			I_->m_rectsangle_shape.setFillColor (Color (255, 255, 255, 255));
+			I_->m_RS_anim.setFillColor (Color (255, 255, 255, 255));
+			I_->m_RS_light.setFillColor (Color (255, 255, 255, 255));
 		}
 
-		I_->m_rectsangle_shape.setTextureRect (IntRect (
-				I_->m_texture.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL
+		I_->m_RS_anim.setTextureRect (IntRect (
+				I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL
 						* unsigned (I_->m_f_frame_for_fire_forest_souls_studio / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL),
-				I_->m_texture.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
+				I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
 						* (unsigned (I_->m_f_frame_for_fire_forest_souls_studio) % I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL),
-				I_->m_texture.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL,
-				I_->m_texture.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
+				I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL,
+				I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
 						));
 	}
 	else
@@ -139,9 +147,10 @@ void Introduction::main_if_introduction ()
 
 	//трансформ
 
-	I_->m_rectsangle_shape.setScale (f, f);
-	names::SetXCenterPosition (I_->m_rectsangle_shape, 0.0);
-
+	I_->m_RS_anim.setScale (f, f);
+	names::SetXCenterPosition (I_->m_RS_anim, 0.0);
+	I_->m_RS_light.setScale (f, f);
+	names::SetXCenterPosition (I_->m_RS_light, 0.0);
 }
 void Introduction::main_if_loading_or_introduction ()
 {
@@ -242,9 +251,13 @@ void Introduction::main ()
 
 //vector <Sprite&>
 
-RectangleShape& Introduction::getSprite ()
+const RectangleShape& Introduction::getAnimSprite ()
 {
-	return getClass ()->m_rectsangle_shape;
+	return getClass ()->m_RS_anim;
+}
+const RectangleShape& Introduction::getLightSprite ()
+{
+	return getClass ()->m_RS_light;
 }
 
 //vector <Pingvinon>&
@@ -258,7 +271,7 @@ vector <Pingvinon>& Introduction::getPingvinons ()
 
 FloatRect Introduction::getGlobalBounds ()
 {
-	return getClass ()->m_rectsangle_shape.getGlobalBounds ();
+	return getClass ()->m_RS_anim.getGlobalBounds ();
 }
 
 //size_t

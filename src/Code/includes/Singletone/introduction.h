@@ -40,15 +40,17 @@ class Introduction
 
 	private:
 
-		static Introduction *class_obj;
+		static Introduction* class_obj;
 
 		Introduction ();
 
 	protected:
 
-		RectangleShape m_rectsangle_shape;
+		RectangleShape m_RS_anim;
+		RectangleShape m_RS_light;
 
-		Texture m_texture;
+		Texture m_T_anim;
+		Texture m_T_light;
 
 		vector <Pingvinon> m_pingvonon;
 
@@ -77,6 +79,9 @@ class Introduction
 		static void main ();
 
 		static RectangleShape& getSprite ();
+		static const RectangleShape& getAnimSprite ();
+		static const RectangleShape& getLightSprite ();
+
 		static vector <Pingvinon>& getPingvinons ();
 
 		static FloatRect getGlobalBounds ();
