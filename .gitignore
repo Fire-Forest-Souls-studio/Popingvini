@@ -1,0 +1,18 @@
+#Исполняемый файл
+/Попингвини
+
+# Настройки VS Code
+.vscode/
+
+# Системные
+.DS_Store
+Thumbs.db
+
+# Папка obj
+obj/
+
+# Корки
+*.out
+
+# Сохранения
+*.FireForestSouls-Popingvini
