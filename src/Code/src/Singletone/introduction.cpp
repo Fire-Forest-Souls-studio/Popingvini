@@ -4,30 +4,30 @@
 
 #include "../../../GetPixels/GPI_Introduction.h"
 
-//private
+// private
 
 Introduction* Introduction::class_obj = 0;
 
-Introduction::Introduction () :
-		m_RS_anim (Vector2f (300, 150)),
-				m_RS_light (Vector2f (900, 150)),
+Introduction::Introduction ()
+    : m_RS_anim (Vector2f (300, 150)),
+      m_RS_light (Vector2f (900, 150)),
 
-				m_pingvonon (2),
+      m_pingvonon (2),
 
-				m_anim_pingvinon (5),
+      m_anim_pingvinon (5),
 
-				m_f_PINGVINON_DEFOLT_Y (61.0),
-				m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION (6.0),
-				m_f_frame_for_fire_forest_souls_studio (0.0),
+      m_f_PINGVINON_DEFOLT_Y (61.0),
+      m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION (6.0),
+      m_f_frame_for_fire_forest_souls_studio (0.0),
 
-				m_V2f_PINGVINON_DEFOLT_SIZE (95, 95),
+      m_V2f_PINGVINON_DEFOLT_SIZE (95, 95),
 
-				m_u_NEW_PINGVINON (5000),
-				m_u_REVERS (5000),
-				m_u_EMOTION (3000),
-				m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO (54),
-				m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL (9),
-				m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL (6)
+      m_u_NEW_PINGVINON (5000),
+      m_u_REVERS (5000),
+      m_u_EMOTION (3000),
+      m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO (54),
+      m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL (9),
+      m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL (6)
 {
 	m_anim_pingvinon[0].f_animation_speed = 0.1;
 	m_anim_pingvinon[0].f_frame_cout = 10.0;
@@ -46,8 +46,8 @@ Introduction::Introduction () :
 	m_anim_pingvinon[4].f_move_speed = 0.0;
 }
 
-//public
-//Introduction*
+// public
+// Introduction*
 
 Introduction* Introduction::getClass ()
 {
@@ -58,37 +58,36 @@ Introduction* Introduction::getClass ()
 	return class_obj;
 }
 
-//void
+// void
 
 void Introduction::main_if_introduction ()
 {
 	Introduction* I_ = getClass ();
 	float f = WindowAndStyles::getFactorY ();
 
-	//loadFromMemory
+	// loadFromMemory
 
 	if (I_->m_f_frame_for_fire_forest_souls_studio == 0.0)
 	{
 
-		//introduction
+		// introduction
 
 		names::LoadFromMemory (I_->m_T_anim, studios_png, studios_png_size, "Images/Introduction/studios.png");
 
 		I_->m_RS_anim.setTexture (&I_->m_T_anim);
 		I_->m_RS_anim.setFillColor (Color (255, 255, 255, 0));
 		I_->m_RS_anim.setTextureRect (IntRect (
-				0,
-				0,
-				I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL,
-				I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
-						));
+		    0,
+		    0,
+		    I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL,
+		    I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL));
 
 		names::LoadFromMemory (I_->m_T_light, studio_light_png, studio_light_png_size, "Images/Introduction/studio_light.png");
 
 		I_->m_RS_light.setTexture (&I_->m_T_light);
 		I_->m_RS_light.setFillColor (Color (255, 255, 255, 0));
 
-		//popingvinons
+		// popingvinons
 
 		names::LoadFromMemory (I_->m_anim_pingvinon[0].T, emotion0_1_png, emotion0_1_png_size, "Images/Introduction/emotion0_1.png");
 		names::LoadFromMemory (I_->m_anim_pingvinon[1].T, emotion0_1_png, emotion0_1_png_size, "Images/Introduction/emotion0_1.png");
@@ -108,7 +107,7 @@ void Introduction::main_if_introduction ()
 		}
 	}
 
-	//анимация
+	// анимация
 
 	I_->m_f_frame_for_fire_forest_souls_studio += names::microsec * names::f_time * I_->m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION;
 
@@ -126,13 +125,10 @@ void Introduction::main_if_introduction ()
 		}
 
 		I_->m_RS_anim.setTextureRect (IntRect (
-				I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL
-						* unsigned (I_->m_f_frame_for_fire_forest_souls_studio / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL),
-				I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
-						* (unsigned (I_->m_f_frame_for_fire_forest_souls_studio) % I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL),
-				I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL,
-				I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL
-						));
+		    I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL * unsigned (I_->m_f_frame_for_fire_forest_souls_studio / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL),
+		    I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL * (unsigned (I_->m_f_frame_for_fire_forest_souls_studio) % I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL),
+		    I_->m_T_anim.getSize ().x / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_HORIZONTAL,
+		    I_->m_T_anim.getSize ().y / I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO_VERTICAL));
 	}
 	else
 	{
@@ -145,7 +141,7 @@ void Introduction::main_if_introduction ()
 		names::game_status = GameStatus::loading;
 	}
 
-	//трансформ
+	// трансформ
 
 	I_->m_RS_anim.setScale (f, f);
 	names::SetXCenterPosition (I_->m_RS_anim, 0.0);
@@ -157,8 +153,7 @@ void Introduction::main_if_loading_or_introduction ()
 	Introduction* I_ = getClass ();
 	float f = WindowAndStyles::getFactorY ();
 
-	if (rand () % unsigned (I_->m_u_NEW_PINGVINON / (
-			names::f_time ? names::f_time : 1.0) + 1) == 0)
+	if (rand () % unsigned (I_->m_u_NEW_PINGVINON / (names::f_time ? names::f_time : 1.0) + 1) == 0)
 	{
 		Pingvinon P;
 		P.RS.setSize (I_->m_V2f_PINGVINON_DEFOLT_SIZE);
@@ -179,39 +174,36 @@ void Introduction::main_if_loading_or_introduction ()
 
 	for (size_t st (0); st < I_->m_pingvonon.size (); st++)
 	{
-		//change anim
-		if (I_->m_pingvonon[st].u_anim_pingvinon == 0 and rand () % unsigned (I_->m_u_EMOTION / (
-				names::f_time ? names::f_time : 1) + 1) == 0)
+		// change anim
+		if (I_->m_pingvonon[st].u_anim_pingvinon == 0 and rand () % unsigned (I_->m_u_EMOTION / (names::f_time ? names::f_time : 1) + 1) == 0)
 		{
 			I_->m_pingvonon[st].f_frame = 0;
 			I_->m_pingvonon[st].u_anim_pingvinon = rand () % I_->m_anim_pingvinon.size ();
 			I_->m_pingvonon[st].RS.setTexture (&I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].T);
 		}
-		//pos
-		if (rand () % unsigned (I_->m_u_REVERS / (names::f_time ? names::f_time : 1) + 1) == 0
-				and I_->m_pingvonon[st].u_anim_pingvinon == 0)
+		// pos
+		if (rand () % unsigned (I_->m_u_REVERS / (names::f_time ? names::f_time : 1) + 1) == 0 and I_->m_pingvonon[st].u_anim_pingvinon == 0)
 		{
 			I_->m_pingvonon[st].i_flip *= -1;
 		}
 		I_->m_pingvonon[st].f_posx += I_->m_pingvonon[st].i_flip *
-				I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_move_speed * names::f_time;
-		//anim
+		                              I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_move_speed * names::f_time;
+		// anim
 		I_->m_pingvonon[st].f_frame += names::microsec * names::f_time;
-		if (I_->m_pingvonon[st].f_frame < I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_frame_cout
-				* I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_animation_speed)
+		if (I_->m_pingvonon[st].f_frame < I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_frame_cout * I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_animation_speed)
 		{
 			if (I_->m_pingvonon[st].i_flip < 0)
 				I_->m_pingvonon[st].RS.setTextureRect (IntRect (
-						0,
-						I_->m_V2f_PINGVINON_DEFOLT_SIZE.y * unsigned (I_->m_pingvonon[st].f_frame / I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_animation_speed),
-						I_->m_V2f_PINGVINON_DEFOLT_SIZE.x,
-						I_->m_V2f_PINGVINON_DEFOLT_SIZE.y));
+				    0,
+				    I_->m_V2f_PINGVINON_DEFOLT_SIZE.y * unsigned (I_->m_pingvonon[st].f_frame / I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_animation_speed),
+				    I_->m_V2f_PINGVINON_DEFOLT_SIZE.x,
+				    I_->m_V2f_PINGVINON_DEFOLT_SIZE.y));
 			else
 				I_->m_pingvonon[st].RS.setTextureRect (IntRect (
-						I_->m_V2f_PINGVINON_DEFOLT_SIZE.x,
-						I_->m_V2f_PINGVINON_DEFOLT_SIZE.y * unsigned (I_->m_pingvonon[st].f_frame / I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_animation_speed),
-						I_->m_V2f_PINGVINON_DEFOLT_SIZE.x * -1,
-						I_->m_V2f_PINGVINON_DEFOLT_SIZE.y));
+				    I_->m_V2f_PINGVINON_DEFOLT_SIZE.x,
+				    I_->m_V2f_PINGVINON_DEFOLT_SIZE.y * unsigned (I_->m_pingvonon[st].f_frame / I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_animation_speed),
+				    I_->m_V2f_PINGVINON_DEFOLT_SIZE.x * -1,
+				    I_->m_V2f_PINGVINON_DEFOLT_SIZE.y));
 		}
 		else if (I_->m_pingvonon[st].u_anim_pingvinon != 0)
 		{
@@ -226,10 +218,10 @@ void Introduction::main_if_loading_or_introduction ()
 		{
 			I_->m_pingvonon[st].f_frame = 0.0;
 		}
-		//transform
+		// transform
 		I_->m_pingvonon[st].RS.setScale (f, f);
 		I_->m_pingvonon[st].RS.setPosition (I_->m_pingvonon[st].f_posx * f,
-				I_->m_f_PINGVINON_DEFOLT_Y * f);
+		                                    I_->m_f_PINGVINON_DEFOLT_Y * f);
 	}
 }
 void Introduction::main ()
@@ -239,17 +231,15 @@ void Introduction::main ()
 		main_if_introduction ();
 	}
 
-	if (names::game_status == GameStatus::loading
-			or names::game_status == GameStatus::introduction
-			or names::game_status == GameStatus::loading_to_main_menu)
+	if (names::game_status == GameStatus::loading or names::game_status == GameStatus::introduction or names::game_status == GameStatus::loading_to_main_menu)
 	{
 		main_if_loading_or_introduction ();
 	}
 }
 
-//bool
+// bool
 
-//vector <Sprite&>
+// vector <Sprite&>
 
 const RectangleShape& Introduction::getAnimSprite ()
 {
@@ -260,20 +250,20 @@ const RectangleShape& Introduction::getLightSprite ()
 	return getClass ()->m_RS_light;
 }
 
-//vector <Pingvinon>&
+// vector <Pingvinon>&
 
-vector <Pingvinon>& Introduction::getPingvinons ()
+vector<Pingvinon>& Introduction::getPingvinons ()
 {
 	return getClass ()->m_pingvonon;
 }
 
-//FloatRect
+// FloatRect
 
 FloatRect Introduction::getGlobalBounds ()
 {
 	return getClass ()->m_RS_anim.getGlobalBounds ();
 }
 
-//size_t
+// size_t
 
 size_t Introduction::size_sprites = 3;

@@ -11,7 +11,6 @@ class LanguageMenu
 {
 
 	private:
-
 		Language L_python;
 
 		LanguageMenu ();
@@ -19,7 +18,6 @@ class LanguageMenu
 		static LanguageMenu* class_obj;
 
 	protected:
-
 		static LanguageMenu* getClass ();
 
 		static void main_load ();
@@ -27,7 +25,6 @@ class LanguageMenu
 		static void main_transitionOf ();
 
 	public:
-
 		static void main ();
 
 		static ImageButton& getPythonButton ();

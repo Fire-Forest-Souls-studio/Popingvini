@@ -24,7 +24,6 @@ using namespace std;
 class WorksMenu
 {
 	private:
-
 		static WorksMenu* class_obj;
 
 		Text _T_up_panel_left;
@@ -66,7 +65,7 @@ class WorksMenu
 		Vector2f _V2f_size_down_panel;
 		Vector2f _V2f_size_block_icon;
 
-		vector <WorkBlock> _work_block;
+		vector<WorkBlock> _work_block;
 
 		WorksMenu ();
 
@@ -77,11 +76,9 @@ class WorksMenu
 		static void main_transitionOf ();
 
 	protected:
-
 		static WorksMenu* getClass ();
 
 	public:
-
 		static Language* language;
 
 		static void destroy ();

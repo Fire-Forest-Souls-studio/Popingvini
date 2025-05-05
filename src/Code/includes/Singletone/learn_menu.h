@@ -14,7 +14,6 @@ using namespace std;
 class LearnMenu
 {
 	private:
-
 		static LearnMenu* class_obj;
 
 		RectangleShape rectangle_shape_obj;
@@ -31,11 +30,9 @@ class LearnMenu
 		LearnMenu ();
 
 	protected:
-
 		static LearnMenu* getClass ();
 
 	public:
-
 		static Work* work;
 
 		static void destroy ();

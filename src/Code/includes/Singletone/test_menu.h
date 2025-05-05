@@ -22,12 +22,11 @@ using namespace std;
 class TestMenu
 {
 	private:
-
 		static TestMenu* class_obj;
 
 		Text m_T_question;
 
-		vector <TextButton> m_text_button;
+		vector<TextButton> m_text_button;
 
 		RectangleShape m_RS_image;
 		RectangleShape m_RS_image_long;
@@ -58,17 +57,15 @@ class TestMenu
 		TestMenu ();
 
 	protected:
-
 		static TestMenu* getClass ();
 
 	public:
-
 		static void destroy ();
 		static void main ();
 		static void setZeroQuestion ();
 		static void setLanguageTexture (const Texture&);
 
-		static vector <TextButton>& getButtons ();
+		static vector<TextButton>& getButtons ();
 
 		static RectangleShape getRectangleShapeImage ();
 		static RectangleShape getRectangleShape ();

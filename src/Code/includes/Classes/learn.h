@@ -11,7 +11,6 @@ using namespace std;
 class Learn
 {
 	public:
-
 		wstring w_text;
 
 		Learn ();

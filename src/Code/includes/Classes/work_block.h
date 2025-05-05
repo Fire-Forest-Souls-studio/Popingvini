@@ -23,11 +23,9 @@ using namespace std;
 class WorkBlock
 {
 	protected:
-
 		bool _b_interect;
 
 	public:
-
 		Button _button;
 
 		RectangleShape _RS_icon;

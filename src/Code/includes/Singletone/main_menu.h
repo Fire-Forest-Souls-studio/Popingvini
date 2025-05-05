@@ -14,7 +14,6 @@ class MainMenu
 {
 
 	private:
-
 		static MainMenu* class_obj;
 
 		RectangleShape RS_popingvini;
@@ -46,8 +45,8 @@ class MainMenu
 		Vector2f V2f_background_size;
 		Vector2f V2f_ice_size;
 
-		vector <RectangleShape> RS_background;
-		vector <RectangleShape> RS_ice;
+		vector<RectangleShape> RS_background;
+		vector<RectangleShape> RS_ice;
 
 		Color C_chice_button;
 
@@ -63,17 +62,15 @@ class MainMenu
 		static void main_transform ();
 
 	protected:
-
 		static MainMenu* getClass ();
 
 	public:
-
 		static void main ();
 
 		static void destroy ();
 
-		static vector <RectangleShape>& getBackground ();
-		static vector <RectangleShape>& getIce ();
+		static vector<RectangleShape>& getBackground ();
+		static vector<RectangleShape>& getIce ();
 
 		static RectangleShape& getPopingvini ();
 		static RectangleShape& getTitle ();
@@ -86,7 +83,6 @@ class MainMenu
 		static Texture& getTextureIce ();
 		static Texture& getTexturePopingvini ();
 		static Texture& getTextureTitle ();
-
 };
 
 #endif

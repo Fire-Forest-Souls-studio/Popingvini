@@ -13,19 +13,17 @@ struct Answer
 
 		int cost;
 		wstring w_string;
-
 };
 
 class Question
 {
 	public:
-
-		vector <Answer> answer;
+		vector<Answer> answer;
 
 		wstring w_question;
 
 		Question ();
-		Question (const wstring&, const vector <Answer>&);
+		Question (const wstring&, const vector<Answer>&);
 };
 
 #endif

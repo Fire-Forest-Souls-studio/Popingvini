@@ -12,35 +12,35 @@ WorksMenu* WorksMenu::class_obj = NULL;
 
 Language* WorksMenu::language = NULL;
 
-WorksMenu::WorksMenu () :
-		_B_up_panel ("WM/button/up_panel"),
+WorksMenu::WorksMenu ()
+    : _B_up_panel ("WM/button/up_panel"),
 
-		_f_BIG_FONT_SCALE (6.0),
-				_f_MIDDLE_BIG_FONT_SCALE (8.0),
-				_f_MIDDLE_SMALL_FONT_SCALE (3.75),
-				_f_SMALL_FONT_SCALE (3.0),
-				_f_SPEED_MOVE_BLOCKS (5.0),
-				_f_WIGHT_SIMVOL_BIG_FONT (3.264367816),
-				_f_WIGHT_SIMVOL_MIDDLE_BIG_FONT (_f_WIGHT_SIMVOL_BIG_FONT / _f_BIG_FONT_SCALE * _f_MIDDLE_BIG_FONT_SCALE),
-				_f_WIGHT_SIMVOL_MIDDLE_SMALL_FONT (_f_WIGHT_SIMVOL_BIG_FONT / _f_BIG_FONT_SCALE * _f_MIDDLE_SMALL_FONT_SCALE),
-				_f_WIGHT_SIMVOL_SMALL_FONT (_f_WIGHT_SIMVOL_BIG_FONT / _f_BIG_FONT_SCALE * _f_SMALL_FONT_SCALE),
-				_f_move_blocks (0.0),
+      _f_BIG_FONT_SCALE (6.0),
+      _f_MIDDLE_BIG_FONT_SCALE (8.0),
+      _f_MIDDLE_SMALL_FONT_SCALE (3.75),
+      _f_SMALL_FONT_SCALE (3.0),
+      _f_SPEED_MOVE_BLOCKS (5.0),
+      _f_WIGHT_SIMVOL_BIG_FONT (3.264367816),
+      _f_WIGHT_SIMVOL_MIDDLE_BIG_FONT (_f_WIGHT_SIMVOL_BIG_FONT / _f_BIG_FONT_SCALE * _f_MIDDLE_BIG_FONT_SCALE),
+      _f_WIGHT_SIMVOL_MIDDLE_SMALL_FONT (_f_WIGHT_SIMVOL_BIG_FONT / _f_BIG_FONT_SCALE * _f_MIDDLE_SMALL_FONT_SCALE),
+      _f_WIGHT_SIMVOL_SMALL_FONT (_f_WIGHT_SIMVOL_BIG_FONT / _f_BIG_FONT_SCALE * _f_SMALL_FONT_SCALE),
+      _f_move_blocks (0.0),
 
-				_i_OUT_UP (5),
-				_i_OUT_LEFT (15),
-				_i_OUT_BETWEEN (3),
-				_i_IN_UP (1),
-				_i_IN_LEFT (1),
-				_i_IN_BETWEEN (3),
-				_i_BLOCK_UP (3),
-				_i_BLOCK_LEFT (3),
-				_i_BLOCK_BETWEEN (2),
+      _i_OUT_UP (5),
+      _i_OUT_LEFT (15),
+      _i_OUT_BETWEEN (3),
+      _i_IN_UP (1),
+      _i_IN_LEFT (1),
+      _i_IN_BETWEEN (3),
+      _i_BLOCK_UP (3),
+      _i_BLOCK_LEFT (3),
+      _i_BLOCK_BETWEEN (2),
 
-				_V2f_size_up_panel (0, 8),
-				_V2f_size_down_panel (0, 0),
-				_V2f_size_block_icon (43, 38),
+      _V2f_size_up_panel (0, 8),
+      _V2f_size_down_panel (0, 0),
+      _V2f_size_block_icon (43, 38),
 
-				_work_block (0)
+      _work_block (0)
 {
 	_B_up_panel.setSize (_V2f_size_up_panel);
 	_B_up_panel.setFillColor (Color::Transparent);
@@ -73,9 +73,8 @@ void WorksMenu::destroy ()
 	float f = WindowAndStyles::getFactorY ();
 
 	WM_->_V2f_size_up_panel = Vector2f (
-			WindowAndStyles::getGlobalBounds ().width / f - WM_->_i_OUT_LEFT * 2 - 2,
-			WM_->_V2f_size_up_panel.y
-			);
+	    WindowAndStyles::getGlobalBounds ().width / f - WM_->_i_OUT_LEFT * 2 - 2,
+	    WM_->_V2f_size_up_panel.y);
 	WM_->_B_up_panel.setSize (WM_->_V2f_size_up_panel);
 
 	resizeWindow ();
@@ -126,8 +125,7 @@ void WorksMenu::clear ()
 
 	if (language)
 	{
-		if (GS == GameStatus::works_menu
-				or GS == GameStatus::works_menu_to_main_menu)
+		if (GS == GameStatus::works_menu or GS == GameStatus::works_menu_to_main_menu)
 		{
 			for (size_t st (0); st < language->work.size (); st++)
 			{
@@ -209,28 +207,24 @@ void WorksMenu::resizeWindow ()
 	WorksMenu* WM_ = getClass ();
 
 	WM_->_V2f_size_down_panel = Vector2f (
-			WindowAndStyles::getGlobalBounds ().width / f - WM_->_i_OUT_LEFT * 2 - 2,
-			WindowAndStyles::getPixelsSizeY () - WM_->_i_OUT_UP - 2 - WM_->_V2f_size_up_panel.y - WM_->_i_OUT_BETWEEN * 2 - 2
-					);
+	    WindowAndStyles::getGlobalBounds ().width / f - WM_->_i_OUT_LEFT * 2 - 2,
+	    WindowAndStyles::getPixelsSizeY () - WM_->_i_OUT_UP - 2 - WM_->_V2f_size_up_panel.y - WM_->_i_OUT_BETWEEN * 2 - 2);
 	WM_->_RS_down_panel.setSize (WM_->_V2f_size_down_panel);
 	WM_->_render_texture.create (
-			WM_->_V2f_size_down_panel.x * f,
-			WM_->_V2f_size_down_panel.y * f
-					);
+	    WM_->_V2f_size_down_panel.x * f,
+	    WM_->_V2f_size_down_panel.y * f);
 
 	WM_->_view.setCenter (Vector2f (
-			(WM_->_V2f_size_down_panel.x * 0.5 +
-					WM_->_i_OUT_LEFT + 1)
-					* f,
-			(WM_->_V2f_size_down_panel.y * 0.5 +
-					WM_->_i_OUT_UP + 2 + WM_->_i_OUT_BETWEEN + 1 + WM_->_V2f_size_up_panel.y)
-					* f
-					));
+	    (WM_->_V2f_size_down_panel.x * 0.5 +
+	     WM_->_i_OUT_LEFT + 1) *
+	        f,
+	    (WM_->_V2f_size_down_panel.y * 0.5 +
+	     WM_->_i_OUT_UP + 2 + WM_->_i_OUT_BETWEEN + 1 + WM_->_V2f_size_up_panel.y) *
+	        f));
 
 	WM_->_view.setSize (
-			(WM_->_V2f_size_down_panel.x + 2) * f,
-			(WM_->_V2f_size_down_panel.y + 2) * f
-					);
+	    (WM_->_V2f_size_down_panel.x + 2) * f,
+	    (WM_->_V2f_size_down_panel.y + 2) * f);
 	WM_->_render_texture.setView (WM_->_view);
 }
 
@@ -263,46 +257,23 @@ void WorksMenu::setMoveBlocks (float f)
 {
 	WorksMenu* WM_ = getClass ();
 
-	if (names::game_status == GameStatus::works_menu
-			or names::game_status == GameStatus::works_menu_to_main_menu)
+	if (names::game_status == GameStatus::works_menu or names::game_status == GameStatus::works_menu_to_main_menu)
 	{
-		if ( (f > 0
-				and WM_->_work_block[0]._button.getGlobalBounds ().top
-						< WM_->_RS_down_panel.getPosition ().y)
-				or (f < 0
-						and WM_->_work_block[WM_->_work_block.size () - 1]._button.getGlobalBounds ().top
-								+ WM_->_work_block[WM_->_work_block.size () - 1]._button.getGlobalBounds ().height
-								> WM_->_RS_down_panel.getPosition ().y
-										+ WM_->_RS_down_panel.getGlobalBounds ().height))
+		if ((f > 0 and WM_->_work_block[0]._button.getGlobalBounds ().top < WM_->_RS_down_panel.getPosition ().y) or (f < 0 and WM_->_work_block[WM_->_work_block.size () - 1]._button.getGlobalBounds ().top + WM_->_work_block[WM_->_work_block.size () - 1]._button.getGlobalBounds ().height > WM_->_RS_down_panel.getPosition ().y + WM_->_RS_down_panel.getGlobalBounds ().height))
 		{
 			WM_->_f_move_blocks += f * WM_->_f_SPEED_MOVE_BLOCKS;
 		}
 	}
 	else if (names::game_status == GameStatus::learn)
 	{
-		if ( (f > 0
-				and LearnMenu::getText ().getGlobalBounds ().top - WM_->_RS_down_panel.getGlobalBounds ().height * 0.5
-						< WM_->_RS_down_panel.getPosition ().y)
-				or (f < 0
-						and LearnMenu::getText ().getGlobalBounds ().top + LearnMenu::getText ().getGlobalBounds ().height
-								+ WM_->_RS_down_panel.getGlobalBounds ().height * 0.5
-								> WM_->_RS_down_panel.getPosition ().y
-										+ WM_->_RS_down_panel.getGlobalBounds ().height))
+		if ((f > 0 and LearnMenu::getText ().getGlobalBounds ().top - WM_->_RS_down_panel.getGlobalBounds ().height * 0.5 < WM_->_RS_down_panel.getPosition ().y) or (f < 0 and LearnMenu::getText ().getGlobalBounds ().top + LearnMenu::getText ().getGlobalBounds ().height + WM_->_RS_down_panel.getGlobalBounds ().height * 0.5 > WM_->_RS_down_panel.getPosition ().y + WM_->_RS_down_panel.getGlobalBounds ().height))
 		{
 			WM_->_f_move_blocks += f * WM_->_f_SPEED_MOVE_BLOCKS;
 		}
 	}
 	else if (names::game_status == GameStatus::test)
 	{
-		if ( (f > 0
-				and TestMenu::getTextQuestion ().getGlobalBounds ().top - WM_->_RS_down_panel.getGlobalBounds ().height * 0.5
-						< WM_->_RS_down_panel.getPosition ().y)
-				or (f < 0
-						and TestMenu::getButtons ()[TestMenu::getButtons ().size () - 1].getGlobalBounds ().top
-								+ TestMenu::getButtons ()[TestMenu::getButtons ().size () - 1].getGlobalBounds ().height
-								+ WM_->_RS_down_panel.getGlobalBounds ().height * 0.5
-								> WM_->_RS_down_panel.getPosition ().y
-										+ WM_->_RS_down_panel.getGlobalBounds ().height))
+		if ((f > 0 and TestMenu::getTextQuestion ().getGlobalBounds ().top - WM_->_RS_down_panel.getGlobalBounds ().height * 0.5 < WM_->_RS_down_panel.getPosition ().y) or (f < 0 and TestMenu::getButtons ()[TestMenu::getButtons ().size () - 1].getGlobalBounds ().top + TestMenu::getButtons ()[TestMenu::getButtons ().size () - 1].getGlobalBounds ().height + WM_->_RS_down_panel.getGlobalBounds ().height * 0.5 > WM_->_RS_down_panel.getPosition ().y + WM_->_RS_down_panel.getGlobalBounds ().height))
 		{
 			WM_->_f_move_blocks += f * WM_->_f_SPEED_MOVE_BLOCKS;
 		}
@@ -377,30 +348,23 @@ void WorksMenu::main_all ()
 	WorksMenu* WM_ = getClass ();
 	float f = WindowAndStyles::getFactorY ();
 
-	if (names::game_status == GameStatus::works_menu
-			or names::game_status == GameStatus::test
-			or names::game_status == GameStatus::learn
-			or names::game_status == GameStatus::works_menu_to_main_menu)
+	if (names::game_status == GameStatus::works_menu or names::game_status == GameStatus::test or names::game_status == GameStatus::learn or names::game_status == GameStatus::works_menu_to_main_menu)
 	{
 
 		WM_->_B_up_panel.setScale (f);
 		WM_->_B_up_panel.setPosition (
-				(WM_->_i_OUT_LEFT + 1) * f,
-				(WM_->_i_OUT_UP + 1) * f
-						);
+		    (WM_->_i_OUT_LEFT + 1) * f,
+		    (WM_->_i_OUT_UP + 1) * f);
 
 		WM_->_T_up_panel_left.setCharacterSize (WM_->_f_BIG_FONT_SCALE * f);
 		WM_->_T_up_panel_left.setPosition (
-				WM_->_B_up_panel.getGlobalBounds ().left + 2 * f,
-				WM_->_B_up_panel.getGlobalBounds ().top + 1 * f
-						);
+		    WM_->_B_up_panel.getGlobalBounds ().left + 2 * f,
+		    WM_->_B_up_panel.getGlobalBounds ().top + 1 * f);
 
 		WM_->_T_up_panel_right.setCharacterSize (WM_->_f_BIG_FONT_SCALE * f);
 		WM_->_T_up_panel_right.setPosition (
-				WM_->_B_up_panel.getGlobalBounds ().left + WM_->_B_up_panel.getGlobalBounds ().width
-						- 2 * f - WM_->_T_up_panel_right.getGlobalBounds ().width,
-				WM_->_B_up_panel.getGlobalBounds ().top + 1 * f
-						);
+		    WM_->_B_up_panel.getGlobalBounds ().left + WM_->_B_up_panel.getGlobalBounds ().width - 2 * f - WM_->_T_up_panel_right.getGlobalBounds ().width,
+		    WM_->_B_up_panel.getGlobalBounds ().top + 1 * f);
 
 		if (Keyboard::isKeyPressed (Keyboard::F11))
 		{
@@ -409,9 +373,8 @@ void WorksMenu::main_all ()
 
 		WM_->_RS_down_panel.setScale (f, f);
 		WM_->_RS_down_panel.setPosition (
-				(WM_->_i_OUT_LEFT + 1) * f,
-				(WM_->_i_OUT_UP + 1 + WM_->_V2f_size_up_panel.y + 1 + WM_->_i_OUT_BETWEEN + 1) * f
-						);
+		    (WM_->_i_OUT_LEFT + 1) * f,
+		    (WM_->_i_OUT_UP + 1 + WM_->_V2f_size_up_panel.y + 1 + WM_->_i_OUT_BETWEEN + 1) * f);
 	}
 }
 void WorksMenu::main_works_menu ()
@@ -480,61 +443,39 @@ void WorksMenu::main_works_menu ()
 			if (st == 0)
 			{
 				WM_->_work_block[st]._button.setPosition (
-						(WM_->_i_OUT_LEFT + 1.0 + WM_->_i_IN_LEFT + 1.0) * f_factor_y,
-						(WM_->_i_OUT_UP + 1.0 + WM_->_V2f_size_up_panel.y + 1.0 + WM_->_i_OUT_BETWEEN + 1.0 + WM_->_i_IN_UP + 1.0 + WM_->_f_move_blocks)
-								* f_factor_y
-								);
+				    (WM_->_i_OUT_LEFT + 1.0 + WM_->_i_IN_LEFT + 1.0) * f_factor_y,
+				    (WM_->_i_OUT_UP + 1.0 + WM_->_V2f_size_up_panel.y + 1.0 + WM_->_i_OUT_BETWEEN + 1.0 + WM_->_i_IN_UP + 1.0 + WM_->_f_move_blocks) * f_factor_y);
 			}
 			else
 			{
 				WM_->_work_block[st]._button.setPosition (
-						WM_->_work_block[st - 1]._button.getGlobalBounds ().left + 1.0 * f_factor_y,
-						WM_->_work_block[st - 1]._button.getGlobalBounds ().top + WM_->_work_block[st - 1]._button.getGlobalBounds ().height
-								+ (WM_->_i_IN_BETWEEN + 1.0) * f_factor_y
-										);
+				    WM_->_work_block[st - 1]._button.getGlobalBounds ().left + 1.0 * f_factor_y,
+				    WM_->_work_block[st - 1]._button.getGlobalBounds ().top + WM_->_work_block[st - 1]._button.getGlobalBounds ().height + (WM_->_i_IN_BETWEEN + 1.0) * f_factor_y);
 			}
 			WM_->_work_block[st]._RS_icon.setScale (f_factor_y, f_factor_y);
 			WM_->_work_block[st]._RS_icon.setPosition (
-					WM_->_work_block[st]._button.getGlobalBounds ().left + (1.0 + WM_->_i_BLOCK_LEFT + 1.0) * f_factor_y,
-					WM_->_work_block[st]._button.getGlobalBounds ().top + (1.0 + WM_->_i_BLOCK_UP + 1.0) * f_factor_y
-							);
+			    WM_->_work_block[st]._button.getGlobalBounds ().left + (1.0 + WM_->_i_BLOCK_LEFT + 1.0) * f_factor_y,
+			    WM_->_work_block[st]._button.getGlobalBounds ().top + (1.0 + WM_->_i_BLOCK_UP + 1.0) * f_factor_y);
 			WM_->_work_block[st]._T_name.setCharacterSize (WM_->_f_BIG_FONT_SCALE * f_factor_y);
 			WM_->_work_block[st]._T_name.setPosition (
-					WM_->_work_block[st]._RS_icon.getGlobalBounds ().left
-							+ (WM_->_work_block[st]._RS_icon.getGlobalBounds ().width - 4.0 * f_factor_y) * 0.5
-							- WM_->_work_block[st]._T_name.getGlobalBounds ().width * 0.5,
-					WM_->_work_block[st]._RS_icon.getGlobalBounds ().top
-							+ (WM_->_work_block[st]._RS_icon.getGlobalBounds ().height - 8.0 * f_factor_y) * 0.5
-							- WM_->_work_block[st]._T_name.getGlobalBounds ().height * 0.5
-									);
+			    WM_->_work_block[st]._RS_icon.getGlobalBounds ().left + (WM_->_work_block[st]._RS_icon.getGlobalBounds ().width - 4.0 * f_factor_y) * 0.5 - WM_->_work_block[st]._T_name.getGlobalBounds ().width * 0.5,
+			    WM_->_work_block[st]._RS_icon.getGlobalBounds ().top + (WM_->_work_block[st]._RS_icon.getGlobalBounds ().height - 8.0 * f_factor_y) * 0.5 - WM_->_work_block[st]._T_name.getGlobalBounds ().height * 0.5);
 			WM_->_work_block[st]._T_type.setCharacterSize (WM_->_f_MIDDLE_BIG_FONT_SCALE * f_factor_y);
 			WM_->_work_block[st]._T_type.setPosition (
-					WM_->_work_block[st]._RS_icon.getGlobalBounds ().left
-							+ (WM_->_work_block[st]._RS_icon.getGlobalBounds ().width - 4.0 * f_factor_y) * 0.5
-							- WM_->_work_block[st]._T_type.getGlobalBounds ().width * 0.5,
-					WM_->_work_block[st]._RS_icon.getPosition ().y
-							+ WM_->_work_block[st]._RS_icon.getGlobalBounds ().height - 3.5 * f_factor_y
-							- WM_->_work_block[st]._T_type.getGlobalBounds ().height
-							);
+			    WM_->_work_block[st]._RS_icon.getGlobalBounds ().left + (WM_->_work_block[st]._RS_icon.getGlobalBounds ().width - 4.0 * f_factor_y) * 0.5 - WM_->_work_block[st]._T_type.getGlobalBounds ().width * 0.5,
+			    WM_->_work_block[st]._RS_icon.getPosition ().y + WM_->_work_block[st]._RS_icon.getGlobalBounds ().height - 3.5 * f_factor_y - WM_->_work_block[st]._T_type.getGlobalBounds ().height);
 			WM_->_work_block[st]._RS_content.setScale (f_factor_y, f_factor_y);
 			WM_->_work_block[st]._RS_content.setPosition (
-					WM_->_work_block[st]._RS_icon.getGlobalBounds ().left
-							+ WM_->_work_block[st]._RS_icon.getGlobalBounds ().width
-							+ (WM_->_i_BLOCK_BETWEEN + 1.0) * f_factor_y,
-					WM_->_work_block[st]._RS_icon.getPosition ().y
-							+ 1.0 * f_factor_y
-									);
+			    WM_->_work_block[st]._RS_icon.getGlobalBounds ().left + WM_->_work_block[st]._RS_icon.getGlobalBounds ().width + (WM_->_i_BLOCK_BETWEEN + 1.0) * f_factor_y,
+			    WM_->_work_block[st]._RS_icon.getPosition ().y + 1.0 * f_factor_y);
 			WM_->_work_block[st]._T_content.setCharacterSize (WM_->_f_MIDDLE_SMALL_FONT_SCALE * f_factor_y);
 			WM_->_work_block[st]._T_content.setPosition (
-					WM_->_work_block[st]._RS_content.getPosition ().x + 1.0 * f_factor_y,
-					WM_->_work_block[st]._RS_content.getPosition ().y + 1.0 * f_factor_y
-							);
+			    WM_->_work_block[st]._RS_content.getPosition ().x + 1.0 * f_factor_y,
+			    WM_->_work_block[st]._RS_content.getPosition ().y + 1.0 * f_factor_y);
 			WM_->_work_block[st]._T_score.setCharacterSize (WM_->_f_SMALL_FONT_SCALE * f_factor_y);
 			WM_->_work_block[st]._T_score.setPosition (
-					WM_->_work_block[st]._button.getGlobalBounds ().left + (1.0 + WM_->_i_BLOCK_LEFT) * f_factor_y,
-					WM_->_work_block[st]._button.getGlobalBounds ().top + WM_->_work_block[st]._button.getGlobalBounds ().height
-							- (1.0 + WM_->_i_BLOCK_UP) * f_factor_y - WM_->_work_block[st]._T_score.getGlobalBounds ().height
-							);
+			    WM_->_work_block[st]._button.getGlobalBounds ().left + (1.0 + WM_->_i_BLOCK_LEFT) * f_factor_y,
+			    WM_->_work_block[st]._button.getGlobalBounds ().top + WM_->_work_block[st]._button.getGlobalBounds ().height - (1.0 + WM_->_i_BLOCK_UP) * f_factor_y - WM_->_work_block[st]._T_score.getGlobalBounds ().height);
 		}
 
 		if (GS == GameStatus::learn)

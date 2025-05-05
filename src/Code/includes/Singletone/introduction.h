@@ -17,7 +17,7 @@
 using namespace sf;
 using namespace std;
 
-//start
+// start
 
 struct AnimPingvinon
 {
@@ -39,22 +39,20 @@ class Introduction
 {
 
 	private:
-
 		static Introduction* class_obj;
 
 		Introduction ();
 
 	protected:
-
 		RectangleShape m_RS_anim;
 		RectangleShape m_RS_light;
 
 		Texture m_T_anim;
 		Texture m_T_light;
 
-		vector <Pingvinon> m_pingvonon;
+		vector<Pingvinon> m_pingvonon;
 
-		vector <AnimPingvinon> m_anim_pingvinon;
+		vector<AnimPingvinon> m_anim_pingvinon;
 
 		const float m_f_PINGVINON_DEFOLT_Y;
 		const float m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION;
@@ -73,7 +71,6 @@ class Introduction
 		static void main_if_loading_or_introduction ();
 
 	public:
-
 		static Introduction* getClass ();
 
 		static void main ();
@@ -82,12 +79,11 @@ class Introduction
 		static const RectangleShape& getAnimSprite ();
 		static const RectangleShape& getLightSprite ();
 
-		static vector <Pingvinon>& getPingvinons ();
+		static vector<Pingvinon>& getPingvinons ();
 
 		static FloatRect getGlobalBounds ();
 
 		static size_t size_sprites;
-
 };
 
 #endif

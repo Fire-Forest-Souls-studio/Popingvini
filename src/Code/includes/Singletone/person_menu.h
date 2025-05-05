@@ -14,8 +14,7 @@ class PersonMenu
 {
 
 	private:
-
-		vector <RectangleShape> RS_background;
+		vector<RectangleShape> RS_background;
 
 		ImageButton B_custom;
 		ImageButton B_integrated;
@@ -48,15 +47,13 @@ class PersonMenu
 		static void main_forAllMenu ();
 
 	protected:
-
 		static PersonMenu* getClass ();
 
 	public:
-
 		static void destroy ();
 		static void main ();
 
-		static vector <RectangleShape>& getBackground ();
+		static vector<RectangleShape>& getBackground ();
 
 		static Texture& getTextureBackground ();
 

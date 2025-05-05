@@ -3,6 +3,8 @@
 
 # Настройки VS Code
 .vscode/
+.clang-format
+.editorconfig
 
 # Системные
 .DS_Store

@@ -1,11 +1,11 @@
 #include "../../includes/Classes/language.h"
 
-Language::Language (const string& s) :
-		s_name (s),
+Language::Language (const string& s)
+    : s_name (s),
 
-		button ("L/button/" + s),
+      button ("L/button/" + s),
 
-		work (0)
+      work (0)
 {
 }
 

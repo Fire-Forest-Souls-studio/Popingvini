@@ -4,42 +4,43 @@
 #include "../../includes/Singletone/pc_mouse.h"
 #include "../../includes/Singletone/loading.h"
 
-//private
+// private
 
 MainMenu* MainMenu::class_obj = NULL;
 
-MainMenu::MainMenu () :
-		B_popingvinit ("MM/button/popingvinit"),
-				B_sdatca ("MM/button/sdatca"),
-				B_wardrobe ("MM/button/wardrobe"),
+MainMenu::MainMenu ()
+    : B_popingvinit ("MM/button/popingvinit"),
+      B_sdatca ("MM/button/sdatca"),
+      B_wardrobe ("MM/button/wardrobe"),
 
-				u_cout_frame_popingvini (19),
+      u_cout_frame_popingvini (19),
 
-				si_reverse (-1),
+      si_reverse (-1),
 
-				f_frame_popingvini (0.0),
-				f_speed_anim_popingvini (5.0),
-				f_speed_move_ice (0.003),
-				f_chance_reverse (10000),
+      f_frame_popingvini (0.0),
+      f_speed_anim_popingvini (5.0),
+      f_speed_move_ice (0.003),
+      f_chance_reverse (10000),
 
-				V2f_popingvini_defoult (255, 82),
-				V2f_popingvinit_button (146, 75),
-				V2f_sdatca_button (146, 96),
-				V2f_title (146, 15),
-				V2f_wardrobe_button (54, -16),
-				V2f_popingvini_size (74, 54),
-				V2f_popingvinit_button_size (117, 20),
-				V2f_sdatca_button_size (73, 20),
-				V2f_title_size (140, 48),
-				V2f_wardrobe_button_size (17, 16),
-				V2f_background_size (500, 150),
-				V2f_ice_size (500, 150),
+      V2f_popingvini_defoult (255, 82),
+      V2f_popingvinit_button (146, 75),
+      V2f_sdatca_button (146, 96),
+      V2f_title (146, 15),
+      V2f_wardrobe_button (54, -16),
+      V2f_popingvini_size (74, 54),
+      V2f_popingvinit_button_size (117, 20),
+      V2f_sdatca_button_size (73, 20),
+      V2f_title_size (140, 48),
+      V2f_wardrobe_button_size (17, 16),
+      V2f_background_size (500, 150),
+      V2f_ice_size (500, 150),
 
-				RS_background (int (WindowAndStyles::getGlobalBounds ().width / WindowAndStyles::getGlobalBounds ().height /
-						(V2f_background_size.x / WindowAndStyles::getPixelsSizeY ())) + 2),
-				RS_ice (RS_background.size ()),
+      RS_background (int (WindowAndStyles::getGlobalBounds ().width / WindowAndStyles::getGlobalBounds ().height /
+                          (V2f_background_size.x / WindowAndStyles::getPixelsSizeY ())) +
+                     2),
+      RS_ice (RS_background.size ()),
 
-				C_chice_button (166, 194, 222, 255)
+      C_chice_button (166, 194, 222, 255)
 {
 	for (size_t st (0); st < RS_background.size (); st++)
 	{
@@ -53,7 +54,7 @@ MainMenu::MainMenu () :
 	B_wardrobe.setSize (V2f_wardrobe_button_size);
 }
 
-//protected
+// protected
 
 MainMenu* MainMenu::getClass ()
 {
@@ -76,11 +77,10 @@ void MainMenu::main_load ()
 		MM_->RS_title.setTexture (&MM_->T_title);
 		MM_->RS_popingvini.setTexture (&MM_->T_popingvini);
 		MM_->RS_popingvini.setTextureRect (IntRect (
-				0,
-				0,
-				MM_->V2f_popingvini_size.x,
-				MM_->V2f_popingvini_size.y
-				));
+		    0,
+		    0,
+		    MM_->V2f_popingvini_size.x,
+		    MM_->V2f_popingvini_size.y));
 		MM_->B_wardrobe.setTexture ();
 	}
 }
@@ -103,11 +103,10 @@ void MainMenu::main_transition ()
 		else
 		{
 			MM_->B_popingvinit.setFillColor (Color (
-					MM_->C_chice_button.r,
-					MM_->C_chice_button.g,
-					MM_->C_chice_button.b,
-					255 - Loading::getFrameTransition ()
-							));
+			    MM_->C_chice_button.r,
+			    MM_->C_chice_button.g,
+			    MM_->C_chice_button.b,
+			    255 - Loading::getFrameTransition ()));
 		}
 		if (PC_Mouse::getGlobalBounds ().intersects (MM_->B_sdatca.getGlobalBounds ()))
 		{
@@ -116,11 +115,10 @@ void MainMenu::main_transition ()
 		else
 		{
 			MM_->B_sdatca.setFillColor (Color (
-					MM_->C_chice_button.r,
-					MM_->C_chice_button.g,
-					MM_->C_chice_button.b,
-					255 - Loading::getFrameTransition ()
-							));
+			    MM_->C_chice_button.r,
+			    MM_->C_chice_button.g,
+			    MM_->C_chice_button.b,
+			    255 - Loading::getFrameTransition ()));
 		}
 		MM_->RS_popingvini.setFillColor (Color (255, 255, 255, 255 - Loading::getFrameTransition ()));
 		if (PC_Mouse::getGlobalBounds ().intersects (MM_->B_wardrobe.getGlobalBounds ()))
@@ -130,11 +128,10 @@ void MainMenu::main_transition ()
 		else
 		{
 			MM_->B_wardrobe.setFillColor (Color (
-					MM_->C_chice_button.r,
-					MM_->C_chice_button.g,
-					MM_->C_chice_button.b,
-					255 - Loading::getFrameTransition ()
-							));
+			    MM_->C_chice_button.r,
+			    MM_->C_chice_button.g,
+			    MM_->C_chice_button.b,
+			    255 - Loading::getFrameTransition ()));
 		}
 	}
 }
@@ -143,19 +140,15 @@ void MainMenu::main_transform ()
 	MainMenu* MM_ = getClass ();
 	float f = WindowAndStyles::getFactorY ();
 
-	if (names::game_status == GameStatus::loading_to_main_menu
-			or names::game_status == GameStatus::main_menu
-			or names::game_status == GameStatus::main_menu_to_person_menu
-			or names::game_status == GameStatus::works_menu_to_main_menu)
+	if (names::game_status == GameStatus::loading_to_main_menu or names::game_status == GameStatus::main_menu or names::game_status == GameStatus::main_menu_to_person_menu or names::game_status == GameStatus::works_menu_to_main_menu)
 	{
 
 		MM_->B_popingvinit.setScale (f);
 		if (PC_Mouse::getGlobalBounds ().intersects (MM_->B_popingvinit.getGlobalBounds ()))
 		{
 			MM_->B_popingvinit.setPosition (
-					MM_->RS_background[0].getPosition ().x + MM_->V2f_popingvinit_button.x * f,
-					MM_->RS_background[0].getPosition ().y + (MM_->V2f_popingvinit_button.y + 1) * f
-							);
+			    MM_->RS_background[0].getPosition ().x + MM_->V2f_popingvinit_button.x * f,
+			    MM_->RS_background[0].getPosition ().y + (MM_->V2f_popingvinit_button.y + 1) * f);
 			if (names::game_status == GameStatus::main_menu)
 			{
 				MM_->B_popingvinit.setFillColor (MM_->C_chice_button);
@@ -170,17 +163,15 @@ void MainMenu::main_transform ()
 			if (names::game_status == GameStatus::main_menu)
 				MM_->B_popingvinit.setFillColor (Color (255, 255, 255, 255));
 			MM_->B_popingvinit.setPosition (
-					MM_->RS_background[0].getPosition ().x + MM_->V2f_popingvinit_button.x * f,
-					MM_->RS_background[0].getPosition ().y + MM_->V2f_popingvinit_button.y * f
-							);
+			    MM_->RS_background[0].getPosition ().x + MM_->V2f_popingvinit_button.x * f,
+			    MM_->RS_background[0].getPosition ().y + MM_->V2f_popingvinit_button.y * f);
 		}
 		MM_->B_sdatca.setScale (f);
 		if (PC_Mouse::getGlobalBounds ().intersects (MM_->B_sdatca.getGlobalBounds ()))
 		{
 			MM_->B_sdatca.setPosition (
-					MM_->RS_background[0].getPosition ().x + MM_->V2f_sdatca_button.x * f,
-					MM_->RS_background[0].getPosition ().y + (MM_->V2f_sdatca_button.y + 1) * f
-							);
+			    MM_->RS_background[0].getPosition ().x + MM_->V2f_sdatca_button.x * f,
+			    MM_->RS_background[0].getPosition ().y + (MM_->V2f_sdatca_button.y + 1) * f);
 			if (names::game_status == GameStatus::main_menu)
 			{
 				MM_->B_sdatca.setFillColor (MM_->C_chice_button);
@@ -195,14 +186,12 @@ void MainMenu::main_transform ()
 			if (names::game_status == GameStatus::main_menu)
 				MM_->B_sdatca.setFillColor (Color (255, 255, 255, 255));
 			MM_->B_sdatca.setPosition (
-					MM_->RS_background[0].getPosition ().x + MM_->V2f_sdatca_button.x * f,
-					MM_->RS_background[0].getPosition ().y + MM_->V2f_sdatca_button.y * f
-							);
+			    MM_->RS_background[0].getPosition ().x + MM_->V2f_sdatca_button.x * f,
+			    MM_->RS_background[0].getPosition ().y + MM_->V2f_sdatca_button.y * f);
 		}
 		MM_->RS_title.setScale (f, f);
 		MM_->RS_title.setPosition (MM_->RS_background[0].getPosition ().x + MM_->V2f_title.x * f,
-				MM_->RS_background[0].getPosition ().y + MM_->V2f_title.y * f
-						);
+		                           MM_->RS_background[0].getPosition ().y + MM_->V2f_title.y * f);
 		for (size_t st (0); st < MM_->RS_background.size (); st++)
 		{
 			MM_->RS_background[st].setScale (f, f);
@@ -235,41 +224,37 @@ void MainMenu::main_transform ()
 		else
 		{
 			MM_->RS_popingvini.setTextureRect (IntRect (
-					0,
-					MM_->V2f_popingvini_size.y * unsigned (MM_->f_frame_popingvini),
-					MM_->V2f_popingvini_size.x,
-					MM_->V2f_popingvini_size.y
-					));
+			    0,
+			    MM_->V2f_popingvini_size.y * unsigned (MM_->f_frame_popingvini),
+			    MM_->V2f_popingvini_size.x,
+			    MM_->V2f_popingvini_size.y));
 		}
 		MM_->RS_popingvini.setScale (f, f);
 		MM_->RS_popingvini.setPosition (
-				MM_->RS_background[0].getPosition ().x + MM_->V2f_popingvini_defoult.x * f,
-				MM_->V2f_popingvini_defoult.y * f
-						);
+		    MM_->RS_background[0].getPosition ().x + MM_->V2f_popingvini_defoult.x * f,
+		    MM_->V2f_popingvini_defoult.y * f);
 		MM_->B_wardrobe.setScale (f);
 		if (PC_Mouse::getGlobalBounds ().intersects (MM_->B_wardrobe.getGlobalBounds ()))
 		{
 			if (names::game_status == GameStatus::main_menu)
 				MM_->B_wardrobe.setFillColor (MM_->C_chice_button);
 			MM_->B_wardrobe.setPosition (
-					MM_->RS_popingvini.getPosition ().x + MM_->V2f_wardrobe_button.x * f,
-					MM_->RS_popingvini.getPosition ().y + (MM_->V2f_wardrobe_button.y + 1) * f
-							);
+			    MM_->RS_popingvini.getPosition ().x + MM_->V2f_wardrobe_button.x * f,
+			    MM_->RS_popingvini.getPosition ().y + (MM_->V2f_wardrobe_button.y + 1) * f);
 		}
 		else
 		{
 			if (names::game_status == GameStatus::main_menu)
 				MM_->B_wardrobe.setFillColor (Color (255, 255, 255, 255));
 			MM_->B_wardrobe.setPosition (
-					MM_->RS_popingvini.getPosition ().x + MM_->V2f_wardrobe_button.x * f,
-					MM_->RS_popingvini.getPosition ().y + MM_->V2f_wardrobe_button.y * f
-							);
+			    MM_->RS_popingvini.getPosition ().x + MM_->V2f_wardrobe_button.x * f,
+			    MM_->RS_popingvini.getPosition ().y + MM_->V2f_wardrobe_button.y * f);
 		}
 	}
 }
 
-//public
-//void
+// public
+// void
 
 void MainMenu::main ()
 {
@@ -284,7 +269,8 @@ void MainMenu::destroy ()
 	MainMenu* MM_ = getClass ();
 
 	MM_->RS_background.resize (int (WindowAndStyles::getGlobalBounds ().width / WindowAndStyles::getGlobalBounds ().height /
-			(MM_->V2f_background_size.x / WindowAndStyles::getPixelsSizeY ())) + 2);
+	                                (MM_->V2f_background_size.x / WindowAndStyles::getPixelsSizeY ())) +
+	                           2);
 	MM_->RS_ice.resize (MM_->RS_background.size ());
 
 	for (size_t st (0); st < MM_->RS_background.size (); st++)
@@ -296,13 +282,13 @@ void MainMenu::destroy ()
 	}
 }
 
-//RectangleShape&
+// RectangleShape&
 
-vector <RectangleShape>& MainMenu::getBackground ()
+vector<RectangleShape>& MainMenu::getBackground ()
 {
 	return getClass ()->RS_background;
 }
-vector <RectangleShape>& MainMenu::getIce ()
+vector<RectangleShape>& MainMenu::getIce ()
 {
 	return getClass ()->RS_ice;
 }
@@ -315,7 +301,7 @@ RectangleShape& MainMenu::getPopingvini ()
 	return getClass ()->RS_popingvini;
 }
 
-//Button&
+// Button&
 
 ImageButton& MainMenu::getPopingvinit ()
 {
@@ -330,7 +316,7 @@ ImageButton& MainMenu::getWardrobe ()
 	return getClass ()->B_wardrobe;
 }
 
-//Texture&
+// Texture&
 
 Texture& MainMenu::getTextureBackground ()
 {

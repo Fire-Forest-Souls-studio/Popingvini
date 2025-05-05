@@ -4,8 +4,7 @@ Learn::Learn ()
 {
 }
 
-Learn::Learn (const wstring& w) :
-		w_text (w)
+Learn::Learn (const wstring& w)
+    : w_text (w)
 {
 }
-

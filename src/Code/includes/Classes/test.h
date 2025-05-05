@@ -13,15 +13,14 @@ using namespace std;
 class Test
 {
 	public:
-
 		float f_best_true;
 		float f_best_time;
 		float f_best_score;
 
-		vector <Question> question;
+		vector<Question> question;
 
 		Test ();
-		Test (const vector <Question>&);
+		Test (const vector<Question>&);
 };
 
 #endif

@@ -13,28 +13,28 @@
 
 #include "../../../GetPixels/GPI.h"
 
-//private
+// private
 
 WindowAndStyles* WindowAndStyles::class_obj = NULL;
 
-WindowAndStyles::WindowAndStyles () :
-		m_f_SIZE_PIX (300.0, 150.0),
+WindowAndStyles::WindowAndStyles ()
+    : m_f_SIZE_PIX (300.0, 150.0),
 
-		m_rectangle_shape (m_f_SIZE_PIX),
+      m_rectangle_shape (m_f_SIZE_PIX),
 
-		m_style_window (Default),
+      m_style_window (Default),
 
-		m_f_time_since_clicking (0),
+      m_f_time_since_clicking (0),
 
-		m_w_game_name (L"Попингвини"),
+      m_w_game_name (L"Попингвини"),
 
-		m_C_DEFOLT_WINDOW (22, 23, 26, 255),
-				m_C_clear_color (0, 0, 0, 255)
+      m_C_DEFOLT_WINDOW (22, 23, 26, 255),
+      m_C_clear_color (0, 0, 0, 255)
 {
 }
 
-//protected
-//void
+// protected
+// void
 void WindowAndStyles::main_time_work ()
 {
 	names::f_time = names::C_clock.restart ().asMicroseconds ();
@@ -53,31 +53,25 @@ void WindowAndStyles::main_F11 ()
 
 	WAS_->m_f_time_since_clicking += names::microsec * names::f_time;
 
-	if (Keyboard::isKeyPressed (Keyboard::F11)
-			and WAS_->m_f_time_since_clicking > 1.0
-			and WAS_->m_render_window.hasFocus ())
+	if (Keyboard::isKeyPressed (Keyboard::F11) and WAS_->m_f_time_since_clicking > 1.0 and WAS_->m_render_window.hasFocus ())
 	{
 		if (WAS_->m_style_window == Default)
 		{
 			WAS_->m_video_mode = VideoMode::getFullscreenModes ()[0];
 			WAS_->m_render_texture.create (
-					WAS_->m_video_mode.width / names::u_factor_of_resolution,
-					WAS_->m_video_mode.height / names::u_factor_of_resolution
-							);
+			    WAS_->m_video_mode.width / names::u_factor_of_resolution,
+			    WAS_->m_video_mode.height / names::u_factor_of_resolution);
 			WAS_->m_render_window.create (
-					VideoMode (WAS_->m_video_mode.width, WAS_->m_video_mode.height),
-					WAS_->m_w_game_name,
-					Style::Fullscreen
-					);
+			    VideoMode (WAS_->m_video_mode.width, WAS_->m_video_mode.height),
+			    WAS_->m_w_game_name,
+			    Style::Fullscreen);
 
 			WAS_->m_view.setCenter (Vector2f (
-					static_cast <float> (WAS_->m_video_mode.width) * 0.5,
-					static_cast <float> (WAS_->m_video_mode.height) * 0.5
-							));
+			    static_cast<float> (WAS_->m_video_mode.width) * 0.5,
+			    static_cast<float> (WAS_->m_video_mode.height) * 0.5));
 			WAS_->m_view.setSize (Vector2f (
-					static_cast <float> (WAS_->m_video_mode.width),
-					static_cast <float> (WAS_->m_video_mode.height)
-					));
+			    static_cast<float> (WAS_->m_video_mode.width),
+			    static_cast<float> (WAS_->m_video_mode.height)));
 			WAS_->m_render_texture.setView (WAS_->m_view);
 			WAS_->m_render_window.setView (WAS_->m_view);
 
@@ -90,23 +84,19 @@ void WindowAndStyles::main_F11 ()
 		{
 			WAS_->m_video_mode = VideoMode::getDesktopMode ();
 			WAS_->m_render_window.create (
-					VideoMode (WAS_->m_video_mode.width, WAS_->m_video_mode.height),
-					WAS_->m_w_game_name,
-					Style::Default
-					);
+			    VideoMode (WAS_->m_video_mode.width, WAS_->m_video_mode.height),
+			    WAS_->m_w_game_name,
+			    Style::Default);
 			WAS_->m_render_texture.create (
-					static_cast <float> (WAS_->m_render_window.getSize ().x) / names::u_factor_of_resolution,
-					static_cast <float> (WAS_->m_render_window.getSize ().y) / names::u_factor_of_resolution
-							);
+			    static_cast<float> (WAS_->m_render_window.getSize ().x) / names::u_factor_of_resolution,
+			    static_cast<float> (WAS_->m_render_window.getSize ().y) / names::u_factor_of_resolution);
 
 			WAS_->m_view.setCenter (Vector2f (
-					static_cast <float> (WAS_->m_render_window.getSize ().x) * 0.5,
-					static_cast <float> (WAS_->m_render_window.getSize ().y) * 0.5
-							));
+			    static_cast<float> (WAS_->m_render_window.getSize ().x) * 0.5,
+			    static_cast<float> (WAS_->m_render_window.getSize ().y) * 0.5));
 			WAS_->m_view.setSize (Vector2f (
-					static_cast <float> (WAS_->m_render_window.getSize ().x),
-					static_cast <float> (WAS_->m_render_window.getSize ().y)
-					));
+			    static_cast<float> (WAS_->m_render_window.getSize ().x),
+			    static_cast<float> (WAS_->m_render_window.getSize ().y)));
 			WAS_->m_render_texture.setView (WAS_->m_view);
 			WAS_->m_render_window.setView (WAS_->m_view);
 
@@ -116,7 +106,6 @@ void WindowAndStyles::main_F11 ()
 			WAS_->m_f_time_since_clicking = 0;
 		}
 	}
-
 }
 void WindowAndStyles::main_event ()
 {
@@ -142,17 +131,14 @@ void WindowAndStyles::main_event ()
 
 		//_view
 		WAS_->m_view.setCenter (Vector2f (
-				static_cast <float> (names::E_event.size.width) * 0.5,
-				static_cast <float> (names::E_event.size.height) * 0.5
-						));
+		    static_cast<float> (names::E_event.size.width) * 0.5,
+		    static_cast<float> (names::E_event.size.height) * 0.5));
 		WAS_->m_view.setSize (Vector2f (
-				static_cast <float> (names::E_event.size.width),
-				static_cast <float> (names::E_event.size.height)
-				));
+		    static_cast<float> (names::E_event.size.width),
+		    static_cast<float> (names::E_event.size.height)));
 		WAS_->m_render_texture.create (
-				WAS_->m_view.getSize ().x / names::u_factor_of_resolution,
-				WAS_->m_view.getSize ().y / names::u_factor_of_resolution
-						);
+		    WAS_->m_view.getSize ().x / names::u_factor_of_resolution,
+		    WAS_->m_view.getSize ().y / names::u_factor_of_resolution);
 		WAS_->m_render_texture.setView (WAS_->m_view);
 		WAS_->m_render_window.setView (WAS_->m_view);
 
@@ -178,7 +164,7 @@ void WindowAndStyles::clear_rectangle ()
 	WindowAndStyles* WAS_ = getClass ();
 	WAS_->m_rectangle_shape.setSize (Vector2f (WAS_->m_view.getSize ()));
 	WAS_->m_rectangle_shape.setPosition (WAS_->m_view.getCenter ().x - WAS_->m_view.getSize ().x * 0.5,
-			WAS_->m_view.getCenter ().y - WAS_->m_view.getSize ().y * 0.5);
+	                                     WAS_->m_view.getCenter ().y - WAS_->m_view.getSize ().y * 0.5);
 }
 void WindowAndStyles::clear_draw ()
 {
@@ -194,12 +180,12 @@ void WindowAndStyles::clear_draw ()
 	bool b_works_menu (names::game_status == GameStatus::works_menu);
 	bool b_learn (names::game_status == GameStatus::learn);
 	bool b_test (names::game_status == GameStatus::test);
-	vector <Pingvinon>& P_ = Introduction::getPingvinons ();
-	vector <RectangleShape>& RS_MM_ = MainMenu::getBackground ();
-	vector <Text>& T_ = Error_class::getText ();
+	vector<Pingvinon>& P_ = Introduction::getPingvinons ();
+	vector<RectangleShape>& RS_MM_ = MainMenu::getBackground ();
+	vector<Text>& T_ = Error_class::getText ();
 	RectangleShape& RS_WM_ = WorksMenu::getDownPanel ();
 
-//boxes
+	// boxes
 
 	if (b_introduction)
 	{
@@ -281,13 +267,12 @@ void WindowAndStyles::clear_draw ()
 		WAS_->m_render_texture.draw (WorksMenu::getDownPanel ());
 		Sprite S (WorksMenu::getRender ().getTexture ());
 		S.setPosition (
-				RS_WM_.getPosition ().x,
-				RS_WM_.getPosition ().y
-				);
+		    RS_WM_.getPosition ().x,
+		    RS_WM_.getPosition ().y);
 		WAS_->m_render_texture.draw (S);
 	}
 
-//hitboxes
+	// hitboxes
 
 	if (names::b_hitboxes_is_drawn)
 	{
@@ -298,7 +283,7 @@ void WindowAndStyles::clear_draw ()
 		}
 	}
 
-//errors
+	// errors
 	WAS_->m_render_texture.draw (Error_class::getRectangleShape ());
 	for (size_t st (0); st < T_.size (); st++)
 	{
@@ -316,8 +301,8 @@ void WindowAndStyles::clear_display ()
 	WAS_->m_render_window.display ();
 }
 
-//public
-//WindowAndStyles*
+// public
+// WindowAndStyles*
 
 WindowAndStyles* WindowAndStyles::getClass ()
 {
@@ -328,7 +313,7 @@ WindowAndStyles* WindowAndStyles::getClass ()
 	return class_obj;
 }
 
-//void
+// void
 
 void WindowAndStyles::start ()
 {
@@ -339,52 +324,48 @@ void WindowAndStyles::start ()
 	WAS_->m_video_mode = VideoMode::getDesktopMode ();
 
 	WAS_->m_render_window.create (
-			VideoMode (WAS_->m_video_mode.width, WAS_->m_video_mode.height),
-			WAS_->m_w_game_name
-			);
+	    VideoMode (WAS_->m_video_mode.width, WAS_->m_video_mode.height),
+	    WAS_->m_w_game_name);
 	WAS_->m_render_texture.create (
-			static_cast <float> (WAS_->m_render_window.getSize ().x) / names::u_factor_of_resolution,
-			static_cast <float> (WAS_->m_render_window.getSize ().y) / names::u_factor_of_resolution
-					);
+	    static_cast<float> (WAS_->m_render_window.getSize ().x) / names::u_factor_of_resolution,
+	    static_cast<float> (WAS_->m_render_window.getSize ().y) / names::u_factor_of_resolution);
 	WAS_->m_style_window = Default;
 	WAS_->m_render_window.setIcon (WAS_->m_image.getSize ().x, WAS_->m_image.getSize ().y,
-			WAS_->m_image.getPixelsPtr ());
+	                               WAS_->m_image.getPixelsPtr ());
 
-//_view
+	//_view
 	WAS_->m_view.setCenter (Vector2f (
-			static_cast <float> (WAS_->m_render_window.getSize ().x) * 0.5,
-			static_cast <float> (WAS_->m_render_window.getSize ().y) * 0.5
-					));
+	    static_cast<float> (WAS_->m_render_window.getSize ().x) * 0.5,
+	    static_cast<float> (WAS_->m_render_window.getSize ().y) * 0.5));
 	WAS_->m_view.setSize (Vector2f (
-			static_cast <float> (WAS_->m_render_window.getSize ().x),
-			static_cast <float> (WAS_->m_render_window.getSize ().y)
-			));
+	    static_cast<float> (WAS_->m_render_window.getSize ().x),
+	    static_cast<float> (WAS_->m_render_window.getSize ().y)));
 	WAS_->m_render_texture.setView (WAS_->m_view);
 	WAS_->m_render_window.setView (WAS_->m_view);
 }
 void WindowAndStyles::main ()
 {
-//time work
+	// time work
 	main_time_work ();
 
-//F11
+	// F11
 	main_F11 ();
 
-//close
+	// close
 	main_event ();
 }
 void WindowAndStyles::clear ()
 {
-//clear
+	// clear
 	clear_clear ();
 
-//rectangle
+	// rectangle
 	clear_rectangle ();
 
-//draw
+	// draw
 	clear_draw ();
 
-//display
+	// display
 	clear_display ();
 }
 void WindowAndStyles::setColor (Color C)
@@ -393,7 +374,7 @@ void WindowAndStyles::setColor (Color C)
 	WAS_->m_C_clear_color = C;
 }
 
-//bool
+// bool
 
 bool WindowAndStyles::isOpen ()
 {
@@ -404,7 +385,7 @@ bool WindowAndStyles::hasFocus ()
 	return getClass ()->m_render_window.hasFocus ();
 }
 
-//float
+// float
 
 float WindowAndStyles::getFactorX ()
 {
@@ -425,21 +406,21 @@ float WindowAndStyles::getPixelsSizeY ()
 	return getClass ()->m_f_SIZE_PIX.y;
 }
 
-//Window&
+// Window&
 
 Window& WindowAndStyles::getWindow ()
 {
 	return getClass ()->m_render_window;
 }
 
-//FloatRect
+// FloatRect
 
 FloatRect WindowAndStyles::getGlobalBounds ()
 {
 	return getClass ()->m_rectangle_shape.getGlobalBounds ();
 }
 
-//Color
+// Color
 
 Color WindowAndStyles::getDefoultColor ()
 {

@@ -15,19 +15,17 @@ class Language
 {
 
 	public:
-
 		string s_name;
 
 		ImageButton button;
 
-		vector <Work> work;
+		vector<Work> work;
 
 		Texture T_test_background;
 
 		Language (const string&);
 
 		void addWork (const Work&);
-
 };
 
 #endif

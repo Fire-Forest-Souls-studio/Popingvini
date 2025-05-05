@@ -12,13 +12,11 @@ using namespace std;
 class Loading
 {
 	private:
-
 		static Loading* class_obj;
 
 		Loading ();
 
 	protected:
-
 		RectangleShape rectangle_shape_obj;
 
 		Texture texture_obj;
@@ -33,15 +31,15 @@ class Loading
 
 		Color C_text_color;
 
-		vector <Texture*> load_texture;
+		vector<Texture*> load_texture;
 
-		vector <void const*> load_void_const;
+		vector<void const*> load_void_const;
 
-		vector <unsigned long> load_unsigned_long;
+		vector<unsigned long> load_unsigned_long;
 
-		vector <string> load_string;
+		vector<string> load_string;
 
-		vector <wstring> w_text;
+		vector<wstring> w_text;
 
 		wstring w_load;
 
@@ -61,7 +59,6 @@ class Loading
 		static Loading* getClass ();
 
 	public:
-
 		static void main ();
 		static void write ();
 

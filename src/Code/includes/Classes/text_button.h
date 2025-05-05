@@ -3,10 +3,9 @@
 
 #include "button.h"
 
-class TextButton: public Button
+class TextButton : public Button
 {
 	public:
-
 		Text _text;
 
 		using Button::Button;

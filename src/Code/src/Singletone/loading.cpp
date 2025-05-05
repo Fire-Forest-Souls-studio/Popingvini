@@ -15,86 +15,75 @@
 #include "../../../GetPixels/GPI_Learn_menu.h"
 #include "../../../GetPixels/GPI_Test_menu.h"
 
-//private
+// private
 
 Loading* Loading::class_obj = NULL;
 
-Loading::Loading () :
-		f_frame_transition (0.0),
-				f_transition_speed (255.0 / 2.0),
-				f_text_size (8.0),
-				f_speed_rotate (1.0),
+Loading::Loading ()
+    : f_frame_transition (0.0),
+      f_transition_speed (255.0 / 2.0),
+      f_text_size (8.0),
+      f_speed_rotate (1.0),
 
-				C_text_color (255, 255, 255, 255),
+      C_text_color (255, 255, 255, 255),
 
-				load_texture (0),
+      load_texture (0),
 
-				load_void_const (0),
+      load_void_const (0),
 
-				load_unsigned_long (0),
+      load_unsigned_long (0),
 
-				load_string (0),
+      load_string (0),
 
-				w_text (11),
+      w_text (11),
 
-				w_load (L"-"),
+      w_load (L"-"),
 
-				V2f_text_position (200.0, 27.0),
-				V2f_text_load_position (255.0, 120.0),
+      V2f_text_position (200.0, 27.0),
+      V2f_text_load_position (255.0, 120.0),
 
-				u_load_number (0),
-				u_symbols_in_line (15),
+      u_load_number (0),
+      u_symbols_in_line (15),
 
-				b_load (false),
+      b_load (false),
 
-				s_file_name (names::s_path + "saving.FireForestSouls-Popingvini")
+      s_file_name (names::s_path + "saving.FireForestSouls-Popingvini")
 {
 	rectangle_shape_obj.setSize (Vector2f (350, 150));
 
 	w_text[0] = names::GetStringOfHyphenation (
-			L"Пожелание: Если ты хочешь предложить нам идею пиши в тг!",
-			u_symbols_in_line
-			);
+	    L"Пожелание: Если ты хочешь предложить нам идею пиши в тг!",
+	    u_symbols_in_line);
 	w_text[1] = names::GetStringOfHyphenation (
-			L"Совет: Делай перерывы по правилу 31: 3 часа работаешь, 1 отдыхаешь",
-			u_symbols_in_line
-			);
+	    L"Совет: Делай перерывы по правилу 31: 3 часа работаешь, 1 отдыхаешь",
+	    u_symbols_in_line);
 	w_text[2] = names::GetStringOfHyphenation (
-			L"Совет: Если у тебя возникла какая-либо ошибка - напиши одному из разработчиков в тг",
-			u_symbols_in_line
-			);
+	    L"Совет: Если у тебя возникла какая-либо ошибка - напиши одному из разработчиков в тг",
+	    u_symbols_in_line);
 	w_text[3] = names::GetStringOfHyphenation (
-			L"Удачи тебе!",
-			u_symbols_in_line
-			);
+	    L"Удачи тебе!",
+	    u_symbols_in_line);
 	w_text[4] = names::GetStringOfHyphenation (
-			L"О! Ты зашёл!? Мой день сделан!",
-			u_symbols_in_line
-			);
+	    L"О! Ты зашёл!? Мой день сделан!",
+	    u_symbols_in_line);
 	w_text[5] = names::GetStringOfHyphenation (
-			L"Чтобы пропустить вступление, просто нажми на пробел во время него!!!",
-			u_symbols_in_line
-			);
+	    L"Чтобы пропустить вступление, просто нажми на пробел во время него!!!",
+	    u_symbols_in_line);
 	w_text[6] = names::GetStringOfHyphenation (
-			L"Чтобы выйти из программы, можно нажать Esc",
-			u_symbols_in_line
-			);
+	    L"Чтобы выйти из программы, можно нажать Esc",
+	    u_symbols_in_line);
 	w_text[7] = names::GetStringOfHyphenation (
-			L"Попингвини ждёт тебя каждый день!",
-			u_symbols_in_line
-			);
+	    L"Попингвини ждёт тебя каждый день!",
+	    u_symbols_in_line);
 	w_text[8] = names::GetStringOfHyphenation (
-			L"ТЫ можешь присоединиться к ТЕСТИРОВКЕ БЕТА ВЕРСИЙ, просто написав разработчику в тг",
-			u_symbols_in_line
-			);
+	    L"ТЫ можешь присоединиться к ТЕСТИРОВКЕ БЕТА ВЕРСИЙ, просто написав разработчику в тг",
+	    u_symbols_in_line);
 	w_text[9] = names::GetStringOfHyphenation (
-			L"Ты можешь сделать свой текстурпак для Попингвини! Инструкция есть в тг канале Попингвини",
-			u_symbols_in_line
-			);
+	    L"Ты можешь сделать свой текстурпак для Попингвини! Инструкция есть в тг канале Попингвини",
+	    u_symbols_in_line);
 	w_text[10] = names::GetStringOfHyphenation (
-			L"Если ты создаёшь контент по Попингвини (ролики/посты/текстурпаки/...), отправляй его (или ссылку на него) в комментарии в тг канале Попингвини",
-			u_symbols_in_line
-			);
+	    L"Если ты создаёшь контент по Попингвини (ролики/посты/текстурпаки/...), отправляй его (или ссылку на него) в комментарии в тг канале Попингвини",
+	    u_symbols_in_line);
 
 	text_obj.setString (w_text[rand () % w_text.size ()]);
 	text_obj.setCharacterSize (f_text_size);
@@ -164,8 +153,8 @@ Loading::Loading () :
 	load_string.push_back ("Images/Learn_menu/test_background_py.png");
 }
 
-//public
-//Loading*
+// public
+// Loading*
 
 Loading* Loading::getClass ()
 {
@@ -176,7 +165,7 @@ Loading* Loading::getClass ()
 	return class_obj;
 }
 
-//void
+// void
 
 void Loading::main ()
 {
@@ -200,40 +189,40 @@ void Loading::main ()
 
 			L_->rectangle_shape_obj.setFillColor (Color (255, 255, 255, L_->f_frame_transition));
 			L_->text_obj.setFillColor (Color (
-					L_->C_text_color.r,
-					L_->C_text_color.g,
-					L_->C_text_color.b,
-					L_->f_frame_transition));
+			    L_->C_text_color.r,
+			    L_->C_text_color.g,
+			    L_->C_text_color.b,
+			    L_->f_frame_transition));
 			L_->T_load.setFillColor (Color (
-					L_->C_text_color.r,
-					L_->C_text_color.g,
-					L_->C_text_color.b,
-					L_->f_frame_transition));
+			    L_->C_text_color.r,
+			    L_->C_text_color.g,
+			    L_->C_text_color.b,
+			    L_->f_frame_transition));
 		}
 		else if (L_->f_frame_transition != 255.0)
 		{
 			L_->rectangle_shape_obj.setFillColor (Color (255, 255, 255, 255));
 			L_->text_obj.setFillColor (Color (
-					L_->C_text_color.r,
-					L_->C_text_color.g,
-					L_->C_text_color.b,
-					255));
+			    L_->C_text_color.r,
+			    L_->C_text_color.g,
+			    L_->C_text_color.b,
+			    255));
 			L_->T_load.setFillColor (Color (
-					L_->C_text_color.r,
-					L_->C_text_color.g,
-					L_->C_text_color.b,
-					255));
+			    L_->C_text_color.r,
+			    L_->C_text_color.g,
+			    L_->C_text_color.b,
+			    255));
 			L_->f_frame_transition = 255.0;
 		}
 	}
 
 	if (names::game_status == GameStatus::loading or names::game_status == GameStatus::loading_to_main_menu)
 	{
-		//трансформ
-		//фон
+		// трансформ
+		// фон
 
 		L_->T_load.setPosition (L_->rectangle_shape_obj.getPosition ().x + L_->V2f_text_load_position.x * f,
-				L_->V2f_text_load_position.y * f);
+		                        L_->V2f_text_load_position.y * f);
 		L_->T_load.setCharacterSize (L_->f_text_size * f);
 		L_->T_load.rotate (1 / L_->f_speed_rotate * names::f_time);
 
@@ -241,14 +230,13 @@ void Loading::main ()
 		names::SetXCenterPosition (L_->rectangle_shape_obj, 0);
 
 		L_->text_obj.setPosition (L_->rectangle_shape_obj.getPosition ().x + L_->V2f_text_position.x * f,
-				L_->V2f_text_position.y * f);
+		                          L_->V2f_text_position.y * f);
 		L_->text_obj.setCharacterSize (L_->f_text_size * f);
-
 	}
 
 	if (names::game_status == GameStatus::loading)
 	{
-		//loading
+		// loading
 
 		if (L_->f_frame_transition == 255.0)
 		{
@@ -257,15 +245,15 @@ void Loading::main ()
 				size_t st_read_size (0);
 
 				L_->i_file.open (L_->s_file_name, ios::out | ios::binary);
-				L_->i_file.read ((char*) &st_read_size, sizeof(size_t));
+				L_->i_file.read ((char*)&st_read_size, sizeof (size_t));
 				for (size_t st (0); st < LanguageMenu::getPython ().work.size (); st++)
 				{
 					if (st < st_read_size)
 					{
-						L_->i_file.read ((char*) &LanguageMenu::getPython ().work[st].u_try, sizeof(unsigned));
-						L_->i_file.read ((char*) &LanguageMenu::getPython ().work[st].test.f_best_score, sizeof(float));
-						L_->i_file.read ((char*) &LanguageMenu::getPython ().work[st].test.f_best_true, sizeof(float));
-						L_->i_file.read ((char*) &LanguageMenu::getPython ().work[st].test.f_best_time, sizeof(float));
+						L_->i_file.read ((char*)&LanguageMenu::getPython ().work[st].u_try, sizeof (unsigned));
+						L_->i_file.read ((char*)&LanguageMenu::getPython ().work[st].test.f_best_score, sizeof (float));
+						L_->i_file.read ((char*)&LanguageMenu::getPython ().work[st].test.f_best_true, sizeof (float));
+						L_->i_file.read ((char*)&LanguageMenu::getPython ().work[st].test.f_best_time, sizeof (float));
 					}
 				}
 				L_->i_file.close ();
@@ -276,7 +264,7 @@ void Loading::main ()
 			else if (L_->u_load_number < L_->load_texture.size ())
 			{
 				names::LoadFromMemory (*L_->load_texture[L_->u_load_number], L_->load_void_const[L_->u_load_number],
-						L_->load_unsigned_long[L_->u_load_number], L_->load_string[L_->u_load_number]);
+				                       L_->load_unsigned_long[L_->u_load_number], L_->load_string[L_->u_load_number]);
 				L_->u_load_number++;
 			}
 			else
@@ -295,22 +283,21 @@ void Loading::main ()
 
 			L_->rectangle_shape_obj.setFillColor (Color (255, 255, 255, L_->f_frame_transition));
 			L_->text_obj.setFillColor (Color (
-					L_->C_text_color.r,
-					L_->C_text_color.g,
-					L_->C_text_color.b,
-					L_->f_frame_transition));
+			    L_->C_text_color.r,
+			    L_->C_text_color.g,
+			    L_->C_text_color.b,
+			    L_->f_frame_transition));
 			L_->T_load.setFillColor (Color (
-					L_->C_text_color.r,
-					L_->C_text_color.g,
-					L_->C_text_color.b,
-					L_->f_frame_transition));
+			    L_->C_text_color.r,
+			    L_->C_text_color.g,
+			    L_->C_text_color.b,
+			    L_->f_frame_transition));
 		}
 		else
 		{
 			names::game_status = GameStatus::main_menu;
 			L_->f_frame_transition = 0.0;
 		}
-
 	}
 }
 
@@ -321,26 +308,26 @@ void Loading::write ()
 	size_t st_write_size (LanguageMenu::getPython ().work.size ());
 
 	L_->o_file.open (L_->s_file_name, ios::out | ios::binary | std::ios::trunc);
-	L_->o_file.write ((char*) &st_write_size, sizeof(size_t));
+	L_->o_file.write ((char*)&st_write_size, sizeof (size_t));
 	for (size_t st (0); st < LanguageMenu::getPython ().work.size (); st++)
 	{
-		L_->o_file.write ((char*) &LanguageMenu::getPython ().work[st].u_try, sizeof(unsigned));
-		L_->o_file.write ((char*) &LanguageMenu::getPython ().work[st].test.f_best_score, sizeof(float));
-		L_->o_file.write ((char*) &LanguageMenu::getPython ().work[st].test.f_best_true, sizeof(float));
-		L_->o_file.write ((char*) &LanguageMenu::getPython ().work[st].test.f_best_time, sizeof(float));
+		L_->o_file.write ((char*)&LanguageMenu::getPython ().work[st].u_try, sizeof (unsigned));
+		L_->o_file.write ((char*)&LanguageMenu::getPython ().work[st].test.f_best_score, sizeof (float));
+		L_->o_file.write ((char*)&LanguageMenu::getPython ().work[st].test.f_best_true, sizeof (float));
+		L_->o_file.write ((char*)&LanguageMenu::getPython ().work[st].test.f_best_time, sizeof (float));
 	}
 
 	L_->o_file.close ();
 }
 
-//RectangleShape&
+// RectangleShape&
 
 RectangleShape& Loading::getSprite ()
 {
 	return getClass ()->rectangle_shape_obj;
 }
 
-//Text&
+// Text&
 
 Text& Loading::getSpriteText ()
 {
@@ -351,17 +338,16 @@ Text& Loading::getLoadText ()
 	return getClass ()->T_load;
 }
 
-//float
+// float
 
 float Loading::getFrameTransition ()
 {
 	return getClass ()->f_frame_transition;
 }
 
-//bool
+// bool
 
 bool Loading::getLoad ()
 {
 	return getClass ()->b_load;
 }
-

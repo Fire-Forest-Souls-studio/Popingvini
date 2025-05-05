@@ -3,13 +3,13 @@
 #include "../../includes/Singletone/names.h"
 #include "../../includes/Singletone/pc_mouse.h"
 
-Button::Button () :
-		C_outline (Color (0, 0, 0, 0.0))
+Button::Button ()
+    : C_outline (Color (0, 0, 0, 0.0))
 {
 }
 
-Button::Button (const string& s) :
-		C_outline (Color (0, 0, 0, 0.0))
+Button::Button (const string& s)
+    : C_outline (Color (0, 0, 0, 0.0))
 {
 	text_obj.setString (s);
 	text_obj.setCharacterSize (names::f_font_hitbox_scale);
@@ -55,7 +55,7 @@ void Button::setPosition (const float& fx, const float& fy)
 {
 	_rectangle_shape.setPosition (fx, fy);
 	text_obj.setPosition (fx + _rectangle_shape.getGlobalBounds ().width * 0.5 - text_obj.getGlobalBounds ().width * 0.5,
-			fy - text_obj.getGlobalBounds ().height * names::f_lifting_hitbox_text);
+	                      fy - text_obj.getGlobalBounds ().height * names::f_lifting_hitbox_text);
 }
 
 void Button::setString (const string& s)
@@ -90,8 +90,7 @@ bool Button::interect () const
 
 bool Button::pressed () const
 {
-	return (PC_Mouse::getGlobalBounds ().intersects (_rectangle_shape.getGlobalBounds ())
-			and PC_Mouse::isLeftPressed ());
+	return (PC_Mouse::getGlobalBounds ().intersects (_rectangle_shape.getGlobalBounds ()) and PC_Mouse::isLeftPressed ());
 }
 
 void Button::setOutline (const Color& C)

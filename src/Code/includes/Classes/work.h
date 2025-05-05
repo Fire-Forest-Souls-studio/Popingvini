@@ -14,7 +14,6 @@ using namespace std;
 class Work
 {
 	public:
-
 		wstring w_name;
 		wstring w_content;
 		wstring w_type;
@@ -28,7 +27,6 @@ class Work
 		Work ();
 		Work (const wstring&, const wstring&, const wstring&, const wstring&);
 		Work (const wstring&, const wstring&, const wstring&, const wstring&, const Test&);
-
 };
 
 #endif
