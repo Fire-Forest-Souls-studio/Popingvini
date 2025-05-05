@@ -1,6 +1,10 @@
 #Исполняемый файл
 /Попингвини
 
+#Languages
+
+Languages/Write
+
 # Настройки VS Code
 .vscode/
 .clang-format
