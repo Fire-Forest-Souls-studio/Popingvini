@@ -6,9 +6,9 @@
 Languages/Write
 
 # Настройки VS Code
-.vscode/
-.clang-format
-.editorconfig
+#.vscode/
+#.clang-format
+#.editorconfig
 
 # Системные
 .DS_Store

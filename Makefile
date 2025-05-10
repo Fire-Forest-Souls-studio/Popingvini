@@ -24,7 +24,7 @@ TARGET=$(EXE_DIR)/$(TARGET_NAME)
 OBJ_FILES := $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(notdir $(SOURCES)))
 OBJ_FILES += $(patsubst %, $(OBJ_DIR)/%.o, $(notdir $(RESOURCES)))
 
- 
+
 VPATH   = $(strip $(call uniq,$(dir $(SOURCES) $(RESOURCES))))
 ####### Compiler, tools and options
 CC            = gcc-13
@@ -32,7 +32,7 @@ CXX           = $(CC)
 
 INCLUDES      = -I$(INC_DIR)
 
-LDIRS         =   
+LDIRS         =
 LFILES        = -pg -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-system -z execstack
 
 CFLAGS        = -g -Wall -W $(INCLUDES) $(DEFINES) -pg
@@ -55,7 +55,7 @@ endef
 ######################################################
 #.DELETE_ON_ERROR
 
-first:  all 
+first:  all
 
 ####### Build rules
 
@@ -70,13 +70,13 @@ $(TARGET): $(OBJ_FILES)
 	$(LINK) $(LFLAGS) -o $@ $(OBJ_FILES) $(LIBS)
 
 
-$(OBJ_DIR)/%.o : %.cpp 
-	@if [ ! -d $(OBJ_DIR) ]; then mkdir -p $(OBJ_DIR); fi 	
+$(OBJ_DIR)/%.o : %.cpp
+	@if [ ! -d $(OBJ_DIR) ]; then mkdir -p $(OBJ_DIR); fi
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-	
+
 $(OBJ_DIR)/%.o : %
-	@if [ ! -d $(OBJ_DIR) ]; then mkdir -p $(OBJ_DIR); fi 	
-	$(LD) -r -b binary $< -o $@ 
+	@if [ ! -d $(OBJ_DIR) ]; then mkdir -p $(OBJ_DIR); fi
+	$(LD) -r -b binary $< -o $@
 
 ########### Clean rules
 
@@ -86,7 +86,7 @@ clean:
 	rm -rf $(OBJ_DIR); \
 	rm -rf $(SAVING_FILE); \
 	rm -f *~ core *.core
-	
+
 
 
 
