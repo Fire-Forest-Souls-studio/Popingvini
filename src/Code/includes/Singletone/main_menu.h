@@ -12,6 +12,8 @@ using namespace std;
 
 class MainMenu
 {
+		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
 
 	private:
 		static MainMenu* class_obj;

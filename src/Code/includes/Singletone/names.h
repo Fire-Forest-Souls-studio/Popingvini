@@ -31,6 +31,9 @@ enum GameStatus
 
 class names
 {
+		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
+
 	public:
 		static bool b_hitboxes_is_drawn;
 		static bool b_shader_is_on;

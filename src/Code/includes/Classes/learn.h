@@ -10,6 +10,9 @@ using namespace std;
 
 class Learn
 {
+		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
+
 	public:
 		wstring w_text;
 

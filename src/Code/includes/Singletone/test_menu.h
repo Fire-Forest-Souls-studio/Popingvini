@@ -21,6 +21,8 @@ using namespace std;
 
 class TestMenu
 {
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
+
 	private:
 		static TestMenu* class_obj;
 

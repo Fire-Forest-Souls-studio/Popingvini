@@ -23,6 +23,9 @@ enum e_error_text
 
 class Error_class
 {
+		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
+
 	private:
 		static Error_class* class_obj;
 

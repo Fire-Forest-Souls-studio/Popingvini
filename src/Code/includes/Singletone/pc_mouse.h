@@ -10,6 +10,8 @@ using namespace std;
 
 class PC_Mouse
 {
+		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
 
 	private:
 		static PC_Mouse* class_obj;

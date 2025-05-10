@@ -12,6 +12,9 @@ using namespace std;
 
 class Test
 {
+		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
+
 	public:
 		float f_best_true;
 		float f_best_time;

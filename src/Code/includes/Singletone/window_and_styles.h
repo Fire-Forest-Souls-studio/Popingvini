@@ -29,6 +29,8 @@ enum StyleWindow
 
 class WindowAndStyles
 {
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
+
 	private:
 		WindowAndStyles ();
 

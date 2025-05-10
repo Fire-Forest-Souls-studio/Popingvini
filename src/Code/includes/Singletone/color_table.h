@@ -9,6 +9,9 @@ using namespace sf;
 
 struct ColorTable
 {
+		// TODO: нормальные нозвания цветам
+		// ? можно давать несколько названий переменным
+
 		static Color c25a75;
 		static Color c25a175;
 		static Color c10;

@@ -13,6 +13,8 @@ using namespace std;
 
 class Language
 {
+		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
+		// TODO: добавить названия аргументам функций по шаблону <my_name>
 
 	public:
 		string s_name;

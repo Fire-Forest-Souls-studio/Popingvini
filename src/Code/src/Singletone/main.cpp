@@ -7,6 +7,8 @@
  *     http://www.apache.org/licenses/LICENSE-2.0
  */
 
+// TODO: добавить ссылку на GitHub студии
+
 #include "../../includes/Singletone/names.h"
 #include "../../includes/Singletone/pc_mouse.h"
 #include "../../includes/Singletone/window_and_styles.h"
