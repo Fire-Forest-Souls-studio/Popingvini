@@ -10,11 +10,8 @@ using namespace std;
 
 class Button
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	protected:
-		RectangleShape _rectangle_shape;
+		RectangleShape m_rectangle_shape;
 
 		Text m_text;
 
@@ -22,15 +19,15 @@ class Button
 
 	public:
 		Button ();
-		Button (const string&);
+		Button (const string& name);
 
-		void setSize (const Vector2f&);
-		void setFillColor (const Color&);
-		void setScale (const float&);
-		void setString (const string&);
-		void setOutline (const Color&);
+		void setSize (const Vector2f& size);
+		void setFillColor (const Color& color);
+		void setScale (const float& factor);
+		void setString (const string& name);
+		void setOutline (const Color& color);
 
-		virtual void setPosition (const float&, const float&);
+		virtual void setPosition (const float& x, const float& y);
 
 		FloatRect getGlobalBounds ();
 

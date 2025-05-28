@@ -8,7 +8,7 @@ void TextButton::setText (const string& s)
 
 void TextButton::setSizeByText ()
 {
-	_rectangle_shape.setSize (Vector2f (
+	m_rectangle_shape.setSize (Vector2f (
 	    _text.getLocalBounds ().width / WindowAndStyles::getFactorY (),
 	    _text.getLocalBounds ().height / WindowAndStyles::getFactorY ()));
 }

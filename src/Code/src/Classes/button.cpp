@@ -15,46 +15,46 @@ Button::Button (const string& s)
 	m_text.setCharacterSize (names::f_font_hitbox_scale);
 	m_text.setFont (names::F_pixel);
 	m_text.setFillColor (names::C_font_hitbox);
-	_rectangle_shape.setOutlineColor (names::C_font_hitbox);
-	_rectangle_shape.setOutlineThickness (1);
+	m_rectangle_shape.setOutlineColor (names::C_font_hitbox);
+	m_rectangle_shape.setOutlineThickness (1);
 }
 
 void Button::setSize (const Vector2f& V2f)
 {
-	_rectangle_shape.setSize (V2f);
+	m_rectangle_shape.setSize (V2f);
 }
 
 void Button::setFillColor (const Color& C)
 {
-	_rectangle_shape.setFillColor (C);
+	m_rectangle_shape.setFillColor (C);
 }
 
 void Button::setScale (const float& f)
 {
-	_rectangle_shape.setScale (f, f);
+	m_rectangle_shape.setScale (f, f);
 	if (names::b_hitboxes_is_drawn)
 	{
-		_rectangle_shape.setOutlineThickness (1);
-		_rectangle_shape.setOutlineColor (names::C_font_hitbox);
+		m_rectangle_shape.setOutlineThickness (1);
+		m_rectangle_shape.setOutlineColor (names::C_font_hitbox);
 		m_text.setCharacterSize (f * names::f_font_hitbox_scale);
 	}
 	else if (m_C_outline.a == 0.0)
 	{
-		_rectangle_shape.setOutlineThickness (0.0);
+		m_rectangle_shape.setOutlineThickness (0.0);
 		m_text.setCharacterSize (0);
 	}
 	else
 	{
-		_rectangle_shape.setOutlineThickness (1);
-		_rectangle_shape.setOutlineColor (m_C_outline);
+		m_rectangle_shape.setOutlineThickness (1);
+		m_rectangle_shape.setOutlineColor (m_C_outline);
 		m_text.setCharacterSize (0);
 	}
 }
 
 void Button::setPosition (const float& fx, const float& fy)
 {
-	_rectangle_shape.setPosition (fx, fy);
-	m_text.setPosition (fx + _rectangle_shape.getGlobalBounds ().width * 0.5 - m_text.getGlobalBounds ().width * 0.5,
+	m_rectangle_shape.setPosition (fx, fy);
+	m_text.setPosition (fx + m_rectangle_shape.getGlobalBounds ().width * 0.5 - m_text.getGlobalBounds ().width * 0.5,
 	                      fy - m_text.getGlobalBounds ().height * names::f_lifting_hitbox_text);
 }
 
@@ -64,18 +64,18 @@ void Button::setString (const string& s)
 	m_text.setCharacterSize (names::f_font_hitbox_scale);
 	m_text.setFont (names::F_pixel);
 	m_text.setFillColor (names::C_font_hitbox);
-	_rectangle_shape.setOutlineColor (names::C_font_hitbox);
-	_rectangle_shape.setOutlineThickness (1);
+	m_rectangle_shape.setOutlineColor (names::C_font_hitbox);
+	m_rectangle_shape.setOutlineThickness (1);
 }
 
 FloatRect Button::getGlobalBounds ()
 {
-	return _rectangle_shape.getGlobalBounds ();
+	return m_rectangle_shape.getGlobalBounds ();
 }
 
 const RectangleShape& Button::getRectangleShape () const
 {
-	return _rectangle_shape;
+	return m_rectangle_shape;
 }
 
 const Text& Button::getText () const
@@ -85,12 +85,12 @@ const Text& Button::getText () const
 
 bool Button::interect () const
 {
-	return PC_Mouse::getGlobalBounds ().intersects (_rectangle_shape.getGlobalBounds ());
+	return PC_Mouse::getGlobalBounds ().intersects (m_rectangle_shape.getGlobalBounds ());
 }
 
 bool Button::pressed () const
 {
-	return (PC_Mouse::getGlobalBounds ().intersects (_rectangle_shape.getGlobalBounds ()) and PC_Mouse::isLeftPressed ());
+	return (PC_Mouse::getGlobalBounds ().intersects (m_rectangle_shape.getGlobalBounds ()) and PC_Mouse::isLeftPressed ());
 }
 
 void Button::setOutline (const Color& C)
@@ -100,5 +100,5 @@ void Button::setOutline (const Color& C)
 
 const Vector2f Button::getPosition () const
 {
-	return _rectangle_shape.getPosition ();
+	return m_rectangle_shape.getPosition ();
 }

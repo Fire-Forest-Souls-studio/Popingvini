@@ -2,7 +2,7 @@
 
 void ImageButton::setTexture ()
 {
-	_rectangle_shape.setTexture (&texture_obj);
+	m_rectangle_shape.setTexture (&texture_obj);
 }
 
 Texture& ImageButton::getTexture ()
