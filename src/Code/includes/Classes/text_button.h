@@ -5,20 +5,17 @@
 
 class TextButton : public Button
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	public:
-		Text _text;
+		Text text;
 
 		using Button::Button;
 
-		void setText (const string&);
+		void setText (const string& text);
 		void setSizeByText ();
-		void textSetString (const String&);
-		void setStyle (Uint32);
+		void textSetString (const String& text);
+		void setStyle (Uint32 style);
 
-		void setPosition (const float&, const float&) override;
+		void setPosition (const float& x, const float& y) override;
 };
 
 #endif

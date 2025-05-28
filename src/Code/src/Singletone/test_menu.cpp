@@ -110,7 +110,7 @@ void TestMenu::main ()
 
 		for (size_t st (0); st < TM_->m_text_button.size (); st++)
 		{
-			TM_->m_text_button[st]._text.setCharacterSize (TM_->m_f_TEXT_SIZE * WindowAndStyles::getFactorY ());
+			TM_->m_text_button[st].text.setCharacterSize (TM_->m_f_TEXT_SIZE * WindowAndStyles::getFactorY ());
 			if (st == 0)
 			{
 				TM_->m_text_button[st].setPosition (
@@ -120,29 +120,29 @@ void TestMenu::main ()
 			else
 			{
 				TM_->m_text_button[st].setPosition (
-				    TM_->m_text_button[st - 1]._text.getPosition ().x,
-				    TM_->m_text_button[st - 1]._text.getPosition ().y + TM_->m_text_button[st - 1]._text.getGlobalBounds ().height + TM_->m_i_BETWEEN * WindowAndStyles::getFactorY ());
+				    TM_->m_text_button[st - 1].text.getPosition ().x,
+				    TM_->m_text_button[st - 1].text.getPosition ().y + TM_->m_text_button[st - 1].text.getGlobalBounds ().height + TM_->m_i_BETWEEN * WindowAndStyles::getFactorY ());
 			}
 
 			if (TM_->m_st_question < LearnMenu::work->test.question.size ())
 			{
 				TM_->m_text_button[st].setScale (WindowAndStyles::getFactorY ());
-				TM_->m_text_button[st].setPosition (TM_->m_text_button[st]._text.getPosition ().x, TM_->m_text_button[st]._text.getPosition ().y);
+				TM_->m_text_button[st].setPosition (TM_->m_text_button[st].text.getPosition ().x, TM_->m_text_button[st].text.getPosition ().y);
 			}
 		}
 		if (TM_->m_st_question < LearnMenu::work->test.question.size ())
 		{
 			for (size_t st (0); st < TM_->m_text_button.size (); st++)
 			{
-				if (PC_Mouse::getGlobalBounds ().intersects (TM_->m_text_button[st]._text.getGlobalBounds ()))
+				if (PC_Mouse::getGlobalBounds ().intersects (TM_->m_text_button[st].text.getGlobalBounds ()))
 				{
 					TM_->m_text_button[st].setStyle (Text::Bold);
-					TM_->m_text_button[st]._text.setFillColor (TM_->m_C_ANSWER_SELECT);
+					TM_->m_text_button[st].text.setFillColor (TM_->m_C_ANSWER_SELECT);
 				}
 				else
 				{
 					TM_->m_text_button[st].setStyle (Text::Regular);
-					TM_->m_text_button[st]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+					TM_->m_text_button[st].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
 				}
 			}
 		}
@@ -161,9 +161,9 @@ void TestMenu::main ()
 					     st0 < LearnMenu::work->test.question[TM_->m_st_question].answer.size ();
 					     st0++)
 					{
-						TM_->m_u_cout += LearnMenu::work->test.question[TM_->m_st_question].answer[st0].cost;
+						TM_->m_u_cout += LearnMenu::work->test.question[TM_->m_st_question].answer[st0].i_cost;
 					}
-					TM_->m_u_true += LearnMenu::work->test.question[TM_->m_st_question].answer[st].cost;
+					TM_->m_u_true += LearnMenu::work->test.question[TM_->m_st_question].answer[st].i_cost;
 					TM_->m_st_question++;
 
 					TM_->m_text_button.resize (LearnMenu::work->test.question[TM_->m_st_question].answer.size ());
@@ -173,11 +173,11 @@ void TestMenu::main ()
 					    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY () * 13 / 14));
 					for (size_t st (0); st < TM_->m_text_button.size (); st++)
 					{
-						TM_->m_text_button[st]._text.setFont (names::F_pixel);
+						TM_->m_text_button[st].text.setFont (names::F_pixel);
 						TM_->m_text_button[st].textSetString (names::GetStringOfHyphenation (
 						    TM_->m_w_ADD + LearnMenu::work->test.question[TM_->m_st_question].answer[st].w_string,
 						    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY ()));
-						TM_->m_text_button[st]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+						TM_->m_text_button[st].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
 						TM_->m_text_button[st].setSizeByText ();
 						TM_->m_text_button[st].setFillColor (Color::Transparent);
 						TM_->m_text_button[st].setString ("TM/button/answer" + to_string (st));
@@ -199,9 +199,9 @@ void TestMenu::main ()
 					     st0 < LearnMenu::work->test.question[TM_->m_st_question].answer.size ();
 					     st0++)
 					{
-						TM_->m_u_cout += LearnMenu::work->test.question[TM_->m_st_question].answer[st0].cost;
+						TM_->m_u_cout += LearnMenu::work->test.question[TM_->m_st_question].answer[st0].i_cost;
 					}
-					TM_->m_u_true += LearnMenu::work->test.question[TM_->m_st_question].answer[st].cost;
+					TM_->m_u_true += LearnMenu::work->test.question[TM_->m_st_question].answer[st].i_cost;
 					TM_->m_st_question++;
 
 					TM_->m_text_button.resize (6);
@@ -215,7 +215,7 @@ void TestMenu::main ()
 					TM_->m_text_button[0].textSetString (names::GetStringOfHyphenation (
 					    L"Пункт: результат сейчас (лучший результат)",
 					    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY ()));
-					TM_->m_text_button[0]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+					TM_->m_text_button[0].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
 					TM_->m_text_button[0].setStyle (Text::Italic);
 
 					if (TM_->m_u_true > unsigned (LearnMenu::work->test.f_best_true * float (TM_->m_u_cout) / 100.0))
@@ -223,12 +223,12 @@ void TestMenu::main ()
 						TM_->m_text_button[1].textSetString (names::GetStringOfHyphenation (
 						    L"Верно отвечено: " + to_wstring (TM_->m_u_true) + L" (" + to_wstring (unsigned (LearnMenu::work->test.f_best_true * float (TM_->m_u_cout) / 100.0)) + L")",
 						    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY () * 13 / 14));
-						TM_->m_text_button[1]._text.setFillColor (TM_->m_C_ANSWER_SELECT);
+						TM_->m_text_button[1].text.setFillColor (TM_->m_C_ANSWER_SELECT);
 						TM_->m_text_button[1].setStyle (Text::Bold);
 					}
 					else
 					{
-						TM_->m_text_button[1]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+						TM_->m_text_button[1].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
 						TM_->m_text_button[1].setStyle (Text::Regular);
 						TM_->m_text_button[1].textSetString (names::GetStringOfHyphenation (
 						    L"Верно отвечено: " + to_wstring (TM_->m_u_true) + L" (" + to_wstring (unsigned (LearnMenu::work->test.f_best_true * float (TM_->m_u_cout) / 100.0)) + L")",
@@ -238,7 +238,7 @@ void TestMenu::main ()
 					TM_->m_text_button[2].textSetString (names::GetStringOfHyphenation (
 					    L"Всего заданий: " + to_wstring (TM_->m_u_cout),
 					    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY ()));
-					TM_->m_text_button[2]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+					TM_->m_text_button[2].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
 					TM_->m_text_button[2].setStyle (Text::Italic);
 
 					if (float (TM_->m_u_true) / float (TM_->m_u_cout) * 100.0 > LearnMenu::work->test.f_best_true)
@@ -246,7 +246,7 @@ void TestMenu::main ()
 						TM_->m_text_button[3].textSetString (names::GetStringOfHyphenation (
 						    L"Верно %: " + to_wstring (float (TM_->m_u_true) / float (TM_->m_u_cout) * 100.0) + L" (" + to_wstring (LearnMenu::work->test.f_best_true) + L")",
 						    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY () * 13 / 14));
-						TM_->m_text_button[3]._text.setFillColor (TM_->m_C_ANSWER_SELECT);
+						TM_->m_text_button[3].text.setFillColor (TM_->m_C_ANSWER_SELECT);
 						TM_->m_text_button[3].setStyle (Text::Bold);
 					}
 					else
@@ -254,7 +254,7 @@ void TestMenu::main ()
 						TM_->m_text_button[3].textSetString (names::GetStringOfHyphenation (
 						    L"Верно %: " + to_wstring (float (TM_->m_u_true) / float (TM_->m_u_cout) * 100.0) + L" (" + to_wstring (LearnMenu::work->test.f_best_true) + L")",
 						    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY ()));
-						TM_->m_text_button[3]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+						TM_->m_text_button[3].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
 						TM_->m_text_button[3].setStyle (Text::Regular);
 					}
 
@@ -263,7 +263,7 @@ void TestMenu::main ()
 						TM_->m_text_button[4].textSetString (names::GetStringOfHyphenation (
 						    L"Время прохождения: " + to_wstring (TM_->m_f_time) + L" (" + to_wstring (LearnMenu::work->test.f_best_time) + L")",
 						    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY () * 13 / 14));
-						TM_->m_text_button[4]._text.setFillColor (TM_->m_C_ANSWER_SELECT);
+						TM_->m_text_button[4].text.setFillColor (TM_->m_C_ANSWER_SELECT);
 						TM_->m_text_button[4].setStyle (Text::Bold);
 					}
 					else
@@ -271,7 +271,7 @@ void TestMenu::main ()
 						TM_->m_text_button[4].textSetString (names::GetStringOfHyphenation (
 						    L"Время прохождения: " + to_wstring (TM_->m_f_time) + L" (" + to_wstring (LearnMenu::work->test.f_best_time) + L")",
 						    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY ()));
-						TM_->m_text_button[4]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+						TM_->m_text_button[4].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
 						TM_->m_text_button[4].setStyle (Text::Regular);
 					}
 
@@ -280,7 +280,7 @@ void TestMenu::main ()
 						TM_->m_text_button[5].textSetString (names::GetStringOfHyphenation (
 						    L"Результат: " + to_wstring (TM_->m_f_score) + L" (" + to_wstring (LearnMenu::work->test.f_best_score) + L")",
 						    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY () * 13 / 14));
-						TM_->m_text_button[5]._text.setFillColor (TM_->m_C_ANSWER_SELECT);
+						TM_->m_text_button[5].text.setFillColor (TM_->m_C_ANSWER_SELECT);
 						TM_->m_text_button[5].setStyle (Text::Bold);
 					}
 					else
@@ -288,13 +288,13 @@ void TestMenu::main ()
 						TM_->m_text_button[5].textSetString (names::GetStringOfHyphenation (
 						    L"Результат: " + to_wstring (TM_->m_f_score) + L" (" + to_wstring (LearnMenu::work->test.f_best_score) + L")",
 						    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY ()));
-						TM_->m_text_button[5]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+						TM_->m_text_button[5].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
 						TM_->m_text_button[5].setStyle (Text::Regular);
 					}
 
 					for (size_t st (0); st < TM_->m_text_button.size (); st++)
 					{
-						TM_->m_text_button[st]._text.setFont (names::F_pixel);
+						TM_->m_text_button[st].text.setFont (names::F_pixel);
 					}
 
 					break;
@@ -346,12 +346,12 @@ void TestMenu::setZeroQuestion ()
 	    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY () * 13 / 14));
 	for (size_t st (0); st < TM_->m_text_button.size (); st++)
 	{
-		TM_->m_text_button[st]._text.setFont (names::F_pixel);
+		TM_->m_text_button[st].text.setFont (names::F_pixel);
 		TM_->m_text_button[st].textSetString (names::GetStringOfHyphenation (
 		    TM_->m_w_ADD + LearnMenu::work->test.question[TM_->m_st_question].answer[st].w_string,
 		    (WorksMenu::getDownPanel ().getGlobalBounds ().width - (2 + TM_->m_i_LEFT * 2) * WindowAndStyles::getFactorY ()) / TM_->m_f_WIGHT_SIMBOL / WindowAndStyles::getFactorY ()));
-		TM_->m_text_button[st]._text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
-		TM_->m_text_button[st]._text.setCharacterSize (TM_->m_f_TEXT_SIZE * WindowAndStyles::getFactorY ());
+		TM_->m_text_button[st].text.setFillColor (TM_->m_C_ANSWER_UNSELECT);
+		TM_->m_text_button[st].text.setCharacterSize (TM_->m_f_TEXT_SIZE * WindowAndStyles::getFactorY ());
 		TM_->m_text_button[st].setSizeByText ();
 		TM_->m_text_button[st].setFillColor (Color::Transparent);
 		TM_->m_text_button[st].setString ("TM/button/answer" + to_string (st));

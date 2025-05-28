@@ -13,8 +13,6 @@ using namespace std;
 
 class Work
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
 
 	public:
 		wstring w_name;
@@ -28,8 +26,8 @@ class Work
 		Learn learn;
 
 		Work ();
-		Work (const wstring&, const wstring&, const wstring&, const wstring&);
-		Work (const wstring&, const wstring&, const wstring&, const wstring&, const Test&);
+		Work (const wstring& name, const wstring& content, const wstring& types, const wstring& teory);
+		Work (const wstring& name, const wstring& content, const wstring& types, const wstring& teory, const Test& test);
 };
 
 #endif

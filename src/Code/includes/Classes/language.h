@@ -13,21 +13,18 @@ using namespace std;
 
 class Language
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	public:
 		string s_name;
 
-		ImageButton button;
+		ImageButton image_button;
 
 		vector<Work> work;
 
-		Texture T_test_background;
+		Texture texture;
 
-		Language (const string&);
+		Language (const string& name);
 
-		void addWork (const Work&);
+		void addWork (const Work& work);
 };
 
 #endif

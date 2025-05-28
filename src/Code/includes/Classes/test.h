@@ -12,8 +12,6 @@ using namespace std;
 
 class Test
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
 
 	public:
 		float f_best_true;
@@ -23,7 +21,7 @@ class Test
 		vector<Question> question;
 
 		Test ();
-		Test (const vector<Question>&);
+		Test (const vector<Question>& questions);
 };
 
 #endif

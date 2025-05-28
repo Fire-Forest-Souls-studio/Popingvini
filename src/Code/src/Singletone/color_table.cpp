@@ -13,3 +13,17 @@ Color ColorTable::c200 = Color (200, 200, 200, 255);
 Color ColorTable::c250 = Color (250, 250, 250, 255);
 Color ColorTable::g137b204 = Color (0, 137, 204, 255);
 Color ColorTable::a75 = Color (0, 0, 0, 75);
+
+Color& ColorTable::GraphiteBlack_a75 (c25a75);
+Color& ColorTable::GraphiteBlack_a175 (c25a175);
+Color& ColorTable::BlackAmber (c10);
+Color& ColorTable::GraphiteBlack (c25);
+Color& ColorTable::SignalBlack (c50);
+Color& ColorTable::ColorOfWetAsphalt (c75);
+Color& ColorTable::DullGray (c100);
+Color& ColorTable::Gray (c125);
+Color& ColorTable::MatherOfPearlLightGray (c150);
+Color& ColorTable::SvetlyTelegrei (c200);
+Color& ColorTable::White (c250);
+Color& ColorTable::BondyBeachWaters (g137b204);
+Color& ColorTable::Black_a75 (a75);

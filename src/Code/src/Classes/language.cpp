@@ -3,7 +3,7 @@
 Language::Language (const string& s)
     : s_name (s),
 
-      button ("L/button/" + s),
+      image_button ("L/button/" + s),
 
       work (0)
 {

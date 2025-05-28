@@ -11,14 +11,12 @@ using namespace std;
 struct Answer
 {
 
-		int cost;
+		int i_cost;
 		wstring w_string;
 };
 
 class Question
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
 
 	public:
 		vector<Answer> answer;
@@ -26,7 +24,7 @@ class Question
 		wstring w_question;
 
 		Question ();
-		Question (const wstring&, const vector<Answer>&);
+		Question (const wstring& question, const vector<Answer>& answers);
 };
 
 #endif

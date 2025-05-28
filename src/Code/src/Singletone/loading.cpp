@@ -147,7 +147,7 @@ Loading::Loading ()
 	load_void_const.push_back (next_button_png);
 	load_unsigned_long.push_back (next_button_png_size);
 	load_string.push_back ("Images/Learn_menu/next_button.png");
-	load_texture.push_back (&LanguageMenu::getPython ().T_test_background);
+	load_texture.push_back (&LanguageMenu::getPython ().texture);
 	load_void_const.push_back (test_background_py_png);
 	load_unsigned_long.push_back (test_background_py_png_size);
 	load_string.push_back ("Images/Learn_menu/test_background_py.png");

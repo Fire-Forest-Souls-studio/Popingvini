@@ -3,30 +3,30 @@
 
 void TextButton::setText (const string& s)
 {
-	_text.setString (s);
+	text.setString (s);
 }
 
 void TextButton::setSizeByText ()
 {
 	m_rectangle_shape.setSize (Vector2f (
-	    _text.getLocalBounds ().width / WindowAndStyles::getFactorY (),
-	    _text.getLocalBounds ().height / WindowAndStyles::getFactorY ()));
+	    text.getLocalBounds ().width / WindowAndStyles::getFactorY (),
+	    text.getLocalBounds ().height / WindowAndStyles::getFactorY ()));
 }
 
 void TextButton::textSetString (const String& S)
 {
-	_text.setString (S);
+	text.setString (S);
 	setSizeByText ();
 }
 
 void TextButton::setStyle (Uint32 U32)
 {
-	_text.setStyle (U32);
+	text.setStyle (U32);
 	setSizeByText ();
 }
 
 void TextButton::setPosition (const float& fx, const float& fy)
 {
 	Button::setPosition (fx, fy);
-	_text.setPosition (fx, fy);
+	text.setPosition (fx, fy);
 }

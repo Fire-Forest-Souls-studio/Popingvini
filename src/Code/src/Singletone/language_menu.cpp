@@ -15,8 +15,8 @@ LanguageMenu* LanguageMenu::class_obj = NULL;
 LanguageMenu::LanguageMenu ()
     : L_python ("Python")
 {
-	L_python.button.setSize (PersonMenu::getButtonSize ());
-	L_python.button.setFillColor (Color (
+	L_python.image_button.setSize (PersonMenu::getButtonSize ());
+	L_python.image_button.setFillColor (Color (
 	    PersonMenu::getButtonColor ().r,
 	    PersonMenu::getButtonColor ().g,
 	    PersonMenu::getButtonColor ().b,
@@ -453,7 +453,7 @@ void LanguageMenu::main_load ()
 
 	if (Loading::getLoad ())
 	{
-		LM_->L_python.button.setTexture ();
+		LM_->L_python.image_button.setTexture ();
 	}
 }
 
@@ -466,13 +466,13 @@ void LanguageMenu::main_main ()
 	{
 		if (PersonMenu::getFrameTransition () > 0.0)
 		{
-			if (LM_->L_python.button.interect ())
+			if (LM_->L_python.image_button.interect ())
 			{
-				LM_->L_python.button.setFillColor (Color (255.0, 255.0, 255.0, 255.0 - PersonMenu::getFrameTransition ()));
+				LM_->L_python.image_button.setFillColor (Color (255.0, 255.0, 255.0, 255.0 - PersonMenu::getFrameTransition ()));
 			}
 			else
 			{
-				LM_->L_python.button.setFillColor (Color (
+				LM_->L_python.image_button.setFillColor (Color (
 				    PersonMenu::getButtonColor ().r,
 				    PersonMenu::getButtonColor ().g,
 				    PersonMenu::getButtonColor ().b,
@@ -481,13 +481,13 @@ void LanguageMenu::main_main ()
 		}
 		else
 		{
-			if (LM_->L_python.button.interect ())
+			if (LM_->L_python.image_button.interect ())
 			{
-				LM_->L_python.button.setFillColor (Color (255.0, 255.0, 255.0, 255.0));
+				LM_->L_python.image_button.setFillColor (Color (255.0, 255.0, 255.0, 255.0));
 			}
 			else
 			{
-				LM_->L_python.button.setFillColor (Color (
+				LM_->L_python.image_button.setFillColor (Color (
 				    PersonMenu::getButtonColor ().r,
 				    PersonMenu::getButtonColor ().g,
 				    PersonMenu::getButtonColor ().b,
@@ -495,15 +495,15 @@ void LanguageMenu::main_main ()
 			}
 		}
 
-		LM_->L_python.button.setScale (f);
-		LM_->L_python.button.setPosition (
+		LM_->L_python.image_button.setScale (f);
+		LM_->L_python.image_button.setPosition (
 		    WindowAndStyles::getGlobalBounds ().width * 0.5 - PersonMenu::getButtonSize ().x * f * 0.5,
 		    WindowAndStyles::getGlobalBounds ().height * 0.5 - PersonMenu::getButtonSize ().y * f * 0.5);
 
-		if (LM_->L_python.button.pressed ())
+		if (LM_->L_python.image_button.pressed ())
 		{
 			WorksMenu::setLanguage (&LM_->L_python);
-			TestMenu::setLanguageTexture (LM_->L_python.T_test_background);
+			TestMenu::setLanguageTexture (LM_->L_python.texture);
 			names::game_status = GameStatus::works_menu;
 		}
 	}
@@ -518,19 +518,19 @@ void LanguageMenu::main_transitionOf ()
 		if (PersonMenu::getFrameTransition () < 255.0)
 		{
 			PersonMenu::getFrameTransition () += PersonMenu::getSpeedTransition () * names::microsec * names::f_time;
-			LM_->L_python.button.setFillColor (Color (
-			    LM_->L_python.button.getRectangleShape ().getFillColor ().r,
-			    LM_->L_python.button.getRectangleShape ().getFillColor ().g,
-			    LM_->L_python.button.getRectangleShape ().getFillColor ().b,
+			LM_->L_python.image_button.setFillColor (Color (
+			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().r,
+			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().g,
+			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().b,
 			    255.0 - PersonMenu::getFrameTransition ()));
 		}
 		else if (PersonMenu::getFrameTransition () != 255.0)
 		{
 			PersonMenu::getFrameTransition () = 255.0;
-			LM_->L_python.button.setFillColor (Color (
-			    LM_->L_python.button.getRectangleShape ().getFillColor ().r,
-			    LM_->L_python.button.getRectangleShape ().getFillColor ().g,
-			    LM_->L_python.button.getRectangleShape ().getFillColor ().b,
+			LM_->L_python.image_button.setFillColor (Color (
+			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().r,
+			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().g,
+			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().b,
 			    255.0 - PersonMenu::getFrameTransition ()));
 		}
 	}
@@ -547,7 +547,7 @@ void LanguageMenu::main ()
 
 ImageButton& LanguageMenu::getPythonButton ()
 {
-	return getClass ()->L_python.button;
+	return getClass ()->L_python.image_button;
 }
 
 Language& LanguageMenu::getPython ()

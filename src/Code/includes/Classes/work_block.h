@@ -22,28 +22,25 @@ using namespace std;
 
 class WorkBlock
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	protected:
-		bool _b_interect;
+		bool m_b_interect;
 
 	public:
-		Button _button;
+		Button button;
 
-		RectangleShape _RS_icon;
-		RectangleShape _RS_content;
+		RectangleShape RS_icon;
+		RectangleShape RS_content;
 
-		Text _T_name;
-		Text _T_type;
-		Text _T_content;
-		Text _T_score;
+		Text T_name;
+		Text T_type;
+		Text T_content;
+		Text T_score;
 
 		WorkBlock ();
 
-		void build (size_t, const Work&);
-		void resize (const Work&);
-		void transition (const Work&);
+		void build (size_t cout, const Work& work);
+		void resize (const Work& work);
+		void transition (const Work& work);
 };
 
 #endif
