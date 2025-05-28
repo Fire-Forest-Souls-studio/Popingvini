@@ -16,9 +16,9 @@ class Button
 	protected:
 		RectangleShape _rectangle_shape;
 
-		Text text_obj;
+		Text m_text;
 
-		Color C_outline;
+		Color m_C_outline;
 
 	public:
 		Button ();
