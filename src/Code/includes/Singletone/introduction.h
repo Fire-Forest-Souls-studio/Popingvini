@@ -37,10 +37,8 @@ struct Pingvinon
 
 class Introduction
 {
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	private:
-		static Introduction* class_obj;
+		static Introduction* m_class_obj;
 
 		Introduction ();
 

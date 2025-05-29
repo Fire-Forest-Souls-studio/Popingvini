@@ -517,7 +517,7 @@ void LanguageMenu::main_transitionOf ()
 	{
 		if (PersonMenu::getFrameTransition () < 255.0)
 		{
-			PersonMenu::getFrameTransition () += PersonMenu::getSpeedTransition () * names::microsec * names::f_time;
+			PersonMenu::getFrameTransition () += PersonMenu::getSpeedTransition () * names::f_microsec * names::f_time;
 			LM_->L_python.image_button.setFillColor (Color (
 			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().r,
 			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().g,

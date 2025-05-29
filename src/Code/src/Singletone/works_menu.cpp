@@ -492,7 +492,7 @@ void WorksMenu::main_transitionOf ()
 	{
 		if (PersonMenu::getFrameTransition () > 0.0)
 		{
-			PersonMenu::getFrameTransition () -= PersonMenu::getSpeedTransition () * names::microsec * names::f_time;
+			PersonMenu::getFrameTransition () -= PersonMenu::getSpeedTransition () * names::f_microsec * names::f_time;
 			WM_->_B_up_panel.setFillColor (Color (ColorTable::c25a75.r, ColorTable::c25a75.g, ColorTable::c25a75.b, PersonMenu::getFrameTransition () / 255.0 * ColorTable::c25a75.a));
 			WM_->_B_up_panel.setOutline (Color (ColorTable::c75.r, ColorTable::c75.g, ColorTable::c75.b, PersonMenu::getFrameTransition ()));
 			WM_->_T_up_panel_left.setFillColor (Color (ColorTable::c100.r, ColorTable::c100.g, ColorTable::c100.b, PersonMenu::getFrameTransition ()));

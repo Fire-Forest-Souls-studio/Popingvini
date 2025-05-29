@@ -90,7 +90,7 @@ void TestMenu::main ()
 		// нынешний
 		if (TM_->m_st_question < LearnMenu::work->test.question.size ())
 		{
-			TM_->m_f_time += names::microsec * names::f_time;
+			TM_->m_f_time += names::f_microsec * names::f_time;
 		}
 
 		TM_->m_RS_image.setScale (WindowAndStyles::getFactorY (), WindowAndStyles::getFactorY ());

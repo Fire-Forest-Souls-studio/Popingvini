@@ -31,8 +31,6 @@ enum GameStatus
 
 class names
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
 
 	public:
 		static bool b_hitboxes_is_drawn;
@@ -43,7 +41,7 @@ class names
 		static Event E_event;
 
 		static float f_time;
-		static float microsec;
+		static float f_microsec;
 		static float f_font_hitbox_scale;
 		static float f_lifting_hitbox_text;
 
@@ -57,17 +55,17 @@ class names
 
 		static string s_path;
 
-		static void LoadFromMemory (Texture&, void const*, unsigned long, const string&, bool b = false);
-		static void LoadFromMemory (Font&, void const*, unsigned long, const string&);
-		static void LoadFromMemory (Image&, void const*, unsigned long, const string&);
-		static void LoadFromMemory (SoundBuffer&, void const*, unsigned long, const string&);
-		static void LoadFromMemory (Shader&, const string&, const string&);
-		static void SetXCenterPosition (Text&, const float&);
-		static void SetXCenterPosition (RectangleShape&, float);
+		static void LoadFromMemory (Texture& texture, void const* data, unsigned long size, const string& filename, bool two_tipes_for_shader = false);
+		static void LoadFromMemory (Font& font, void const* data, unsigned long size, const string& filename);
+		static void LoadFromMemory (Image& image, void const* data, unsigned long size, const string& filename);
+		static void LoadFromMemory (SoundBuffer& sound_buffer, void const* data, unsigned long size, const string& filename);
+		static void LoadFromMemory (Shader& shader, const string& shader_text, const string& filename);
+		static void SetXCenterPosition (Text& text, const float& y);
+		static void SetXCenterPosition (RectangleShape& rectangleshape, float y);
 		static void SetPath (char* argv);
 
-		static string GetStringOfHyphenation (const string&, int);
-		static wstring GetStringOfHyphenation (const wstring&, int);
+		static string GetStringOfHyphenation (const string& string, int max);
+		static wstring GetStringOfHyphenation (const wstring& wstring, int max);
 };
 
 #endif

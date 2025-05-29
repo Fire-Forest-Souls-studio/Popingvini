@@ -51,7 +51,7 @@ void WindowAndStyles::main_F11 ()
 {
 	WindowAndStyles* WAS_ = getClass ();
 
-	WAS_->m_f_time_since_clicking += names::microsec * names::f_time;
+	WAS_->m_f_time_since_clicking += names::f_microsec * names::f_time;
 
 	if (Keyboard::isKeyPressed (Keyboard::F11) and WAS_->m_f_time_since_clicking > 1.0 and WAS_->m_render_window.hasFocus ())
 	{

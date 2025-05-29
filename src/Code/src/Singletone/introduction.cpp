@@ -6,7 +6,7 @@
 
 // private
 
-Introduction* Introduction::class_obj = 0;
+Introduction* Introduction::m_class_obj = 0;
 
 Introduction::Introduction ()
     : m_RS_anim (Vector2f (300, 150)),
@@ -51,11 +51,11 @@ Introduction::Introduction ()
 
 Introduction* Introduction::getClass ()
 {
-	if (class_obj != 0)
-		return class_obj;
+	if (m_class_obj != 0)
+		return m_class_obj;
 
-	class_obj = new Introduction ();
-	return class_obj;
+	m_class_obj = new Introduction ();
+	return m_class_obj;
 }
 
 // void
@@ -109,7 +109,7 @@ void Introduction::main_if_introduction ()
 
 	// анимация
 
-	I_->m_f_frame_for_fire_forest_souls_studio += names::microsec * names::f_time * I_->m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION;
+	I_->m_f_frame_for_fire_forest_souls_studio += names::f_microsec * names::f_time * I_->m_f_SPEED_FIRE_FOREST_SOULS_STUDIO_ANIMATION;
 
 	if (I_->m_f_frame_for_fire_forest_souls_studio < I_->m_u_COUT_FRAME_FIRE_FOREST_SOULS_STUDIO)
 	{
@@ -189,7 +189,7 @@ void Introduction::main_if_loading_or_introduction ()
 		I_->m_pingvonon[st].f_posx += I_->m_pingvonon[st].i_flip *
 		                              I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_move_speed * names::f_time;
 		// anim
-		I_->m_pingvonon[st].f_frame += names::microsec * names::f_time;
+		I_->m_pingvonon[st].f_frame += names::f_microsec * names::f_time;
 		if (I_->m_pingvonon[st].f_frame < I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_frame_cout * I_->m_anim_pingvinon[I_->m_pingvonon[st].u_anim_pingvinon].f_animation_speed)
 		{
 			if (I_->m_pingvonon[st].i_flip < 0)

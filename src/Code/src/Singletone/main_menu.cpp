@@ -216,7 +216,7 @@ void MainMenu::main_transform ()
 			MM_->si_reverse *= -1;
 		}
 		MM_->V2f_popingvini_defoult = Vector2f (MM_->V2f_popingvini_defoult.x + MM_->f_speed_move_ice * MM_->si_reverse, MM_->V2f_popingvini_defoult.y);
-		MM_->f_frame_popingvini += MM_->f_speed_anim_popingvini * names::microsec * names::f_time;
+		MM_->f_frame_popingvini += MM_->f_speed_anim_popingvini * names::f_microsec * names::f_time;
 		if (MM_->f_frame_popingvini > MM_->u_cout_frame_popingvini)
 		{
 			MM_->f_frame_popingvini = 0.0;

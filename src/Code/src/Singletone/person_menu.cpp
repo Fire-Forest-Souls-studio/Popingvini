@@ -94,13 +94,13 @@ void PersonMenu::main_transitionTo ()
 
 		if (PM_->f_y_position_background > -WindowAndStyles::getPixelsSizeY ())
 		{
-			PM_->f_frame_animation += PM_->f_speed_animation * names::microsec * names::f_time;
+			PM_->f_frame_animation += PM_->f_speed_animation * names::f_microsec * names::f_time;
 			if (PM_->f_frame_animation > PM_->u_cout_frames)
 			{
 				PM_->f_frame_animation = 0.0;
 			}
 
-			PM_->f_y_position_background -= PM_->f_speed_move * names::microsec * names::f_time;
+			PM_->f_y_position_background -= PM_->f_speed_move * names::f_microsec * names::f_time;
 			for (size_t st (0); st < PM_->RS_background.size (); st++)
 			{
 				PM_->RS_background[st].setTextureRect (IntRect (
@@ -144,13 +144,13 @@ void PersonMenu::main_transitionTo ()
 		}
 		if (PM_->f_y_position_background < WindowAndStyles::getPixelsSizeY ())
 		{
-			PM_->f_frame_animation += PM_->f_speed_animation * names::microsec * names::f_time;
+			PM_->f_frame_animation += PM_->f_speed_animation * names::f_microsec * names::f_time;
 			if (PM_->f_frame_animation > PM_->u_cout_frames)
 			{
 				PM_->f_frame_animation = 0.0;
 			}
 
-			PM_->f_y_position_background += PM_->f_speed_move * names::microsec * names::f_time;
+			PM_->f_y_position_background += PM_->f_speed_move * names::f_microsec * names::f_time;
 			for (size_t st (0); st < PM_->RS_background.size (); st++)
 			{
 				PM_->RS_background[st].setTextureRect (IntRect (
@@ -193,7 +193,7 @@ void PersonMenu::main_main ()
 	{
 		if (PM_->f_frame_transition < 255.0)
 		{
-			PM_->f_frame_transition += PM_->f_speed_transition * names::f_time * names::microsec;
+			PM_->f_frame_transition += PM_->f_speed_transition * names::f_time * names::f_microsec;
 			if (PM_->B_custom.interect ())
 			{
 				PM_->B_custom.setFillColor (Color (255, 255, 255, PM_->f_frame_transition));
@@ -276,7 +276,7 @@ void PersonMenu::main_transitionOf ()
 	{
 		if (PM_->f_frame_transition > 0.0)
 		{
-			PM_->f_frame_transition -= PM_->f_speed_transition * names::f_time * names::microsec;
+			PM_->f_frame_transition -= PM_->f_speed_transition * names::f_time * names::f_microsec;
 			PM_->B_custom.setFillColor (Color (
 			    PM_->B_custom.getRectangleShape ().getFillColor ().r,
 			    PM_->B_custom.getRectangleShape ().getFillColor ().g,
@@ -312,7 +312,7 @@ void PersonMenu::main_forAllMenu ()
 
 	if (names::game_status == GameStatus::person_menu or names::game_status == GameStatus::language_menu or names::game_status == GameStatus::works_menu or names::game_status == GameStatus::learn or names::game_status == GameStatus::test)
 	{
-		PM_->f_frame_animation += PM_->f_speed_animation * names::microsec * names::f_time;
+		PM_->f_frame_animation += PM_->f_speed_animation * names::f_microsec * names::f_time;
 		if (PM_->f_frame_animation > PM_->u_cout_frames)
 		{
 			PM_->f_frame_animation = 0.0;

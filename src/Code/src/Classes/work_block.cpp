@@ -73,7 +73,7 @@ void WorkBlock::resize (const Work& W)
 	    WindowAndStyles::getGlobalBounds ().width / f - WorksMenu::getIOutLeft () * 2 - 2 - WorksMenu::getIInLeft () * 2 - 2 - WorksMenu::getBlockLeft () * 2 - WorksMenu::getSizeBlockIcon ().x - WorksMenu::getBlockBetween () - 2,
 	    T_content.getGlobalBounds ().height / f + 4));
 	T_score.setString (names::GetStringOfHyphenation (
-	    L"Score: " + to_wstring (W.test.f_best_score) + L"     Best true: " + to_wstring (W.test.f_best_true) + L"%" + L"     Best time: " + to_wstring (W.test.f_best_time * names::microsec) + L"c",
+	    L"Score: " + to_wstring (W.test.f_best_score) + L"     Best true: " + to_wstring (W.test.f_best_true) + L"%" + L"     Best time: " + to_wstring (W.test.f_best_time * names::f_microsec) + L"c",
 	    (RS_icon.getSize ().x + WorksMenu::getIInBetween () + RS_content.getSize ().x + 2) / WorksMenu::getWidthSimvolSmallFont ()));
 	T_score.setCharacterSize (WorksMenu::getSmallFontScale () * f);
 	if (WorksMenu::getSizeBlockIcon ().y > RS_content.getSize ().y)

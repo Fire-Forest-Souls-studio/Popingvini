@@ -185,7 +185,7 @@ void Loading::main ()
 
 		if (L_->f_frame_transition < 255.0)
 		{
-			L_->f_frame_transition += L_->f_transition_speed * names::f_time * names::microsec;
+			L_->f_frame_transition += L_->f_transition_speed * names::f_time * names::f_microsec;
 
 			L_->rectangle_shape_obj.setFillColor (Color (255, 255, 255, L_->f_frame_transition));
 			L_->text_obj.setFillColor (Color (
@@ -279,7 +279,7 @@ void Loading::main ()
 
 		if (L_->f_frame_transition > 0.0)
 		{
-			L_->f_frame_transition -= names::microsec * L_->f_transition_speed * names::f_time;
+			L_->f_frame_transition -= names::f_microsec * L_->f_transition_speed * names::f_time;
 
 			L_->rectangle_shape_obj.setFillColor (Color (255, 255, 255, L_->f_frame_transition));
 			L_->text_obj.setFillColor (Color (

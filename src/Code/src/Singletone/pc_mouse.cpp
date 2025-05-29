@@ -72,7 +72,7 @@ void PC_Mouse::main ()
 		PCM_->b_pressed = false;
 		PCM_->b_double_pressed = false;
 	}
-	PCM_->f_time_since_clic += names::microsec * names::f_time;
+	PCM_->f_time_since_clic += names::f_microsec * names::f_time;
 }
 
 FloatRect PC_Mouse::getGlobalBounds ()
