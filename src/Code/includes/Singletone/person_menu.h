@@ -12,35 +12,32 @@ using namespace std;
 
 class PersonMenu
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	private:
-		vector<RectangleShape> RS_background;
+		vector<RectangleShape> m_RS_background;
 
-		ImageButton B_custom;
-		ImageButton B_integrated;
+		ImageButton m_B_custom;
+		ImageButton m_B_integrated;
 
-		Texture T_background;
+		Texture m_T_background;
 
-		float f_speed_move;
-		float f_frame_transition;
-		float f_speed_transition;
-		float f_frame_animation;
-		float f_speed_animation;
-		float f_y_position_background;
+		float m_f_speed_move;
+		float m_f_frame_transition;
+		float m_f_speed_transition;
+		float m_f_frame_animation;
+		float m_f_speed_animation;
+		float m_f_y_position_background;
 
-		Vector2f V2f_background_size;
-		Vector2f V2f_button_size;
-		Vector2f V2f_button_spacing;
+		Vector2f m_V2f_background_size;
+		Vector2f m_V2f_button_size;
+		Vector2f m_V2f_button_spacing;
 
-		Color C_button_color;
+		Color m_C_button_color;
 
-		unsigned u_cout_frames;
+		unsigned m_u_cout_frames;
 
 		PersonMenu ();
 
-		static PersonMenu* class_obj;
+		static PersonMenu* m_class_obj;
 
 		static void main_load ();
 		static void main_transitionTo ();

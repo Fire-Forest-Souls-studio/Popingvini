@@ -4,59 +4,59 @@
 #include "../../includes/Singletone/window_and_styles.h"
 #include "../../includes/Singletone/names.h"
 
-PersonMenu* PersonMenu::class_obj = NULL;
+PersonMenu* PersonMenu::m_class_obj = NULL;
 
 PersonMenu::PersonMenu ()
-    : RS_background (MainMenu::getBackground ().size ()),
+    : m_RS_background (MainMenu::getBackground ().size ()),
 
-      B_custom ("PM/button/custom"),
-      B_integrated ("PM/button/integrated"),
+      m_B_custom ("PM/button/custom"),
+      m_B_integrated ("PM/button/integrated"),
 
-      f_speed_move (35.0),
-      f_frame_transition (0.0),
-      f_speed_transition (255.0 / 1.5),
-      f_frame_animation (0.0),
-      f_speed_animation (6.0),
-      f_y_position_background (150),
+      m_f_speed_move (35.0),
+      m_f_frame_transition (0.0),
+      m_f_speed_transition (255.0 / 1.5),
+      m_f_frame_animation (0.0),
+      m_f_speed_animation (6.0),
+      m_f_y_position_background (150),
 
-      V2f_background_size (500.0, 300.0),
-      V2f_button_size (42, 42),
-      V2f_button_spacing (21, 14),
+      m_V2f_background_size (500.0, 300.0),
+      m_V2f_button_size (42, 42),
+      m_V2f_button_spacing (21, 14),
 
-      C_button_color (18, 42, 59, 255),
+      m_C_button_color (18, 42, 59, 255),
 
-      u_cout_frames (8)
+      m_u_cout_frames (8)
 {
-	for (size_t st (0); st < RS_background.size (); st++)
+	for (size_t st (0); st < m_RS_background.size (); st++)
 	{
-		RS_background[st].setSize (V2f_background_size);
+		m_RS_background[st].setSize (m_V2f_background_size);
 	}
-	B_custom.setSize (V2f_button_size);
-	B_integrated.setSize (V2f_button_size);
+	m_B_custom.setSize (m_V2f_button_size);
+	m_B_integrated.setSize (m_V2f_button_size);
 }
 
 PersonMenu* PersonMenu::getClass ()
 {
-	if (class_obj != NULL)
-		return class_obj;
+	if (m_class_obj != NULL)
+		return m_class_obj;
 
-	class_obj = new PersonMenu ();
-	return class_obj;
+	m_class_obj = new PersonMenu ();
+	return m_class_obj;
 }
 
 void PersonMenu::destroy ()
 {
 	PersonMenu* PM_ = getClass ();
 
-	PM_->RS_background.resize (int (WindowAndStyles::getGlobalBounds ().width / WindowAndStyles::getGlobalBounds ().height /
-	                                (PM_->V2f_background_size.x / WindowAndStyles::getPixelsSizeY ())) +
+	PM_->m_RS_background.resize (int (WindowAndStyles::getGlobalBounds ().width / WindowAndStyles::getGlobalBounds ().height /
+	                                (PM_->m_V2f_background_size.x / WindowAndStyles::getPixelsSizeY ())) +
 	                           2);
 
-	for (size_t st (0); st < PM_->RS_background.size (); st++)
+	for (size_t st (0); st < PM_->m_RS_background.size (); st++)
 	{
-		PM_->RS_background[st].setSize (PM_->V2f_background_size);
-		PM_->RS_background[st].setTexture (&PM_->T_background);
-		PM_->RS_background[st].setTextureRect (IntRect (0, 0, PM_->V2f_background_size.x, PM_->V2f_background_size.y));
+		PM_->m_RS_background[st].setSize (PM_->m_V2f_background_size);
+		PM_->m_RS_background[st].setTexture (&PM_->m_T_background);
+		PM_->m_RS_background[st].setTextureRect (IntRect (0, 0, PM_->m_V2f_background_size.x, PM_->m_V2f_background_size.y));
 	}
 }
 
@@ -66,15 +66,15 @@ void PersonMenu::main_load ()
 
 	if (Loading::getLoad ())
 	{
-		for (size_t st (0); st < PM_->RS_background.size (); st++)
+		for (size_t st (0); st < PM_->m_RS_background.size (); st++)
 		{
-			PM_->RS_background[st].setTexture (&PM_->T_background);
-			PM_->RS_background[st].setTextureRect (IntRect (0, 0, PM_->V2f_background_size.x, PM_->V2f_background_size.y));
+			PM_->m_RS_background[st].setTexture (&PM_->m_T_background);
+			PM_->m_RS_background[st].setTextureRect (IntRect (0, 0, PM_->m_V2f_background_size.x, PM_->m_V2f_background_size.y));
 		}
-		PM_->B_custom.setTexture ();
-		PM_->B_integrated.setTexture ();
-		PM_->B_custom.setFillColor (Color (255, 255, 255, 0));
-		PM_->B_integrated.setFillColor (Color (255, 255, 255, 0));
+		PM_->m_B_custom.setTexture ();
+		PM_->m_B_integrated.setTexture ();
+		PM_->m_B_custom.setFillColor (Color (255, 255, 255, 0));
+		PM_->m_B_integrated.setFillColor (Color (255, 255, 255, 0));
 	}
 }
 
@@ -85,51 +85,51 @@ void PersonMenu::main_transitionTo ()
 
 	if (names::game_status == GameStatus::main_menu_to_person_menu)
 	{
-		for (size_t st (0); st < PM_->RS_background.size (); st++)
+		for (size_t st (0); st < PM_->m_RS_background.size (); st++)
 		{
-			PM_->RS_background[st].setScale (f, f);
+			PM_->m_RS_background[st].setScale (f, f);
 		}
-		PM_->B_custom.setScale (f);
-		PM_->B_integrated.setScale (f);
+		PM_->m_B_custom.setScale (f);
+		PM_->m_B_integrated.setScale (f);
 
-		if (PM_->f_y_position_background > -WindowAndStyles::getPixelsSizeY ())
+		if (PM_->m_f_y_position_background > -WindowAndStyles::getPixelsSizeY ())
 		{
-			PM_->f_frame_animation += PM_->f_speed_animation * names::f_microsec * names::f_time;
-			if (PM_->f_frame_animation > PM_->u_cout_frames)
+			PM_->m_f_frame_animation += PM_->m_f_speed_animation * names::f_microsec * names::f_time;
+			if (PM_->m_f_frame_animation > PM_->m_u_cout_frames)
 			{
-				PM_->f_frame_animation = 0.0;
+				PM_->m_f_frame_animation = 0.0;
 			}
 
-			PM_->f_y_position_background -= PM_->f_speed_move * names::f_microsec * names::f_time;
-			for (size_t st (0); st < PM_->RS_background.size (); st++)
+			PM_->m_f_y_position_background -= PM_->m_f_speed_move * names::f_microsec * names::f_time;
+			for (size_t st (0); st < PM_->m_RS_background.size (); st++)
 			{
-				PM_->RS_background[st].setTextureRect (IntRect (
+				PM_->m_RS_background[st].setTextureRect (IntRect (
 				    0,
-				    PM_->T_background.getSize ().y / PM_->u_cout_frames * unsigned (PM_->f_frame_animation),
-				    PM_->T_background.getSize ().x,
-				    PM_->T_background.getSize ().y / PM_->u_cout_frames));
+				    PM_->m_T_background.getSize ().y / PM_->m_u_cout_frames * unsigned (PM_->m_f_frame_animation),
+				    PM_->m_T_background.getSize ().x,
+				    PM_->m_T_background.getSize ().y / PM_->m_u_cout_frames));
 
-				PM_->RS_background[st].setScale (f, f);
+				PM_->m_RS_background[st].setScale (f, f);
 				if (st == 0)
 				{
-					names::SetXCenterPosition (PM_->RS_background[st], PM_->f_y_position_background * f);
+					names::SetXCenterPosition (PM_->m_RS_background[st], PM_->m_f_y_position_background * f);
 				}
 				else if (st % 2 == 0)
 				{
-					PM_->RS_background[st].setPosition (
-					    PM_->RS_background[0].getPosition ().x - PM_->RS_background[0].getGlobalBounds ().width * st * 0.5,
-					    PM_->f_y_position_background * f);
+					PM_->m_RS_background[st].setPosition (
+					    PM_->m_RS_background[0].getPosition ().x - PM_->m_RS_background[0].getGlobalBounds ().width * st * 0.5,
+					    PM_->m_f_y_position_background * f);
 				}
 				else
 				{
-					PM_->RS_background[st].setPosition (
-					    PM_->RS_background[0].getPosition ().x + PM_->RS_background[0].getGlobalBounds ().width * (st + 1) * 0.5,
-					    PM_->f_y_position_background * f);
+					PM_->m_RS_background[st].setPosition (
+					    PM_->m_RS_background[0].getPosition ().x + PM_->m_RS_background[0].getGlobalBounds ().width * (st + 1) * 0.5,
+					    PM_->m_f_y_position_background * f);
 				}
 			}
 
-			PM_->B_custom.setFillColor (Color (0.0, 0.0, 0.0, 0.0));
-			PM_->B_integrated.setFillColor (Color (0.0, 0.0, 0.0, 0.0));
+			PM_->m_B_custom.setFillColor (Color (0.0, 0.0, 0.0, 0.0));
+			PM_->m_B_integrated.setFillColor (Color (0.0, 0.0, 0.0, 0.0));
 		}
 		else
 		{
@@ -138,47 +138,47 @@ void PersonMenu::main_transitionTo ()
 	}
 	if (names::game_status == GameStatus::works_menu_to_main_menu)
 	{
-		for (size_t st (0); st < PM_->RS_background.size (); st++)
+		for (size_t st (0); st < PM_->m_RS_background.size (); st++)
 		{
-			PM_->RS_background[st].setScale (f, f);
+			PM_->m_RS_background[st].setScale (f, f);
 		}
-		if (PM_->f_y_position_background < WindowAndStyles::getPixelsSizeY ())
+		if (PM_->m_f_y_position_background < WindowAndStyles::getPixelsSizeY ())
 		{
-			PM_->f_frame_animation += PM_->f_speed_animation * names::f_microsec * names::f_time;
-			if (PM_->f_frame_animation > PM_->u_cout_frames)
+			PM_->m_f_frame_animation += PM_->m_f_speed_animation * names::f_microsec * names::f_time;
+			if (PM_->m_f_frame_animation > PM_->m_u_cout_frames)
 			{
-				PM_->f_frame_animation = 0.0;
+				PM_->m_f_frame_animation = 0.0;
 			}
 
-			PM_->f_y_position_background += PM_->f_speed_move * names::f_microsec * names::f_time;
-			for (size_t st (0); st < PM_->RS_background.size (); st++)
+			PM_->m_f_y_position_background += PM_->m_f_speed_move * names::f_microsec * names::f_time;
+			for (size_t st (0); st < PM_->m_RS_background.size (); st++)
 			{
-				PM_->RS_background[st].setTextureRect (IntRect (
+				PM_->m_RS_background[st].setTextureRect (IntRect (
 				    0,
-				    PM_->T_background.getSize ().y / PM_->u_cout_frames * unsigned (PM_->f_frame_animation),
-				    PM_->T_background.getSize ().x,
-				    PM_->T_background.getSize ().y / PM_->u_cout_frames));
+				    PM_->m_T_background.getSize ().y / PM_->m_u_cout_frames * unsigned (PM_->m_f_frame_animation),
+				    PM_->m_T_background.getSize ().x,
+				    PM_->m_T_background.getSize ().y / PM_->m_u_cout_frames));
 				if (st == 0)
 				{
-					names::SetXCenterPosition (PM_->RS_background[st], PM_->f_y_position_background * f);
+					names::SetXCenterPosition (PM_->m_RS_background[st], PM_->m_f_y_position_background * f);
 				}
 				else if (st % 2 == 0)
 				{
-					PM_->RS_background[st].setPosition (
-					    PM_->RS_background[0].getPosition ().x - PM_->RS_background[0].getGlobalBounds ().width * st * 0.5,
-					    PM_->f_y_position_background * f);
+					PM_->m_RS_background[st].setPosition (
+					    PM_->m_RS_background[0].getPosition ().x - PM_->m_RS_background[0].getGlobalBounds ().width * st * 0.5,
+					    PM_->m_f_y_position_background * f);
 				}
 				else
 				{
-					PM_->RS_background[st].setPosition (
-					    PM_->RS_background[0].getPosition ().x + PM_->RS_background[0].getGlobalBounds ().width * (st + 1) * 0.5,
-					    PM_->f_y_position_background * f);
+					PM_->m_RS_background[st].setPosition (
+					    PM_->m_RS_background[0].getPosition ().x + PM_->m_RS_background[0].getGlobalBounds ().width * (st + 1) * 0.5,
+					    PM_->m_f_y_position_background * f);
 				}
 			}
 		}
 		else
 		{
-			PM_->f_frame_transition = 0.0;
+			PM_->m_f_frame_transition = 0.0;
 			names::game_status = GameStatus::main_menu;
 		}
 	}
@@ -191,77 +191,77 @@ void PersonMenu::main_main ()
 
 	if (names::game_status == GameStatus::person_menu)
 	{
-		if (PM_->f_frame_transition < 255.0)
+		if (PM_->m_f_frame_transition < 255.0)
 		{
-			PM_->f_frame_transition += PM_->f_speed_transition * names::f_time * names::f_microsec;
-			if (PM_->B_custom.interect ())
+			PM_->m_f_frame_transition += PM_->m_f_speed_transition * names::f_time * names::f_microsec;
+			if (PM_->m_B_custom.interect ())
 			{
-				PM_->B_custom.setFillColor (Color (255, 255, 255, PM_->f_frame_transition));
+				PM_->m_B_custom.setFillColor (Color (255, 255, 255, PM_->m_f_frame_transition));
 			}
 			else
 			{
-				PM_->B_custom.setFillColor (Color (
-				    PM_->C_button_color.r,
-				    PM_->C_button_color.g,
-				    PM_->C_button_color.b,
-				    PM_->f_frame_transition));
+				PM_->m_B_custom.setFillColor (Color (
+				    PM_->m_C_button_color.r,
+				    PM_->m_C_button_color.g,
+				    PM_->m_C_button_color.b,
+				    PM_->m_f_frame_transition));
 			}
-			if (PM_->B_integrated.interect ())
+			if (PM_->m_B_integrated.interect ())
 			{
-				PM_->B_integrated.setFillColor (Color (255, 255, 255, PM_->f_frame_transition));
+				PM_->m_B_integrated.setFillColor (Color (255, 255, 255, PM_->m_f_frame_transition));
 			}
 			else
 			{
-				PM_->B_integrated.setFillColor (Color (
-				    PM_->C_button_color.r,
-				    PM_->C_button_color.g,
-				    PM_->C_button_color.b,
-				    PM_->f_frame_transition));
+				PM_->m_B_integrated.setFillColor (Color (
+				    PM_->m_C_button_color.r,
+				    PM_->m_C_button_color.g,
+				    PM_->m_C_button_color.b,
+				    PM_->m_f_frame_transition));
 			}
 		}
-		else if (PM_->f_frame_transition != 255.0)
+		else if (PM_->m_f_frame_transition != 255.0)
 		{
-			PM_->f_frame_transition = 255.0;
+			PM_->m_f_frame_transition = 255.0;
 		}
 		else
 		{
-			if (PM_->B_custom.interect ())
+			if (PM_->m_B_custom.interect ())
 			{
-				PM_->B_custom.setFillColor (Color (255, 255, 255, 255));
+				PM_->m_B_custom.setFillColor (Color (255, 255, 255, 255));
 			}
 			else
 			{
-				PM_->B_custom.setFillColor (Color (
-				    PM_->C_button_color.r,
-				    PM_->C_button_color.g,
-				    PM_->C_button_color.b,
+				PM_->m_B_custom.setFillColor (Color (
+				    PM_->m_C_button_color.r,
+				    PM_->m_C_button_color.g,
+				    PM_->m_C_button_color.b,
 				    255));
 			}
-			if (PM_->B_integrated.interect ())
+			if (PM_->m_B_integrated.interect ())
 			{
-				PM_->B_integrated.setFillColor (Color (255, 255, 255, 255));
+				PM_->m_B_integrated.setFillColor (Color (255, 255, 255, 255));
 			}
 			else
 			{
-				PM_->B_integrated.setFillColor (Color (
-				    PM_->C_button_color.r,
-				    PM_->C_button_color.g,
-				    PM_->C_button_color.b,
+				PM_->m_B_integrated.setFillColor (Color (
+				    PM_->m_C_button_color.r,
+				    PM_->m_C_button_color.g,
+				    PM_->m_C_button_color.b,
 				    255));
 			}
 		}
 
-		PM_->B_custom.setScale (f);
-		PM_->B_integrated.setScale (f);
+		PM_->m_B_custom.setScale (f);
+		PM_->m_B_integrated.setScale (f);
 
-		PM_->B_custom.setPosition (
-		    WindowAndStyles::getGlobalBounds ().width * 0.5 - (PM_->V2f_button_spacing.x * 0.5 + PM_->V2f_button_size.x) * f,
-		    WindowAndStyles::getGlobalBounds ().height * 0.5 - PM_->V2f_button_size.y * f * 0.5);
-		PM_->B_integrated.setPosition (
-		    WindowAndStyles::getGlobalBounds ().width * 0.5 + (PM_->V2f_button_spacing.x * 0.5) * f,
-		    WindowAndStyles::getGlobalBounds ().height * 0.5 - PM_->V2f_button_size.y * f * 0.5);
+		PM_->m_B_custom.setPosition (
+		    WindowAndStyles::getGlobalBounds ().width * 0.5 - (PM_->m_V2f_button_spacing.x * 0.5 + PM_->m_V2f_button_size.x) * f,
+		    WindowAndStyles::getGlobalBounds ().height * 0.5 - PM_->m_V2f_button_size.y * f * 0.5);
+		PM_->m_B_integrated.setPosition (
+		    WindowAndStyles::getGlobalBounds ().width * 0.5 + (PM_->m_V2f_button_spacing.x * 0.5) * f,
+		    WindowAndStyles::getGlobalBounds ().height * 0.5 - PM_->m_V2f_button_size.y * f * 0.5);
 
-		if (PM_->B_integrated.pressed () and PM_->f_frame_transition == 255.0)
+		if (PM_->m_B_integrated.pressed () and PM_->m_f_frame_transition == 255.0)
 		{
 			names::game_status = GameStatus::language_menu;
 		}
@@ -274,33 +274,33 @@ void PersonMenu::main_transitionOf ()
 
 	if (names::game_status == GameStatus::language_menu)
 	{
-		if (PM_->f_frame_transition > 0.0)
+		if (PM_->m_f_frame_transition > 0.0)
 		{
-			PM_->f_frame_transition -= PM_->f_speed_transition * names::f_time * names::f_microsec;
-			PM_->B_custom.setFillColor (Color (
-			    PM_->B_custom.getRectangleShape ().getFillColor ().r,
-			    PM_->B_custom.getRectangleShape ().getFillColor ().g,
-			    PM_->B_custom.getRectangleShape ().getFillColor ().b,
-			    PM_->f_frame_transition));
-			PM_->B_integrated.setFillColor (Color (
-			    PM_->B_integrated.getRectangleShape ().getFillColor ().r,
-			    PM_->B_integrated.getRectangleShape ().getFillColor ().g,
-			    PM_->B_integrated.getRectangleShape ().getFillColor ().b,
-			    PM_->f_frame_transition));
+			PM_->m_f_frame_transition -= PM_->m_f_speed_transition * names::f_time * names::f_microsec;
+			PM_->m_B_custom.setFillColor (Color (
+			    PM_->m_B_custom.getRectangleShape ().getFillColor ().r,
+			    PM_->m_B_custom.getRectangleShape ().getFillColor ().g,
+			    PM_->m_B_custom.getRectangleShape ().getFillColor ().b,
+			    PM_->m_f_frame_transition));
+			PM_->m_B_integrated.setFillColor (Color (
+			    PM_->m_B_integrated.getRectangleShape ().getFillColor ().r,
+			    PM_->m_B_integrated.getRectangleShape ().getFillColor ().g,
+			    PM_->m_B_integrated.getRectangleShape ().getFillColor ().b,
+			    PM_->m_f_frame_transition));
 		}
-		else if (PM_->f_frame_transition != 0.0)
+		else if (PM_->m_f_frame_transition != 0.0)
 		{
-			PM_->f_frame_transition = 0.0;
-			PM_->B_custom.setFillColor (Color (
-			    PM_->B_custom.getRectangleShape ().getFillColor ().r,
-			    PM_->B_custom.getRectangleShape ().getFillColor ().g,
-			    PM_->B_custom.getRectangleShape ().getFillColor ().b,
-			    PM_->f_frame_transition));
-			PM_->B_integrated.setFillColor (Color (
-			    PM_->B_integrated.getRectangleShape ().getFillColor ().r,
-			    PM_->B_integrated.getRectangleShape ().getFillColor ().g,
-			    PM_->B_integrated.getRectangleShape ().getFillColor ().b,
-			    PM_->f_frame_transition));
+			PM_->m_f_frame_transition = 0.0;
+			PM_->m_B_custom.setFillColor (Color (
+			    PM_->m_B_custom.getRectangleShape ().getFillColor ().r,
+			    PM_->m_B_custom.getRectangleShape ().getFillColor ().g,
+			    PM_->m_B_custom.getRectangleShape ().getFillColor ().b,
+			    PM_->m_f_frame_transition));
+			PM_->m_B_integrated.setFillColor (Color (
+			    PM_->m_B_integrated.getRectangleShape ().getFillColor ().r,
+			    PM_->m_B_integrated.getRectangleShape ().getFillColor ().g,
+			    PM_->m_B_integrated.getRectangleShape ().getFillColor ().b,
+			    PM_->m_f_frame_transition));
 		}
 	}
 }
@@ -312,34 +312,34 @@ void PersonMenu::main_forAllMenu ()
 
 	if (names::game_status == GameStatus::person_menu or names::game_status == GameStatus::language_menu or names::game_status == GameStatus::works_menu or names::game_status == GameStatus::learn or names::game_status == GameStatus::test)
 	{
-		PM_->f_frame_animation += PM_->f_speed_animation * names::f_microsec * names::f_time;
-		if (PM_->f_frame_animation > PM_->u_cout_frames)
+		PM_->m_f_frame_animation += PM_->m_f_speed_animation * names::f_microsec * names::f_time;
+		if (PM_->m_f_frame_animation > PM_->m_u_cout_frames)
 		{
-			PM_->f_frame_animation = 0.0;
+			PM_->m_f_frame_animation = 0.0;
 		}
 
-		for (size_t st (0); st < PM_->RS_background.size (); st++)
+		for (size_t st (0); st < PM_->m_RS_background.size (); st++)
 		{
-			PM_->RS_background[st].setTextureRect (IntRect (
+			PM_->m_RS_background[st].setTextureRect (IntRect (
 			    0,
-			    PM_->T_background.getSize ().y / PM_->u_cout_frames * unsigned (PM_->f_frame_animation),
-			    PM_->T_background.getSize ().x,
-			    PM_->T_background.getSize ().y / PM_->u_cout_frames));
-			PM_->RS_background[st].setScale (f, f);
+			    PM_->m_T_background.getSize ().y / PM_->m_u_cout_frames * unsigned (PM_->m_f_frame_animation),
+			    PM_->m_T_background.getSize ().x,
+			    PM_->m_T_background.getSize ().y / PM_->m_u_cout_frames));
+			PM_->m_RS_background[st].setScale (f, f);
 			if (st == 0)
 			{
-				names::SetXCenterPosition (PM_->RS_background[st], -WindowAndStyles::getGlobalBounds ().height);
+				names::SetXCenterPosition (PM_->m_RS_background[st], -WindowAndStyles::getGlobalBounds ().height);
 			}
 			else if (st % 2 == 0)
 			{
-				PM_->RS_background[st].setPosition (
-				    PM_->RS_background[0].getPosition ().x - PM_->RS_background[0].getGlobalBounds ().width * st * 0.5,
+				PM_->m_RS_background[st].setPosition (
+				    PM_->m_RS_background[0].getPosition ().x - PM_->m_RS_background[0].getGlobalBounds ().width * st * 0.5,
 				    -WindowAndStyles::getGlobalBounds ().height);
 			}
 			else
 			{
-				PM_->RS_background[st].setPosition (
-				    PM_->RS_background[0].getPosition ().x + PM_->RS_background[0].getGlobalBounds ().width * (st + 1) * 0.5,
+				PM_->m_RS_background[st].setPosition (
+				    PM_->m_RS_background[0].getPosition ().x + PM_->m_RS_background[0].getGlobalBounds ().width * (st + 1) * 0.5,
 				    -WindowAndStyles::getGlobalBounds ().height);
 			}
 		}
@@ -361,40 +361,40 @@ void PersonMenu::main ()
 
 vector<RectangleShape>& PersonMenu::getBackground ()
 {
-	return getClass ()->RS_background;
+	return getClass ()->m_RS_background;
 }
 
 Texture& PersonMenu::getTextureBackground ()
 {
-	return getClass ()->T_background;
+	return getClass ()->m_T_background;
 }
 
 ImageButton& PersonMenu::getCustom ()
 {
-	return getClass ()->B_custom;
+	return getClass ()->m_B_custom;
 }
 
 ImageButton& PersonMenu::getIntegrated ()
 {
-	return getClass ()->B_integrated;
+	return getClass ()->m_B_integrated;
 }
 
 Vector2f& PersonMenu::getButtonSize ()
 {
-	return getClass ()->V2f_button_size;
+	return getClass ()->m_V2f_button_size;
 }
 
 Color& PersonMenu::getButtonColor ()
 {
-	return getClass ()->C_button_color;
+	return getClass ()->m_C_button_color;
 }
 
 float& PersonMenu::getFrameTransition ()
 {
-	return getClass ()->f_frame_transition;
+	return getClass ()->m_f_frame_transition;
 }
 
 float& PersonMenu::getSpeedTransition ()
 {
-	return getClass ()->f_speed_transition;
+	return getClass ()->m_f_speed_transition;
 }

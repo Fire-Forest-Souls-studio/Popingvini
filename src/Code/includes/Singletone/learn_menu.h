@@ -13,22 +13,19 @@ using namespace std;
 
 class LearnMenu
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	private:
-		static LearnMenu* class_obj;
+		static LearnMenu* m_class_obj;
 
-		RectangleShape rectangle_shape_obj;
+		RectangleShape m_rectangle_shape;
 
-		Text text_obj;
+		Text m_text;
 
-		ImageButton button_obj;
+		ImageButton m_button;
 
-		float f_text_size;
-		float f_left0;
-		float f_left1;
-		float f_left2;
+		float m_f_text_size;
+		float m_f_left0;
+		float m_f_left1;
+		float m_f_left2;
 
 		LearnMenu ();
 
@@ -40,7 +37,7 @@ class LearnMenu
 
 		static void destroy ();
 		static void main ();
-		static void setWork (Work&);
+		static void setWork (Work& work);
 
 		static ImageButton& getButton ();
 

@@ -29,12 +29,10 @@ enum StyleWindow
 
 class WindowAndStyles
 {
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	private:
 		WindowAndStyles ();
 
-		static WindowAndStyles* class_obj;
+		static WindowAndStyles* m_class_obj;
 
 		const Vector2f m_f_SIZE_PIX;
 
@@ -67,7 +65,7 @@ class WindowAndStyles
 		static void clear_draw ();
 		static void clear_display ();
 		static void main_destroy ();
-		static void draw (const Button&);
+		static void draw (const Button& button);
 
 	protected:
 		static WindowAndStyles* getClass ();
@@ -76,7 +74,7 @@ class WindowAndStyles
 		static void start ();
 		static void main ();
 		static void clear ();
-		static void setColor (Color);
+		static void setColor (Color color);
 		static void close ();
 
 		static bool isOpen ();

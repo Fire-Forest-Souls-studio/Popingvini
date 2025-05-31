@@ -21,10 +21,8 @@ using namespace std;
 
 class TestMenu
 {
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	private:
-		static TestMenu* class_obj;
+		static TestMenu* m_class_obj;
 
 		Text m_T_question;
 
@@ -65,7 +63,7 @@ class TestMenu
 		static void destroy ();
 		static void main ();
 		static void setZeroQuestion ();
-		static void setLanguageTexture (const Texture&);
+		static void setLanguageTexture (const Texture& texture);
 
 		static vector<TextButton>& getButtons ();
 

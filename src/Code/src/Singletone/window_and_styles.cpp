@@ -15,7 +15,7 @@
 
 // private
 
-WindowAndStyles* WindowAndStyles::class_obj = NULL;
+WindowAndStyles* WindowAndStyles::m_class_obj = NULL;
 
 WindowAndStyles::WindowAndStyles ()
     : m_f_SIZE_PIX (300.0, 150.0),
@@ -306,11 +306,11 @@ void WindowAndStyles::clear_display ()
 
 WindowAndStyles* WindowAndStyles::getClass ()
 {
-	if (class_obj)
-		return class_obj;
+	if (m_class_obj)
+		return m_class_obj;
 
-	class_obj = new WindowAndStyles ();
-	return class_obj;
+	m_class_obj = new WindowAndStyles ();
+	return m_class_obj;
 }
 
 // void

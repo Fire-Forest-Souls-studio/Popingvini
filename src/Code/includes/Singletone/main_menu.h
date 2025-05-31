@@ -12,50 +12,47 @@ using namespace std;
 
 class MainMenu
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	private:
-		static MainMenu* class_obj;
+		static MainMenu* m_class_obj;
 
-		RectangleShape RS_popingvini;
-		RectangleShape RS_title;
+		RectangleShape m_RS_popingvini;
+		RectangleShape m_RS_title;
 
-		ImageButton B_popingvinit;
-		ImageButton B_sdatca;
-		ImageButton B_wardrobe;
+		ImageButton m_B_popingvinit;
+		ImageButton m_B_sdatca;
+		ImageButton m_B_wardrobe;
 
-		unsigned u_cout_frame_popingvini;
+		unsigned m_u_cout_frame_popingvini;
 
-		short int si_reverse;
+		short int m_si_reverse;
 
-		float f_frame_popingvini;
-		float f_speed_anim_popingvini;
-		float f_speed_move_ice;
-		float f_chance_reverse;
+		float m_f_frame_popingvini;
+		float m_f_speed_anim_popingvini;
+		float m_f_speed_move_ice;
+		float m_f_chance_reverse;
 
-		Vector2f V2f_popingvini_defoult;
-		Vector2f V2f_popingvinit_button;
-		Vector2f V2f_sdatca_button;
-		Vector2f V2f_title;
-		Vector2f V2f_wardrobe_button;
-		Vector2f V2f_popingvini_size;
-		Vector2f V2f_popingvinit_button_size;
-		Vector2f V2f_sdatca_button_size;
-		Vector2f V2f_title_size;
-		Vector2f V2f_wardrobe_button_size;
-		Vector2f V2f_background_size;
-		Vector2f V2f_ice_size;
+		Vector2f m_V2f_popingvini_defoult;
+		Vector2f m_V2f_popingvinit_button;
+		Vector2f m_V2f_sdatca_button;
+		Vector2f m_V2f_title;
+		Vector2f m_V2f_wardrobe_button;
+		Vector2f m_V2f_popingvini_size;
+		Vector2f m_V2f_popingvinit_button_size;
+		Vector2f m_V2f_sdatca_button_size;
+		Vector2f m_V2f_title_size;
+		Vector2f m_V2f_wardrobe_button_size;
+		Vector2f m_V2f_background_size;
+		Vector2f m_V2f_ice_size;
 
-		vector<RectangleShape> RS_background;
-		vector<RectangleShape> RS_ice;
+		vector<RectangleShape> m_RS_background;
+		vector<RectangleShape> m_RS_ice;
 
-		Color C_chice_button;
+		Color m_C_chice_button;
 
-		Texture T_background;
-		Texture T_ice;
-		Texture T_popingvini;
-		Texture T_title;
+		Texture m_T_background;
+		Texture m_T_ice;
+		Texture m_T_popingvini;
+		Texture m_T_title;
 
 		MainMenu ();
 

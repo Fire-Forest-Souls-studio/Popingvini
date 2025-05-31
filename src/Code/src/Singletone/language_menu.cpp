@@ -10,19 +10,19 @@
 #include "../../includes/Classes/test.h"
 #include "../../includes/Classes/question.h"
 
-LanguageMenu* LanguageMenu::class_obj = NULL;
+LanguageMenu* LanguageMenu::m_class_obj = NULL;
 
 LanguageMenu::LanguageMenu ()
-    : L_python ("Python")
+    : m_L_python ("Python")
 {
-	L_python.image_button.setSize (PersonMenu::getButtonSize ());
-	L_python.image_button.setFillColor (Color (
+	m_L_python.image_button.setSize (PersonMenu::getButtonSize ());
+	m_L_python.image_button.setFillColor (Color (
 	    PersonMenu::getButtonColor ().r,
 	    PersonMenu::getButtonColor ().g,
 	    PersonMenu::getButtonColor ().b,
 	    0));
 
-	L_python.addWork (Work (
+	m_L_python.addWork (Work (
 	    L"Начало",
 	    L"-> Термины:\nФункция, инициализация, оператор, переменная\n-> Операторы:\n=\n-> Функции:\nprint()",
 	    L"? > ⁇",
@@ -64,7 +64,7 @@ LanguageMenu::LanguageMenu ()
 	             L"Чтобы вывести значение переменной в консоль, используется функция print().",
 	             {{1, L"Верно"},
 	              {0, L"Неверно"}})})));
-	L_python.addWork (Work (
+	m_L_python.addWork (Work (
 	    L"Основные операторы",
 	    L"-> Операторы:\n+, -, *, /",
 	    L"? > ⁇",
@@ -138,7 +138,7 @@ LanguageMenu::LanguageMenu ()
 	                       {0, L"Верно"},
 	                       {1, L"Неверно"},
 	                   })})));
-	L_python.addWork (Work (
+	m_L_python.addWork (Work (
 	    L"Сделаем проще!",
 	    L"-> Операторы:\n+=, *=, -=, /=, //, %",
 	    L"? > ⁇",
@@ -207,7 +207,7 @@ LanguageMenu::LanguageMenu ()
 	                       {0, L"3"},
 	                       {0, L"1"},
 	                   })})));
-	L_python.addWork (Work (
+	m_L_python.addWork (Work (
 	    L"Типы данных",
 	    L"-> Типы данных:\nfloat, bool, int",
 	    L"? > ⁇",
@@ -310,7 +310,7 @@ LanguageMenu::LanguageMenu ()
 	                       {0, L"Не нужно ничего делать"},
 	                       {0, L"Выдать значение в виде строки"},
 	                   })})));
-	L_python.addWork (Work (
+	m_L_python.addWork (Work (
 	    L"Условия",
 	    L"-> Операторы:\nif, else, elif, not, ==, >, <, >=, <=",
 	    L"? > ⁇",
@@ -440,11 +440,11 @@ LanguageMenu::LanguageMenu ()
 
 LanguageMenu* LanguageMenu::getClass ()
 {
-	if (class_obj)
-		return class_obj;
+	if (m_class_obj)
+		return m_class_obj;
 
-	class_obj = new LanguageMenu ();
-	return class_obj;
+	m_class_obj = new LanguageMenu ();
+	return m_class_obj;
 }
 
 void LanguageMenu::main_load ()
@@ -453,7 +453,7 @@ void LanguageMenu::main_load ()
 
 	if (Loading::getLoad ())
 	{
-		LM_->L_python.image_button.setTexture ();
+		LM_->m_L_python.image_button.setTexture ();
 	}
 }
 
@@ -466,13 +466,13 @@ void LanguageMenu::main_main ()
 	{
 		if (PersonMenu::getFrameTransition () > 0.0)
 		{
-			if (LM_->L_python.image_button.interect ())
+			if (LM_->m_L_python.image_button.interect ())
 			{
-				LM_->L_python.image_button.setFillColor (Color (255.0, 255.0, 255.0, 255.0 - PersonMenu::getFrameTransition ()));
+				LM_->m_L_python.image_button.setFillColor (Color (255.0, 255.0, 255.0, 255.0 - PersonMenu::getFrameTransition ()));
 			}
 			else
 			{
-				LM_->L_python.image_button.setFillColor (Color (
+				LM_->m_L_python.image_button.setFillColor (Color (
 				    PersonMenu::getButtonColor ().r,
 				    PersonMenu::getButtonColor ().g,
 				    PersonMenu::getButtonColor ().b,
@@ -481,13 +481,13 @@ void LanguageMenu::main_main ()
 		}
 		else
 		{
-			if (LM_->L_python.image_button.interect ())
+			if (LM_->m_L_python.image_button.interect ())
 			{
-				LM_->L_python.image_button.setFillColor (Color (255.0, 255.0, 255.0, 255.0));
+				LM_->m_L_python.image_button.setFillColor (Color (255.0, 255.0, 255.0, 255.0));
 			}
 			else
 			{
-				LM_->L_python.image_button.setFillColor (Color (
+				LM_->m_L_python.image_button.setFillColor (Color (
 				    PersonMenu::getButtonColor ().r,
 				    PersonMenu::getButtonColor ().g,
 				    PersonMenu::getButtonColor ().b,
@@ -495,15 +495,15 @@ void LanguageMenu::main_main ()
 			}
 		}
 
-		LM_->L_python.image_button.setScale (f);
-		LM_->L_python.image_button.setPosition (
+		LM_->m_L_python.image_button.setScale (f);
+		LM_->m_L_python.image_button.setPosition (
 		    WindowAndStyles::getGlobalBounds ().width * 0.5 - PersonMenu::getButtonSize ().x * f * 0.5,
 		    WindowAndStyles::getGlobalBounds ().height * 0.5 - PersonMenu::getButtonSize ().y * f * 0.5);
 
-		if (LM_->L_python.image_button.pressed ())
+		if (LM_->m_L_python.image_button.pressed ())
 		{
-			WorksMenu::setLanguage (&LM_->L_python);
-			TestMenu::setLanguageTexture (LM_->L_python.texture);
+			WorksMenu::setLanguage (&LM_->m_L_python);
+			TestMenu::setLanguageTexture (LM_->m_L_python.texture);
 			names::game_status = GameStatus::works_menu;
 		}
 	}
@@ -518,19 +518,19 @@ void LanguageMenu::main_transitionOf ()
 		if (PersonMenu::getFrameTransition () < 255.0)
 		{
 			PersonMenu::getFrameTransition () += PersonMenu::getSpeedTransition () * names::f_microsec * names::f_time;
-			LM_->L_python.image_button.setFillColor (Color (
-			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().r,
-			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().g,
-			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().b,
+			LM_->m_L_python.image_button.setFillColor (Color (
+			    LM_->m_L_python.image_button.getRectangleShape ().getFillColor ().r,
+			    LM_->m_L_python.image_button.getRectangleShape ().getFillColor ().g,
+			    LM_->m_L_python.image_button.getRectangleShape ().getFillColor ().b,
 			    255.0 - PersonMenu::getFrameTransition ()));
 		}
 		else if (PersonMenu::getFrameTransition () != 255.0)
 		{
 			PersonMenu::getFrameTransition () = 255.0;
-			LM_->L_python.image_button.setFillColor (Color (
-			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().r,
-			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().g,
-			    LM_->L_python.image_button.getRectangleShape ().getFillColor ().b,
+			LM_->m_L_python.image_button.setFillColor (Color (
+			    LM_->m_L_python.image_button.getRectangleShape ().getFillColor ().r,
+			    LM_->m_L_python.image_button.getRectangleShape ().getFillColor ().g,
+			    LM_->m_L_python.image_button.getRectangleShape ().getFillColor ().b,
 			    255.0 - PersonMenu::getFrameTransition ()));
 		}
 	}
@@ -547,10 +547,10 @@ void LanguageMenu::main ()
 
 ImageButton& LanguageMenu::getPythonButton ()
 {
-	return getClass ()->L_python.image_button;
+	return getClass ()->m_L_python.image_button;
 }
 
 Language& LanguageMenu::getPython ()
 {
-	return getClass ()->L_python;
+	return getClass ()->m_L_python;
 }

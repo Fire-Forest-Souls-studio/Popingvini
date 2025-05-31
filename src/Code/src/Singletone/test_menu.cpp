@@ -9,7 +9,7 @@
 
 #include <cmath>
 
-TestMenu* TestMenu::class_obj = NULL;
+TestMenu* TestMenu::m_class_obj = NULL;
 
 TestMenu::TestMenu ()
     : m_text_button (0),
@@ -49,11 +49,11 @@ TestMenu::TestMenu ()
 
 TestMenu* TestMenu::getClass ()
 {
-	if (class_obj)
-		return class_obj;
+	if (m_class_obj)
+		return m_class_obj;
 
-	class_obj = new TestMenu;
-	return class_obj;
+	m_class_obj = new TestMenu;
+	return m_class_obj;
 }
 
 void TestMenu::destroy ()

@@ -23,52 +23,49 @@ using namespace std;
 
 class WorksMenu
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	private:
-		static WorksMenu* class_obj;
+		static WorksMenu* m_class_obj;
 
-		Text _T_up_panel_left;
-		Text _T_up_panel_middle;
-		Text _T_up_panel_right;
+		Text m_T_up_panel_left;
+		Text m_T_up_panel_middle;
+		Text m_T_up_panel_right;
 
-		Button _B_up_panel;
+		Button m_B_up_panel;
 
-		RectangleShape _RS_down_panel;
+		RectangleShape m_RS_down_panel;
 
-		const float _f_BIG_FONT_SCALE;
-		const float _f_MIDDLE_BIG_FONT_SCALE;
-		const float _f_MIDDLE_SMALL_FONT_SCALE;
-		const float _f_SMALL_FONT_SCALE;
-		const float _f_SPEED_MOVE_BLOCKS;
-		const float _f_WIGHT_SIMVOL_BIG_FONT;
-		const float _f_WIGHT_SIMVOL_MIDDLE_BIG_FONT;
-		const float _f_WIGHT_SIMVOL_MIDDLE_SMALL_FONT;
-		const float _f_WIGHT_SIMVOL_SMALL_FONT;
-		float _f_move_blocks;
+		const float m_f_BIG_FONT_SCALE;
+		const float m_f_MIDDLE_BIG_FONT_SCALE;
+		const float m_f_MIDDLE_SMALL_FONT_SCALE;
+		const float m_f_SMALL_FONT_SCALE;
+		const float m_f_SPEED_MOVE_BLOCKS;
+		const float m_f_WIGHT_SIMVOL_BIG_FONT;
+		const float m_f_WIGHT_SIMVOL_MIDDLE_BIG_FONT;
+		const float m_f_WIGHT_SIMVOL_MIDDLE_SMALL_FONT;
+		const float m_f_WIGHT_SIMVOL_SMALL_FONT;
+		float m_f_move_blocks;
 
-		const int _i_OUT_UP;
-		const int _i_OUT_LEFT;
-		const int _i_OUT_BETWEEN;
-		const int _i_IN_UP;
-		const int _i_IN_LEFT;
-		const int _i_IN_BETWEEN;
-		const int _i_BLOCK_UP;
-		const int _i_BLOCK_LEFT;
-		const int _i_BLOCK_BETWEEN;
+		const int m_i_OUT_UP;
+		const int m_i_OUT_LEFT;
+		const int m_i_OUT_BETWEEN;
+		const int m_i_IN_UP;
+		const int m_i_IN_LEFT;
+		const int m_i_IN_BETWEEN;
+		const int m_i_BLOCK_UP;
+		const int m_i_BLOCK_LEFT;
+		const int m_i_BLOCK_BETWEEN;
 
-		Texture _texture;
+		Texture m_texture;
 
-		RenderTexture _render_texture;
+		RenderTexture m_render_texture;
 
-		View _view;
+		View m_view;
 
-		Vector2f _V2f_size_up_panel;
-		Vector2f _V2f_size_down_panel;
-		Vector2f _V2f_size_block_icon;
+		Vector2f m_V2f_size_up_panel;
+		Vector2f m_V2f_size_down_panel;
+		Vector2f m_V2f_size_block_icon;
 
-		vector<WorkBlock> _work_block;
+		vector<WorkBlock> m_work_block;
 
 		WorksMenu ();
 
@@ -85,11 +82,11 @@ class WorksMenu
 		static Language* language;
 
 		static void destroy ();
-		static void setLanguage (Language*);
+		static void setLanguage (Language* new_language);
 		static void main ();
 		static void start ();
 		static void clear ();
-		static void setMoveBlocks (float);
+		static void setMoveBlocks (float mouse_move);
 		static void stringUpdate ();
 
 		static Button& getUpPanel ();

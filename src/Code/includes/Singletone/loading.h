@@ -11,53 +11,50 @@ using namespace std;
 
 class Loading
 {
-		// TODO: рефакторинг переменный по шаблону <m_TyPe_my_name>
-		// TODO: добавить названия аргументам функций по шаблону <my_name>
-
 	private:
-		static Loading* class_obj;
+		static Loading* m_class_obj;
 
 		Loading ();
 
 	protected:
-		RectangleShape rectangle_shape_obj;
+		RectangleShape m_rectangle_shape;
 
-		Texture texture_obj;
+		Texture m_texture;
 
-		Text text_obj;
-		Text T_load;
+		Text m_text;
+		Text m_T_load;
 
-		float f_frame_transition;
-		float f_transition_speed;
-		float f_text_size;
-		float f_speed_rotate;
+		float m_f_frame_transition;
+		float m_f_transition_speed;
+		float m_f_text_size;
+		float m_f_speed_rotate;
 
-		Color C_text_color;
+		Color m_C_text_color;
 
-		vector<Texture*> load_texture;
+		vector<Texture*> m_load_texture;
 
-		vector<void const*> load_void_const;
+		vector<void const*> m_load_void_const;
 
-		vector<unsigned long> load_unsigned_long;
+		vector<unsigned long> m_load_unsigned_long;
 
-		vector<string> load_string;
+		vector<string> m_load_string;
 
-		vector<wstring> w_text;
+		vector<wstring> m_w_text;
 
-		wstring w_load;
+		wstring m_w_load;
 
-		Vector2f V2f_text_position;
-		Vector2f V2f_text_load_position;
+		Vector2f m_V2f_text_position;
+		Vector2f m_V2f_text_load_position;
 
-		unsigned u_load_number;
-		unsigned u_symbols_in_line;
+		unsigned m_u_load_number;
+		unsigned m_u_symbols_in_line;
 
-		bool b_load;
+		bool m_b_load;
 
-		string s_file_name;
+		string m_s_file_name;
 
-		ofstream o_file;
-		ifstream i_file;
+		ofstream m_o_file;
+		ifstream m_i_file;
 
 		static Loading* getClass ();
 
