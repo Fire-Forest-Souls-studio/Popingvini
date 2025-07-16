@@ -475,7 +475,7 @@ void WorksMenu::main_works_menu ()
 			WM_->m_work_block[st].T_score.setCharacterSize (WM_->m_f_SMALL_FONT_SCALE * f_factor_y);
 			WM_->m_work_block[st].T_score.setPosition (
 			    WM_->m_work_block[st].button.getGlobalBounds ().left + (1.0 + WM_->m_i_BLOCK_LEFT) * f_factor_y,
-			    WM_->m_work_block[st].button.getGlobalBounds ().top + WM_->m_work_block[st].button.getGlobalBounds ().height - (1.0 + WM_->m_i_BLOCK_UP) * f_factor_y - WM_->m_work_block[st].T_score.getGlobalBounds ().height);
+                WM_->m_work_block[st].button.getGlobalBounds ().top + WM_->m_work_block[st].button.getGlobalBounds ().height - (1.0 + WM_->m_i_BLOCK_UP) * f_factor_y - WM_->m_work_block[st].T_score.getGlobalBounds ().height);
 		}
 
 		if (GS == GameStatus::learn)
