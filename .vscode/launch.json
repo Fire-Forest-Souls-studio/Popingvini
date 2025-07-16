@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Debug Popinguini",
+        "name": "Popinguini",
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/Попингвини",

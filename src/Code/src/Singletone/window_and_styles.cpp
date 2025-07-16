@@ -192,9 +192,9 @@ void WindowAndStyles::clear_draw ()
 		WAS_->m_render_texture.draw (Introduction::getAnimSprite ());
 		for (size_t st (0); st < P_.size (); st++)
 		{
-			if (P_[st].RS.getGlobalBounds ().intersects (WAS_->m_rectangle_shape.getGlobalBounds ()))
+			if (P_[st].rectangle.getGlobalBounds ().intersects (WAS_->m_rectangle_shape.getGlobalBounds ()))
 			{
-				WAS_->m_render_texture.draw (P_[st].RS);
+				WAS_->m_render_texture.draw (P_[st].rectangle);
 			}
 		}
 		WAS_->m_render_texture.draw (Introduction::getLightSprite ());
@@ -203,9 +203,9 @@ void WindowAndStyles::clear_draw ()
 	{
 		for (size_t st (0); st < P_.size (); st++)
 		{
-			if (P_[st].RS.getGlobalBounds ().intersects (WAS_->m_rectangle_shape.getGlobalBounds ()))
+			if (P_[st].rectangle.getGlobalBounds ().intersects (WAS_->m_rectangle_shape.getGlobalBounds ()))
 			{
-				WAS_->m_render_texture.draw (P_[st].RS);
+				WAS_->m_render_texture.draw (P_[st].rectangle);
 			}
 		}
 		WAS_->m_render_texture.draw (Loading::getSprite ());
