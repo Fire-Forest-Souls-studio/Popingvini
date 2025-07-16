@@ -1,4 +1,4 @@
-extern char _binary___Resources_Images_Works_menu_work_icon_png_start;
-extern char _binary___Resources_Images_Works_menu_work_icon_png_end;
-static const char* work_icon_png = &_binary___Resources_Images_Works_menu_work_icon_png_start;
-static const size_t work_icon_png_size = &_binary___Resources_Images_Works_menu_work_icon_png_end - &_binary___Resources_Images_Works_menu_work_icon_png_start;
+extern char _binary_Resources_Images_Works_menu_work_icon_png_start;
+extern char _binary_Resources_Images_Works_menu_work_icon_png_end;
+static const char* work_icon_png = &_binary_Resources_Images_Works_menu_work_icon_png_start;
+static const size_t work_icon_png_size = &_binary_Resources_Images_Works_menu_work_icon_png_end - &_binary_Resources_Images_Works_menu_work_icon_png_start;
